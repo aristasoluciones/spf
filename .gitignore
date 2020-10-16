@@ -11,6 +11,7 @@
 libs/pdf/lib/fonts/*.afm.php
 libs/pdf/lib/fonts/*.ufm.php
 libs/pdf/lib/fonts/log.htm
+libs/dompdf
 
 
 

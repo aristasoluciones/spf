@@ -38,8 +38,6 @@
 {/if}
 
 <link href="{$WEB_ROOT}/assets/layouts/layout/css/custom.css" rel="stylesheet" type="text/css" />
-<!-- END THEME LAYOUT STYLES -->
-<!--
 <link rel="shortcut icon" href="favicon.ico" /> -->
 {/if}
 
