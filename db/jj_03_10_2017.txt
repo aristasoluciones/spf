@@ -1,0 +1,2 @@
+ALTER TABLE  `clientes` ADD  `x` VARCHAR( 255 ) NOT NULL AFTER  `sexo` ;
+ALTER TABLE  `clientes` ADD  `y` VARCHAR( 255 ) NOT NULL AFTER  `x` ;

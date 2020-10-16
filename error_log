@@ -1,0 +1,1 @@
+[15-May-2017 09:56:46 America/Mexico_City] PHP Fatal error:  Call to a member function execute() on null in /home/farmaciassalinas/public_html/webmaster/libs/PhpRbac/src/PhpRbac/core/lib/Jf.php on line 160

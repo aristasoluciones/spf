@@ -1,0 +1,11 @@
+.reqIcon{
+  color:red;
+}
+.nopadding {
+   padding: 1 !important;
+   margin: 0 !important;
+}
+#scrollable-dropdown-menu .tt-dropdown-menu {
+  max-height: 150px;
+  overflow-y: auto;
+}

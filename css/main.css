@@ -1,0 +1,60 @@
+﻿#txtErrMsg,
+#txtErrMsg2{
+	color:#FF0000; 
+	font-weight:normal; 
+	font-size:12px;
+	padding-bottom:10px;
+}
+#txtSucMsg,
+#txtSucMsg2{
+	color:#009900;
+	font-weight:normal; 
+	font-size:12px;
+	padding-bottom:10px;
+}
+#stLoader{
+	padding-bottom:10px;
+}
+
+.reqIcon{
+	color:#FF0000;
+}
+
+.stHidden{
+	display:none;
+}
+
+.logo{
+	color:#FFFFFF;
+	font-size:16px;
+}
+
+.fLeft{
+	float:left;
+}
+.fRight{
+	float:right;
+}
+.clearB{
+	clear:both
+}
+
+/* scroll */
+.scrollX {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: auto;
+    white-space:nowrap
+}
+.scrollY {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: auto;
+    white-space:nowrap
+}
+.scrollXY {
+    overflow-x: scroll;
+    overflow-y: scroll;
+    height: auto;
+    white-space:nowrap
+}
