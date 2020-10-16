@@ -9,7 +9,10 @@ include_once(DOC_ROOT."/libs/PHPExcel/Classes/PHPExcel.php");
 
 include_once(DOC_ROOT.'/classes/db.class.php');
 $db = new DB;
-require 'vendor/autoload.php';
+if(USE_COMPOSER)
+    require 'vendor/autoload.php';
+else
+    require_once 'libs/dompdf/autoload.inc.php';
 include_once(DOC_ROOT.'/classes/error.class.php');
 $error = new CustomError;
 
