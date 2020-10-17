@@ -40,7 +40,21 @@ class PdfService extends Question{
         $this->smarty->assign('chart', $chart);
         $html = $this->smarty->fetch(DOC_ROOT.'/templates/reports/poll-result-pdf.tpl');
 
-        $dompdf = new Dompdf();
+        $options = new Options();
+        $options->set('isRemoteEnabled', TRUE);
+        $dompdf = new Dompdf($options);
+        $auth = base64_encode("username:password");
+        $context = stream_context_create(array(
+            'ssl' => array(
+                'verify_peer' => FALSE,
+                'verify_peer_name' => FALSE,
+                // 'allow_self_signed'=> TRUE
+            ),
+            'http' => array(
+                'header' => "Authorization: Basic $auth"
+            )
+        ));
+        $dompdf->setHttpContext($context);
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
