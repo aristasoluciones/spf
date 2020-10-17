@@ -32,7 +32,7 @@ class PdfService extends Question{
         $this->smarty->assign('info', $info);
 
         $chart = false;
-        $file = DOC_ROOT."/charts/chart_".$this->getVictimaId().".png";
+        $file = WEB_ROOT."/charts/chart_".$this->getVictimaId().".png";
         if(file_exists($file))
             $chart =$file;
 

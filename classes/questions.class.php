@@ -303,11 +303,11 @@ class Question extends Encuesta
         $myPicture = new pImage(800,400,$MyData);
 
         /* Write the chart title */
-        $myPicture->setFontProperties(array("FontName"=>DOC_ROOT."/libs/pChart/fonts/Forgotte.ttf","FontSize"=>15));
+        $myPicture->setFontProperties(array("FontName"=>DOC_ROOT."/libs/pChart2.0/fonts/Forgotte.ttf","FontSize"=>15));
         $myPicture->drawText(150,25,"Grafica de resultado por tipo de encuesta aplicado.",array("FontSize"=>22));
 
         /* Define the default font */
-        $myPicture->setFontProperties(array("FontName"=>DOC_ROOT."/libs/pChart/fonts/pf_arma_five.ttf","FontSize"=>10));
+        $myPicture->setFontProperties(array("FontName"=>DOC_ROOT."/libs/pChart2.0/fonts/pf_arma_five.ttf","FontSize"=>10));
 
         /* Set the graph area */
         $myPicture->setGraphArea(100,60,750,250);
