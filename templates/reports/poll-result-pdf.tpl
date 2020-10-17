@@ -146,7 +146,7 @@
             <tr>
                 <td colspan="2">
                     <br>
-                    <img src={$chart}" width="650px">
+                    <img src="{$chart}" width="650px">
                 </td>
             </tr>
             <tr>
