@@ -32,17 +32,14 @@ class PdfService extends Question{
         $this->smarty->assign('info', $info);
 
         $chart = false;
-        $file = DOC_ROOT."/charts/chart_".$this->getVictimaId().".png";
-        if(file_exists($file))
-            $chart =$file;
-
-        $this->smarty->assign('logo', DOC_ROOT."/images/escudo.png");
+        $chart = WEB_ROOT."/charts/chart_".$this->getVictimaId().".png";
+        $this->smarty->assign('logo', WEB_ROOT."/images/escudo.png");
         $this->smarty->assign('chart', $chart);
         $html = $this->smarty->fetch(DOC_ROOT.'/templates/reports/poll-result-pdf.tpl');
-        //$options = new Options();
-        //$options->set('isRemoteEnabled', true);
+        $options = new Options();
+        $options->set('isRemoteEnabled', true);
         $dompdf = new Dompdf();
-        /*$auth = base64_encode("username:password");
+        $auth = base64_encode("username:password");
         $context = stream_context_create(array(
             'ssl' => array(
                 'verify_peer' => true,
@@ -53,7 +50,7 @@ class PdfService extends Question{
                 'header' => "Authorization: Basic $auth"
             )
         ));
-        $dompdf->setHttpContext($context);*/
+        $dompdf->setHttpContext($context);
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
