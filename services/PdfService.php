@@ -1,9 +1,9 @@
 <?php
 use Dompdf\Dompdf;
-include_once(DOC_ROOT."/libs/pChart/class/pData.class.php");
-include_once(DOC_ROOT."/libs/pChart/class/pDraw.class.php");
-include_once(DOC_ROOT."/libs/pChart/class/pPie.class.php");
-include_once(DOC_ROOT."/libs/pChart/class/pImage.class.php");
+include_once(DOC_ROOT."/libs/pChart2.0/class/pData.class.php");
+include_once(DOC_ROOT."/libs/pChart2.0/class/pDraw.class.php");
+include_once(DOC_ROOT."/libs/pChart2.0/class/pPie.class.php");
+include_once(DOC_ROOT."/libs/pChart2.0/class/pImage.class.php");
 class PdfService extends Question{
     private $domPdf;
     private $smarty;
