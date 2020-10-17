@@ -31,14 +31,13 @@ class PdfService extends Question{
         $this->smarty->assign('encuestas', $resultados);
         $this->smarty->assign('info', $info);
 
-        $chart = false;
         $chart = WEB_ROOT."/charts/chart_".$this->getVictimaId().".png";
         $this->smarty->assign('logo', WEB_ROOT."/images/escudo.png");
         $this->smarty->assign('chart', $chart);
         $html = $this->smarty->fetch(DOC_ROOT.'/templates/reports/poll-result-pdf.tpl');
         $options = new Options();
         $options->set('isRemoteEnabled', true);
-        $dompdf = new Dompdf();
+        $dompdf = new Dompdf($options);
         $auth = base64_encode("username:password");
         $context = stream_context_create(array(
             'ssl' => array(
