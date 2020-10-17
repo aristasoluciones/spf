@@ -48,7 +48,7 @@ class PdfService extends Question{
             'ssl' => array(
                 'verify_peer' => true,
                 'verify_peer_name' => true,
-                // 'allow_self_signed'=> TRUE
+                'allow_self_signed'=> TRUE
             ),
             'http' => array(
                 'header' => "Authorization: Basic $auth"
