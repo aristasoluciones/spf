@@ -43,6 +43,7 @@ class PdfService extends Question{
         $dompdf = new Dompdf();
         $options = new Options();
         $options->setIsRemoteEnabled(true);
+        $dompdf->setOptions($options);
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
