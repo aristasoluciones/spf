@@ -70,7 +70,6 @@
                     <div style="text-transform: uppercase;font-weight: bold;text-align: center">
                         <p>Fiscalia General del Estado de Chiapas</p>
                         <p>Guia para la identificacion de riesgo de violencia feminicida</p>
-                        <p>{$logo|lower}</p>
                     </div>
 
                 </td>

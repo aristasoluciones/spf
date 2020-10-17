@@ -32,7 +32,7 @@ class PdfService extends Question{
         $this->smarty->assign('info', $info);
 
         $chart = false;
-        $file = WEB_ROOT."/charts/chart_".$this->getVictimaId().".png";
+        $file = DOC_ROOT."/charts/chart_".$this->getVictimaId().".png";
         if(file_exists($file))
             $chart =$file;
 
@@ -41,13 +41,13 @@ class PdfService extends Question{
         $html = $this->smarty->fetch(DOC_ROOT.'/templates/reports/poll-result-pdf.tpl');
 
         $options = new Options();
-        $options->set('isRemoteEnabled', TRUE);
+        $options->set('isRemoteEnabled', true);
         $dompdf = new Dompdf($options);
         $auth = base64_encode("username:password");
         $context = stream_context_create(array(
             'ssl' => array(
-                'verify_peer' => FALSE,
-                'verify_peer_name' => FALSE,
+                'verify_peer' => true,
+                'verify_peer_name' => true,
                 // 'allow_self_signed'=> TRUE
             ),
             'http' => array(
