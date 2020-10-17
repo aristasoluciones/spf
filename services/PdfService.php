@@ -1,5 +1,7 @@
 <?php
 use Dompdf\Dompdf;
+use Dompdf\Options;
+
 include_once(DOC_ROOT."/libs/pChart2.0/class/pData.class.php");
 include_once(DOC_ROOT."/libs/pChart2.0/class/pDraw.class.php");
 include_once(DOC_ROOT."/libs/pChart2.0/class/pPie.class.php");
@@ -39,6 +41,8 @@ class PdfService extends Question{
         $html = $this->smarty->fetch(DOC_ROOT.'/templates/reports/poll-result-pdf.tpl');
 
         $dompdf = new Dompdf();
+        $options = new Options();
+        $options->setIsRemoteEnabled(true);
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
