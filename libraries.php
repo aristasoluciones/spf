@@ -97,12 +97,7 @@ $permissions = $objRole->GetPermisosByRol();
 $smarty->assign('privilegios', $permissions);
 $smarty->assign('Usr', $Usr);
 
-$smarty->assign('WEB_ROOT_P',WEB_ROOT_P);
 $smarty->assign('DOC_ROOT',DOC_ROOT);
 $smarty->assign('WEB_ROOT',WEB_ROOT);
-$smarty->assign('WEB_ROOT_IMG',WEB_ROOT_IMG);
-
 $smarty->assign('property', $property);
-
-
 ?>
