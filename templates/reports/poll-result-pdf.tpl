@@ -64,7 +64,7 @@
             <tbody>
             <tr>
                 <td rowspan="2" width="30%" valign="middle" style="text-align: center">
-                    <img src={$logo}" width="130px">
+                    <img src="{$logo}" width="130px">
                 </td>
                 <td width="70%" valign="top">
                     <div style="text-transform: uppercase;font-weight: bold;text-align: center">
