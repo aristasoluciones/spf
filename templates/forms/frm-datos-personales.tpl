@@ -17,13 +17,13 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label><span class="reqIcon"> * </span>{$personal_field.nombre.language['tsotsil'].text}</label>
+                            <label><span class="reqIcon"> * </span>Nombre</label>
                             <input class="form-control spinner" name="nombre" id="nombre" value="{$post.nombre}" >
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label><span class="reqIcon"> * </span>{$personal_field.firstLastName.language['tsotsil'].text}</label>
+                            <label><span class="reqIcon"> * </span>Apellido Paterno</label>
                             <input class="form-control" name="firstLastName" id="firstLastName" value="{$post.apaterno}" >
                         </div>
                     </div>

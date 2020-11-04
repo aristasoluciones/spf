@@ -269,9 +269,9 @@ class Victima extends main
         if($isSevero)
             return $isSevero;
 
-        if($puntos>=164.76)
+        if($puntos>=167)
             return "Severa";
-        elseif($puntos>158.01&&$puntos<=164.75)
+        elseif($puntos>151.6&&$puntos<=166.99)
             return "Moderada";
         else
             return "Baja";
