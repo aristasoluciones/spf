@@ -248,7 +248,7 @@ class Question extends Encuesta
             case 13:
                 if($point>=97.5)
                     return "Severa";
-                elseif($point>94.01&&$point<=97.4)
+                elseif($point>92.6&&$point<=97.4)
                     return "Moderada";
                 else return "Baja";
             case 8:
@@ -269,8 +269,8 @@ class Question extends Encuesta
     }
     function getValueInChart($totalQuestion =0,$point= 0){
         $porcent = number_format(100/3,4);
-        $maxs = [12=>90,9=>54,7=>35,6=>27,13=>104,8=>44, 10=>65];
-        $mins = [12=>78,9=>45,7=>28.5,6=>21.5,13=>94,8=>37.5,10=>56.5];
+        $maxs = [12=>90,9=>54,7=>35,6=>27,13=>104,8=>44,10=>65];
+        $mins = [12=>78,9=>45,7=>28.5,6=>21.5,13=>92.5,8=>37.5,10=>56.5];
         $factor = $maxs[$totalQuestion]-$mins[$totalQuestion];
         $currentFactor = $point-$mins[$totalQuestion];
         $porcentOverPorcent = ($currentFactor * $porcent)/$factor;
