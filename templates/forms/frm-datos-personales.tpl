@@ -17,13 +17,13 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label><span class="reqIcon"> * </span>Nombre</label>
+                            <label><span class="reqIcon"> * </span>{$personal_field.nombre.language['tsotsil'].text}</label>
                             <input class="form-control spinner" name="nombre" id="nombre" value="{$post.nombre}" >
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label><span class="reqIcon"> * </span>Apellido Paterno</label>
+                            <label><span class="reqIcon"> * </span>{$personal_field.firstLastName.language['tsotsil'].text}</label>
                             <input class="form-control" name="firstLastName" id="firstLastName" value="{$post.apaterno}" >
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                             <input class="form-control" name="numHijo" id="numHijo"  value="{$post.numHijo}">
                         </div>
                     </div>
-                </div>                
+                </div>
                 <div class="row">
                     <input type="hidden" name="latLng" id="latLng" value="{$post.cordenada}">
                     <label for=""><span class="reqIcon">* </span> Ubicar en el mapa el lugar aproximado de los hechos.</label>

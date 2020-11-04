@@ -97,6 +97,11 @@ $permissions = $objRole->GetPermisosByRol();
 $smarty->assign('privilegios', $permissions);
 $smarty->assign('Usr', $Usr);
 
+$file  = DOC_ROOT . "/properties/config.json";
+$string = file_get_contents($file);;
+$headers = json_decode($string, true);
+$smarty->assign('personal_field', $headers[0]['personal_field']);
+
 $smarty->assign('DOC_ROOT',DOC_ROOT);
 $smarty->assign('WEB_ROOT',WEB_ROOT);
 $smarty->assign('property', $property);

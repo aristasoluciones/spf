@@ -6,6 +6,8 @@
 <script src="{$WEB_ROOT}/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
 <script src="{$WEB_ROOT}/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyDQbsmLCLv2N62EKY_Jj20MTp9D8aZFJg0" type="text/javascript"></script>
+
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <script src="{$WEB_ROOT}/assets/global/plugins/typeahead/handlebars.min.js" type="text/javascript"></script>
@@ -25,7 +27,6 @@
 {/if}
 <script src="{$WEB_ROOT}/assets/global/scripts/jquery-redirect.js?{$time}" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
-
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
 <script src="{$WEB_ROOT}/assets/global/scripts/app.min.js" type="text/javascript"></script>
 <!-- END THEME GLOBAL SCRIPTS -->
@@ -52,10 +53,10 @@
 <script src="{$WEB_ROOT}/assets/layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
 <script src="{$WEB_ROOT}/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
 <script src="{$WEB_ROOT}/assets/layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
-<script src="{$WEB_ROOT}/js/functions.js?{$time}" type="text/javascript"></script> 
-<!-- {if $page=="login"}
-<script src="{$WEB_ROOT}/assets/pages/scripts/login.min.js" type="text/javascript"></script>   
-{/if} -->
+<script src="{$WEB_ROOT}/js/functions.js?{$time}" type="text/javascript"></script>
+{*if $page=="login"}
+<script src="{$WEB_ROOT}/assets/pages/scripts/login.min.js" type="text/javascript"></script>
+{/if*}
 <script src="{$WEB_ROOT}/js/maps.js?{$time}" type="text/javascript"></script>
 <script src="{$WEB_ROOT}/js/{$page}.js?{$time}" type="text/javascript"></script>
 <!-- END THEME LAYOUT SCRIPTS -->

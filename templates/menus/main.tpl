@@ -61,7 +61,7 @@
 	</li>
 	{/if}
 
-	{if in_array(2,$privilegios) or $Usr.rolId eq 1}
+	{*if in_array(2,$privilegios) or $Usr.rolId eq 1}
     <li class="nav-item {if $page =='imagenes'}active open{/if}">
         <a href="javascript:;" class="nav-link nav-toggle">
         <i class="icon-briefcase"></i>
@@ -84,7 +84,7 @@
 			{/if}
         </ul>
 	</li>
-	{/if}
+	{/if*}
     {if in_array(15,$privilegios) || $Usr.rolId eq 1}
 	 <li class="nav-item {if $page =='poll' || $page =='question' || $page =='colonia'}active open{/if}">
         <a href="javascript:;" class="nav-link nav-toggle">

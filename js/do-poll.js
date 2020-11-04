@@ -12,6 +12,7 @@ $(function () {
             },
             success: function(response) {
                 $("#"+name).html(response);
+                var stepper = new Stepper($('.bs-stepper')[0])
             },
             error:function(){
                 alert(msgError);

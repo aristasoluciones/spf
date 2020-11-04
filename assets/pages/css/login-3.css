@@ -4,7 +4,13 @@ Login page
 ***/
 /* logo page */
 .login {
-  background-color: #a0b4c9 !important; }
+  background-color: #a0b4c9 !important;
+  background: url("../../../images/bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
 
 .login .logo {
   margin: 60px auto 20px auto;
@@ -12,12 +18,14 @@ Login page
   text-align: center; }
 
 .login .content {
-  background-color: #fff;
+  background: #ee9ca7;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #ffdde1, #ee9ca7);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #ffdde1, #ee9ca7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   width: 360px;
   margin: 0 auto;
   margin-bottom: 0px;
   padding: 30px;
-  padding-top: 20px;
+  padding-top: 50px;
   padding-bottom: 15px;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;

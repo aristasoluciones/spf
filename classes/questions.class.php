@@ -6,6 +6,17 @@ class Question extends Encuesta
     private $victimaId;
     private $pollVictimaId;
     private $dataChart = [];
+    private $languageId;
+    private $textTranslate;
+
+    public function setLanguageTranslate($value){
+        $this->Util()->ValidateRequireField($value, 'Seleccione una lengua');
+        $this->languageId = $value;
+    }
+    public function setTextTranslate($value){
+        $this->Util()->ValidateRequireField($value, 'Pregunta traducida');
+        $this->textTranslate = $value;
+    }
     public function setVictimaId($value){
         $this->Util()->ValidateRequireField($value, 'Favor de ingresar los datos personales');
         $this->victimaId = $value;
@@ -330,5 +341,21 @@ class Question extends Encuesta
        // $myPicture->autoOutput("pictures/example.drawBarChart.poll.png");
         $v = $this->getVictimaId();
         $myPicture->render(DOC_ROOT."/charts/chart_$v.png");
+    }
+
+    public function  saveTranslateInSession () {
+
+        if($this->Util()->PrintErrors())
+            return false;
+
+        if(!isset($_SESSION['question_translate']))
+            $_SESSION['question_translate'] = [];
+
+        end($_SESSION['question_translate']);
+        $key = key($_SESSION['question_translate']);
+        $cad['language_id'] = $this->languageId;
+        $cad['text'] = $this->textTranslate;
+        $_SESSION['question_translate'][$key + 1] = $cad;
+        return $_SESSION['question_translate'];
     }
 }

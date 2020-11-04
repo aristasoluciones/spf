@@ -38,7 +38,7 @@
 {/if}
 
 <link href="{$WEB_ROOT}/assets/layouts/layout/css/custom.css" rel="stylesheet" type="text/css" />
-<link rel="shortcut icon" href="favicon.ico" /> -->
+<link rel="shortcut icon" href="favicon.ico" />
 {/if}
 
 

@@ -6,7 +6,7 @@
             <th>Clave</th>
             <th>Pregunta</th>
             <th>Tipo</th>
-            <th>Parametros</th>
+            <th>Opciones</th>
             <th>Acci&oacute;n</th>
         </tr>
         </thead>

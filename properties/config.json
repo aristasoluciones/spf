@@ -1,0 +1,46 @@
+[
+  {
+    "personal_field": {
+      "nombre": {
+        "field_db": "name",
+        "name_form": "name",
+        "id_form": "name",
+        "type": "text",
+        "language": {
+          "spanish": {
+            "text": "Nombre",
+            "field": "name"
+          },
+          "tseltal": {
+            "text": "Nombre tseltal",
+            "field": "name"
+          },
+          "tsotsil": {
+            "text": "Nombre tsotsil",
+            "field": "name"
+          }
+        }
+      },
+      "firstLastName": {
+        "field_db": "name",
+        "name_form": "name",
+        "id_form": "name",
+        "type": "text",
+        "language": {
+          "spanish": {
+            "text": "Nombre",
+            "field": "name"
+          },
+          "tseltal": {
+            "text": "Nombre",
+            "field": "name"
+          },
+          "tsotsil": {
+            "text": "Apellido tsotsil",
+            "field": "name"
+          }
+        }
+      }
+    }
+  }
+]

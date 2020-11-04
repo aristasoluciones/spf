@@ -17,7 +17,17 @@ class Encuesta extends Main
 	//filtros;
     private $anio;
     private $mes;
+    private $languageId;
+    private $textTranslate;
 
+	public function setLanguageTranslate($value){
+		$this->Util()->ValidateRequireField($value, 'Seleccione una lengua');
+		$this->languageId = $value;
+	}
+	public function setTextTranslate($value){
+		$this->Util()->ValidateRequireField($value, 'Pregunta traducida');
+		$this->textTranslate = $value;
+	}
 	public function setEncuestaId($value){
 		$this->Util()->ValidateInteger($value);
 		$this->encuestaId = $value;
@@ -31,10 +41,10 @@ class Encuesta extends Main
 	    return $this->encuestaId;
     }
 
-	public function setNombre($value){	
+	public function setNombre($value){
 		if($this->Util()->ValidateRequireField($value, 'Nombre')){
 			$this->nombre = $value;
-		}		
+		}
 	}
 	public function setRespuesta($value){
 			$this->respuesta = $value;
@@ -54,56 +64,56 @@ class Encuesta extends Main
     public function getContexto(){
 	    return $this->contexto;
     }
-	public function setPregunta($value){	
+	public function setPregunta($value){
 		if($this->Util()->ValidateRequireField($value, 'Pregunta')){
 			$this->pregunta = $value;
-		}		
+		}
 	}
-	
-	public function setTipoEncuesta($value){	
+
+	public function setTipoEncuesta($value){
 		if($this->Util()->ValidateRequireField($value, 'Tipo Encuesta')){
 			$this->tipoencuesta = $value;
-		}		
+		}
 	}
-	
-	public function setRango($value){	
+
+	public function setRango($value){
 		if($this->Util()->ValidateRequireField($value, 'Rango')){
 			$this->rango = $value;
-		}		
+		}
 	}
-	
-	public function setOpcional($value){	
+
+	public function setOpcional($value){
 		if($this->Util()->ValidateRequireField($value, 'Rango')){
 			$this->opcional = $value;
-		}		
+		}
 	}
-	
-	public function setNumCaracter($value){	
+
+	public function setNumCaracter($value){
 		if($this->Util()->ValidateRequireField($value, 'Num. Caracter')){
 			$this->numcaracter = $value;
-		}		
+		}
 	}
-	
-	
-	public function setInicio($value){	
+
+
+	public function setInicio($value){
 		if($this->Util()->ValidateRequireField($value, 'Inicio')){
 			$this->inicio = $value;
-		}		
+		}
 	}
-	
-	
-	public function setFin($value){	
+
+
+	public function setFin($value){
 		if($this->Util()->ValidateRequireField($value, 'Fin')){
 			$this->fin = $value;
-		}		
+		}
 	}
-	
-	
-	public function setTipo($value){	
+
+
+	public function setTipo($value){
 		$this->tipo = $value;
 	}
-	
-	public function setActivo($value){	
+
+	public function setActivo($value){
 		$this->activo = $value;
 	}
     public function setAnio($value){
@@ -112,37 +122,39 @@ class Encuesta extends Main
     public function setMes($value){
         $this->mes = $value;
     }
-		
+
 	public function Info(){
-		
+
 		$sql = 'SELECT *, encuestaId AS idReg FROM encuesta WHERE encuestaId = "'.$this->encuestaId.'"';
 		$this->Util()->DB()->setQuery($sql);
 		$info = $this->Util()->DB()->GetRow();
-				
-		//$info['estado'] = $this->Util()->GetNomEstado($info['estadoId']);
-		//$info['municipio'] = $this->Util()->GetNomMunicipio($info['municipioId']);
-				
+		if ($info) {
+			$sql = "select * from poll_translate where poll_id = '" . $info['idReg'] . "'";
+			$this->Util()->DB()->setQuery($sql);
+			$results = $this->Util()->DB()->GetResult();
+			$info['poll_translate'] = count($results) ? $results : [];
+		}
 		return $info;
 	}//Info
-	
+
 	public function getListEncuesta(){
 
 		$sql = 'SELECT * FROM encuesta order by position asc';
 		$this->Util()->DB()->setQuery($sql);
 		return $this->Util()->DB()->GetResult();
 	}
-	
+
 	public function Enumerate(){
-		
+
 		$filtro ="";
 
 		$sql = 'SELECT COUNT(*)	FROM encuesta WHERE 1 '.$filtro.'';
 		$this->Util()->DB()->setQuery($sql);
 		$total = $this->Util()->DB()->GetSingle();
 		// exit;
-		$resPage = $this->Util->HandlePagesAjax($this->page, $total , '');		
+		$resPage = $this->Util->HandlePagesAjax($this->page, $total , '');
 		$sqlLim = "LIMIT ".$resPage['pages']['start'].", ".$resPage['pages']['items_per_page'];
-		 
+
 		$sql = 'SELECT *, encuestaId AS idReg FROM encuesta 
 				WHERE 1 '.$filtro.'
 				ORDER BY encuestaId ASC
@@ -154,21 +166,48 @@ class Encuesta extends Main
 		$data['info'] = $resPage['info'];
 		return $data;
 	}//Enumerate
-	
+
 	public function Save(){
-		if($this->Util()->PrintErrors()){ 
-			return false; 
+		if($this->Util()->PrintErrors()){
+			return false;
 		}
 		if($this->id){
 			$sql = 'UPDATE encuesta SET 
-				nombre = "'.utf8_decode($this->nombre).'", 
-				inicio = "'.($this->inicio).'", 
-				fin = "'.($this->fin).'"
-				WHERE encuestaId = "'.$this->id.'"';
+					nombre = "'.utf8_decode($this->nombre).'", 
+					inicio = "'.($this->inicio).'", 
+					fin = "'.($this->fin).'"
+					WHERE encuestaId = "'.$this->id.'"';
 			$this->Util()->DB()->setQuery($sql);
 			$this->Util()->DB()->UpdateData();
-			
-		} else{
+
+			$this->setEncuestaId($this->id);
+			$info = $this->Info();
+			$translates  = !is_array($_SESSION['poll_translate']) ? [] : $_SESSION['poll_translate'];
+			$arrayDif = array_diff(array_column($info['poll_translate'], 'id'), array_column($translates, 'id'));
+			$sql = "replace into poll_translate(id, poll_id, text, language_id) values";
+			$valuesStr = "";
+			$poll_id = $this->id;
+			foreach ($translates as $var) {
+				$id = $var['id'] ? $var['id'] : 'null';
+				$text = $var['text'];
+				$language_id = $var['language_id'];
+				if(!in_array($var['id'], $arrayDif))
+					$valuesStr .= "($id, '$poll_id', '$text', $language_id),";
+			}
+			if($valuesStr !== "") {
+				$valuesStr =  substr($valuesStr, 0, strlen($valuesStr)-1);
+				$sql = $sql.$valuesStr;
+				$this->Util()->DB()->setQuery($sql);
+				$this->Util()->DB()->InsertData();
+			}
+
+			if(count($arrayDif)) {
+				$ids = implode(",", $arrayDif);
+				$sql = "delete from poll_translate where id in (0, $ids)";
+				$this->Util()->DB()->setQuery($sql);
+				$this->Util()->DB()->DeleteData();
+			}
+		} else {
 			$sql = 'INSERT INTO encuesta (
 			nombre, 
 			fechaRegistro, 
@@ -177,25 +216,43 @@ class Encuesta extends Main
 			fin
 			)
 			VALUES(
-				"'.$this->nombre.'",
-				"'.date("Y-m-d").'",
-				"'.$_SESSION['Usr']["usuarioId"].'",
-				"'.$this->inicio.'",
-				"'.$this->fin.'"
+				"' . $this->nombre . '",
+				"' . date("Y-m-d") . '",
+				"' . $_SESSION['Usr']["usuarioId"] . '",
+				"' . $this->inicio . '",
+				"' . $this->fin . '"
 			)';
+
+			$this->Util()->DB()->setQuery($sql);
+			$this->id = $this->Util()->DB()->InsertData();
+
+			$translates  = !is_array($_SESSION['poll_translate']) ? [] : $_SESSION['poll_translate'];
+			$valuesStr = "";
+			$poll_id = $this->id;
+			$sql = "replace into poll_translate(id, poll_id, text, language_id) values";
+			foreach ($translates as $var) {
+				$id = $var['id'] ? $var['id'] : 'null';
+				$text = $var['text'];
+				$language_id = $var['language_id'];
+				$valuesStr .= "($id, '$poll_id', '$text', $language_id),";
+			}
+			if($valuesStr !== "") {
+				$valuesStr =  substr($valuesStr, 0, strlen($valuesStr)-1);
+				$sql = $sql.$valuesStr;
+				$this->Util()->DB()->setQuery($sql);
+				$this->Util()->DB()->InsertData();
+			}
 		}
-		$this->Util()->DB()->setQuery($sql);
-		$this->id = $this->Util()->DB()->InsertData();
-			
+
 		$this->Util()->setError(10141, 'complete', '');
 		$this->Util()->PrintErrors();
 		return true;
 	}//Save
 	public function SaveQuestions(){
-		if($this->Util()->PrintErrors()){ 
-			return false; 
+		if($this->Util()->PrintErrors()){
+			return false;
 		}
-		
+
 		if($this->id){
 			$sql = 'UPDATE pregunta SET 
 				pregunta = "'.($this->pregunta).'",
@@ -206,10 +263,36 @@ class Encuesta extends Main
 				orden = "'.($this->orden).'", 
 				numCaracter = "'.($this->numcaracter).'"
 				WHERE preguntaId = "'.$this->id.'"';
-				
+
 			$this->Util()->DB()->setQuery($sql);
 			$this->Util()->DB()->UpdateData();
-			
+
+			$info = $this->InfoPregunta();
+            $translates  = !is_array($_SESSION['question_translate']) ? [] : $_SESSION['question_translate'];
+            $arrayDif = array_diff(array_column($info['question_translate'], 'id'), array_column($translates, 'id'));
+            $sql = "replace into question_translate(id, pregunta_id, text, language_id) values";
+            $valuesStr = "";
+            $pregunta_id = $this->id;
+            foreach ($translates as $var) {
+                $id = $var['id'] ? $var['id'] : 'null';
+                $text = $var['text'];
+                $language_id = $var['language_id'];
+                if(!in_array($var['id'], $arrayDif))
+                    $valuesStr .= "($id, '$pregunta_id', '$text', $language_id),";
+            }
+            if($valuesStr !== "") {
+                $valuesStr =  substr($valuesStr, 0, strlen($valuesStr)-1);
+                $sql = $sql.$valuesStr;
+                $this->Util()->DB()->setQuery($sql);
+                $this->Util()->DB()->InsertData();
+            }
+
+            if(count($arrayDif)) {
+                $ids = implode(",", $arrayDif);
+                $sql = "delete from question_translate where id in (0, $ids)";
+                $this->Util()->DB()->setQuery($sql);
+                $this->Util()->DB()->DeleteData();
+            }
 		}else{
 			 $sql = 'INSERT INTO pregunta (
 				pregunta, 
@@ -233,17 +316,36 @@ class Encuesta extends Main
 			)';
 			$this->Util()->DB()->setQuery($sql);
 			$this->id = $this->Util()->DB()->InsertData();
+
+			$translates  = !is_array($_SESSION['question_translate']) ? [] : $_SESSION['question_translate'];
+			$valuesStr = "";
+			$pregunta_id = $this->id;
+			$sql = "replace into question_translate(id, pregunta_id, text, language_id) values";
+			foreach ($translates as $var) {
+				$id = $var['id'] ? $var['id'] : 'null';
+				$text = $var['text'];
+				$language_id = $var['language_id'];
+				$valuesStr .= "($id, '$pregunta_id', '$text', $language_id),";
+			}
+			if($valuesStr !== "") {
+				$valuesStr =  substr($valuesStr, 0, strlen($valuesStr)-1);
+				$sql = $sql.$valuesStr;
+				$this->Util()->DB()->setQuery($sql);
+				$this->Util()->DB()->InsertData();
+			}
 		}
+
+
 		$this->Util()->setError(10112, 'complete', 'Registro actualizado');
 		$this->Util()->PrintErrors();
 		return true;
 	}//Save
 	public function Update(){
-						
-		if($this->Util()->PrintErrors()){ 
-			return false; 
+
+		if($this->Util()->PrintErrors()){
+			return false;
 		}
-		
+
 		$sql = 'UPDATE usuario SET 
 				apaterno = "'.utf8_decode($this->apaterno).'",
 				amaterno = "'.utf8_decode($this->amaterno).'",
@@ -263,35 +365,35 @@ class Encuesta extends Main
 				WHERE usuarioId = "'.$this->id.'"';
 		$this->Util()->DB()->setQuery($sql);
 		$this->Util()->DB()->UpdateData();
-			
+
 		$this->Util()->setError(10113, 'error', '');
 		$this->Util()->PrintErrors();
-		
+
 		return true;
-		
+
 	}//Update
-	
+
 	public function Delete(){
-		
+
 		$sql = 'DELETE FROM encuesta WHERE encuestaId = "'.$this->id.'"';
 		$this->Util()->DB()->setQuery($sql);
 		$this->Util()->DB()->DeleteData();
-		
+
 		$this->Util()->setError(10114, 'error', '');
 		$this->Util()->PrintErrors();
-		
+
 		return true;
-		
+
 	}//Delet
     public function DeleteQuestion(){
-		
+
 		$sql = 'DELETE FROM pregunta WHERE preguntaId = "'.$this->id.'"';
 		$this->Util()->DB()->setQuery($sql);
 		$this->Util()->DB()->DeleteData();
-		
+
 		$this->Util()->setError(10114, 'error', '');
 		$this->Util()->PrintErrors();
-		
+
 		return true;
 	}//Delete
 	public function EnumeratePreguntas(){
@@ -303,28 +405,34 @@ class Encuesta extends Main
 		$sql = 'SELECT COUNT(*)	FROM pregunta WHERE 1 '.$filtro.'';
 		$this->Util()->DB()->setQuery($sql);
 		$total = $this->Util()->DB()->GetSingle();
-		
-		$resPage = $this->Util->HandlePagesAjax($this->page, $total , '');		
+
+		$resPage = $this->Util->HandlePagesAjax($this->page, $total , '');
 		$sqlLim = "LIMIT ".$resPage['pages']['start'].", ".$resPage['pages']['items_per_page'];
-		 
+
 		$sql = 'SELECT *, preguntaId AS idReg FROM pregunta 
 				WHERE 1 '.$filtro.'
 				ORDER BY preguntaId ASC
 				'.$sqlLim;
 		// exit;
-		
+
 		$this->Util()->DB()->setQuery($sql);
 		$data['result'] = $this->Util()->DB()->GetResult();
 		$data['pages'] = $resPage['pages'];
 		$data['info'] = $resPage['info'];
-					
+
 		return $data;
 	}//EnumeratePreguntas
-    
+
 	public function InfoPregunta(){
 		$sql = 'SELECT *, preguntaId AS idReg FROM pregunta WHERE preguntaId = "'.$this->id.'"';
 		$this->Util()->DB()->setQuery($sql);
 		$info = $this->Util()->DB()->GetRow();
+		if ($info) {
+			$sql = "select * from question_translate where pregunta_id = '" . $info['preguntaId'] . "' ";
+			$this->Util()->DB()->setQuery($sql);
+			$results = $this->Util()->DB()->GetResult();
+			$info['question_translate'] = count($results) ? $results : [];
+		}
 		return $info;
 	}
 	public function resultadosPreguntas(){
@@ -345,7 +453,7 @@ class Encuesta extends Main
 		WHERE encuestaId = "'.$this->id.'" and tiporespuesta = "abierta"';
 		$this->Util()->DB()->setQuery($sql);
 		$info = $this->Util()->DB()->GetResult();
-		
+
 		return $info;
 	}
 	public function totalQuestionsPoll(){
@@ -436,6 +544,20 @@ class Encuesta extends Main
         }
 
     }
+	public function  saveTranslatePollInSession () {
+		if($this->Util()->PrintErrors())
+			return false;
+
+		if(!isset($_SESSION['poll_translate']))
+			$_SESSION['poll_translate'] = [];
+
+		end($_SESSION['poll_translate']);
+		$key = key($_SESSION['poll_translate']);
+		$cad['language_id'] = $this->languageId;
+		$cad['text'] = $this->textTranslate;
+		$_SESSION['poll_translate'][$key + 1] = $cad;
+		return $_SESSION['poll_translate'];
+	}
 
 }
 

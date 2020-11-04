@@ -1,6 +1,6 @@
 <!-- BEGIN PAGE HEADER-->
 	<div class="page-bar">
-		<div class="span12">           
+		<div class="span12">
 			<h3 class="page-title">
 				<!--Dependencia-->
 			</h3>

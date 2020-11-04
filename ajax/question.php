@@ -6,6 +6,9 @@
 	include_once(DOC_ROOT.'/libraries.php');
 
 	session_start();
+
+	$page = 'question';
+	$smarty->assign('page',$page);
     $localLanguage = $encuesta->LocalLanguage();
     $localeLanguageLineal = [];
     foreach($localLanguage as $local) {
@@ -13,56 +16,39 @@
     }
     $smarty->assign('localLanguage', $localLanguage);
     $smarty->assign('localLanguageLineal', $localeLanguageLineal);
-	$page = 'poll';
-	$smarty->assign('page',$page);
 	switch($_POST['type']){
-        case 'add_translate':
-            $current_translate = json_decode($_POST['current_translate'], true);
-            $encuesta->setLanguageTranslate($current_translate['language_id']);
-            $encuesta->setTextTranslate($current_translate['translate_text']);
-            if($encuesta->saveTranslatePollInSession()) {
-                $data['status'] = 'ok';
-                $smarty->assign('result', $_SESSION['poll_translate']);
-                $data['content'] =  $smarty->fetch(DOC_ROOT.'/templates/lists/poll_translate.tpl');
-            } else {
-                $data['status'] = 'fail';
-                $data['message'] =  $smarty->fetch(DOC_ROOT.'/templates/boxes/messages_no_format.tpl');
-            }
-            echo json_encode($data);
-            break;
 
+		case 'add_translate':
+                $current_translate = json_decode($_POST['current_translate'], true);
+				$question->setLanguageTranslate($current_translate['language_id']);
+				$question->setTextTranslate($current_translate['translate_text']);
+				if($question->saveTranslateInSession()) {
+				    $data['status'] = 'ok';
+                    $smarty->assign('result', $_SESSION['question_translate']);
+				    $data['content'] =  $smarty->fetch(DOC_ROOT.'/templates/lists/question_translate.tpl');
+                } else {
+                    $data['status'] = 'fail';
+                    $data['message'] =  $smarty->fetch(DOC_ROOT.'/templates/boxes/messages_no_format.tpl');
+                }
+				echo json_encode($data);
+		break;
         case 'delete_translate':
             $key = $_POST['id'];
-            unset($_SESSION['poll_translate'][$key]);
+            unset($_SESSION['question_translate'][$key]);
             $data['status'] = 'ok';
-            $smarty->assign('result', $_SESSION['poll_translate']);
-            $data['content'] =  $smarty->fetch(DOC_ROOT.'/templates/lists/poll_translate.tpl');
+            $smarty->assign('result', $_SESSION['question_translate']);
+            $data['content'] =  $smarty->fetch(DOC_ROOT.'/templates/lists/question_translate.tpl');
             echo json_encode($data);
             break;
-
-		case 'add':
-                if(isset($_SESSION['poll_translate']))
-                    unset($_SESSION['poll_translate']);
-
-				$encuesta->setEncuestaId($_POST['id']);
-				$info = $encuesta->Info();
-
-                if(isset($info['poll_translate']) && count($info['poll_translate']))
-                    $_SESSION['poll_translate'] = $info['poll_translate'];
-
-				echo 'ok[#]';
-				$smarty->assign('info',$info);
-                $smarty->assign('translates',$_SESSION['poll_translate']);
-				$smarty->assign('titleFrm',$info ? 'Editar encuesta' : 'Agregar encuesta');
-				$smarty->display(DOC_ROOT.'/templates/boxes/poll.tpl');
-		break;
-
 		case 'addQuestion':
-                if(isset($_SESSION['translate_question']))
-                    unset($_SESSION['translate_question']);
+		        if(isset($_SESSION['question_translate']))
+		            unset($_SESSION['question_translate']);
 
 				$encuesta->setId($_POST['id']);
 				$info = $encuesta->InfoPregunta();
+
+				if(isset($info['question_translate']) && count($info['question_translate']))
+				    $_SESSION['question_translate'] = $info['question_translate'];
 
 				$r = explode("_",$info["rango"]);
 				$de = $r[0];
@@ -86,7 +72,8 @@
 				$smarty->assign('info',$info);
 				$smarty->assign('preguntaId',$_POST['id']);
 				$smarty->assign('encuestaId',$_POST['Id']);
-				$smarty->assign('titleFrm','Agregar Pregunta');
+                $smarty->assign('translates',$_SESSION['question_translate']);
+				$smarty->assign('titleFrm',$info ? 'Editar pregunta' : 'Agregar pregunta');
 				$smarty->display(DOC_ROOT.'/templates/boxes/question.tpl');
 		break;
 		case 'edit':
@@ -98,7 +85,6 @@
 				$smarty->assign('info',$info);
 				$smarty->display(DOC_ROOT.'/templates/boxes/add_catalogo.tpl');
 			break;
-
 		case 'save':
 				$encuesta->setNombre($_POST['nombre']);
 				$encuesta->setInicio($_POST['inicio']);
@@ -114,8 +100,8 @@
 				}
 
 		break;
-
 		case 'SaveQuestions':
+
 				if($_POST["tipo"]=="punto"){
 					if($_POST["de"]=="" or $_POST["a"]==""){
 						echo "fail[#]";
@@ -139,8 +125,11 @@
 				}
 
 				$idReg = $_POST['encuestaId'];
+
 				$rango = $_POST["de"]."_".$_POST["a"];
 				$opcional = $_POST["res_1"]."_".$_POST["res_2"]."_".$_POST["res_3"]."_".$_POST["res_4"];
+
+
 				$encuesta->setEncuestaId($_POST["encuestaId"]);
 				$encuesta->setPregunta($_POST['nombre']);
 				$encuesta->setTipoEncuesta($_POST['tipo']);
@@ -154,6 +143,22 @@
 
 				$encuesta->setId($_POST['preguntaId']);
 				$success = $encuesta->SaveQuestions();
+
+				if($success){
+					echo 'ok[#]';
+				}else{
+					echo "fail[#]";
+					$util->ShowErrors();
+				}
+
+		break;
+		case 'update':
+		        $cliente->setId($_POST['id']);
+				$cliente->setNombre($_POST['nombre']);
+				$cliente->setPaterno($_POST['apaterno']);
+				$cliente->setMaterno($_POST['amaterno']);
+				$cliente->setEmail($_POST['email']);
+				$success = $cliente->Update();
 				if($success){
 					echo 'ok[#]';
 				}else{
