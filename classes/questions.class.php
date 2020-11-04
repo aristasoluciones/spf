@@ -200,7 +200,8 @@ class Question extends Encuesta
         return  $this->Util()->DB()->GetSingle();
     }
     public function generateResultPoll($pollVictimaId){
-        $frecuencias = ["Siempre"=>1,"Frecuentemente"=>.75,"Por lo menos una vez"=>.50,"Nunca"=>.25];
+        $frecuencias = ["Siempre"=>1,"Frecuentemente"=>.75,"Mas de dos veces"=>.50,"Por lo menos una vez"=>.25,"Nunca"=>0];
+        //$frecuencias = ["Siempre"=>1,"Frecuentemente"=>.75,"Por lo menos una vez"=>.50,"Nunca"=>.25];
         $sumMat = 0;
         $totalPreguntas =0;
 

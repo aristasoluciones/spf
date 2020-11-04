@@ -3,6 +3,7 @@
     <thead>
         <tr>
             <th>Nombre</th>
+            <th>Municipio</th>
             <th>Status </th>
             <th>Acci&oacute;n </th>
         </tr>
@@ -11,6 +12,7 @@
     	{foreach from=$results item=item key=key}
         <tr>
             <td>{$item.nombre} {$item.apaterno} {$item.amaterno}</td>
+            <td>{$item.municipio}</td>
             <td>{if $item.completePoll}Finalizado{else}Pendiente por finalizar{/if}</td>
 			<td><div align="center">
 				<a href="{$WEB_ROOT}/do-poll/id/{$item.victimaId}" class="btn btn-xs yellow"  title="Ir a Encuesta">

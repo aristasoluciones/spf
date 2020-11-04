@@ -66,6 +66,7 @@
                         Opcion 2.<input type="text" name="res_2" value="{$o2}" class="form-control">
                         Opcion 3.<input type="text" name="res_3" value="{$o3}" class="form-control">
                         Opcion 4.<input type="text" name="res_4" value="{$o4}" class="form-control">
+                        Opcion 5.<input type="text" name="res_5" value="{$o5}" class="form-control">
                     </div>
                 </div>
                 <div class="form-group"
