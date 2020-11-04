@@ -255,14 +255,14 @@ class Victima extends main
     }//orderUbicationReport
 
     function getResultPollByVictima($onlyPuntos =  false){
-        $sql = "SELECT sum(puntos) as puntos FROM pollVictima WHERE victimaId='".$this->victimaId."'  group by victimaId ";
+        $sql = "SELECT sum(puntos) as puntos FROM pollVictima WHERE victimaId='".$this->victimaId."' and encuestaId < 17 group by victimaId ";
         $this->Util()->DB()->setQuery($sql);
         $puntos = $this->Util()->DB()->GetSingle();
 
         if($onlyPuntos)
             return $puntos;
 
-        $sql = "SELECT resultadoEncuesta FROM pollVictima WHERE victimaId='".$this->victimaId."' and resultadoEncuesta = 'Severa' ";
+        $sql = "SELECT resultadoEncuesta FROM pollVictima WHERE victimaId='".$this->victimaId."' and resultadoEncuesta = 'Severa' and encuestaId<17 ";
         $this->Util()->DB()->setQuery($sql);
         $isSevero  = $this->Util()->DB()->GetSingle();
 
