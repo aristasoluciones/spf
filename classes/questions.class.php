@@ -270,7 +270,7 @@ class Question extends Encuesta
     function getValueInChart($totalQuestion =0,$point= 0){
         $porcent = number_format(100/3,4);
         $maxs = [12=>90,9=>54,7=>35,6=>27,13=>104,8=>44,10=>65];
-        $mins = [12=>78,9=>45,7=>28.5,6=>21.5,13=>92.5,8=>37.5,10=>56.5];
+        $mins = [12=>78,9=>45,7=>28,6=>21,13=>91,8=>36,10=>55];
         $factor = $maxs[$totalQuestion]-$mins[$totalQuestion];
         $currentFactor = $point-$mins[$totalQuestion];
         $porcentOverPorcent = ($currentFactor * $porcent)/$factor;
