@@ -20,7 +20,7 @@
                 </a>
             </td>
             <td>
-                <a href="{$WEB_ROOT}/util/download.php?file={$item.filePath}" class="btn btn-xs green-dark">
+                <a href="{$WEB_ROOT}/util/download.php?file={$item.path}" class="btn btn-xs green-dark">
                     <i class="fa fa-download"></i>
                 </a>
             </td>

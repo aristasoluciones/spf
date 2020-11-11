@@ -16,6 +16,7 @@ function scanDirs($target, &$files) {
         $cad['file'] = true;
         $file = str_replace("\\", "/", $target);
         $cad['filePath'] = str_replace(substr($_SERVER['DOCUMENT_ROOT'],0, -1 ), 'http://' . $_SERVER['HTTP_HOST'], $file);
+        $cad['path'] = str_replace(substr($_SERVER['DOCUMENT_ROOT'],0, -1 ), "", $file);
         $cad['name'] = basename($target);
         array_push($files, $cad);
     }
