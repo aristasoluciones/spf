@@ -1,5 +1,5 @@
 <?php
-include_once('config.php');
+include_once('../config.php');
 $mime_types = array("323" => "text/h323",
     "acx" => "application/internet-property-stream",
     "ai" => "application/postscript",

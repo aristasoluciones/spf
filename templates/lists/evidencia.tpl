@@ -3,6 +3,7 @@
     <thead>
         <tr>
             <th>Archivo</th>
+            <th>Vista previa</th>
             <th>Acci&oacute;n </th>
         </tr>
     </thead>
@@ -10,6 +11,14 @@
     	{foreach from=$files item=item key=key}
         <tr>
             <td>{$item.name}</td>
+            <td>
+                <a href="{$item.filePath}" target="_blank">
+                <img src="{$item.filePath}"  style=" height: auto;
+					width: auto;
+					max-width: 100px;
+					max-height: 100px;" >
+                </a>
+            </td>
             <td>
                 <a href="{$WEB_ROOT}/util/download.php?file={$item.filePath}" class="btn btn-xs green-dark">
                     <i class="fa fa-download"></i>
