@@ -201,7 +201,7 @@ $fileArray = explode('/', $file);
 header('Content-Disposition: attachment; filename='.@end($fileArray));
 header('Content-type:'.$mime);
 
-$_GET["file"] = str_replace(WEB_ROOT,"", $_GET["file"]);
-$file = DOC_ROOT."/".$_GET["file"];
+$_GET["file"] = str_replace('http://' . $_SERVER['HTTP_HOST'],"", $_GET["file"]);
+$file = substr($_SERVER['DOCUMENT_ROOT'],0, -1 )."/".$_GET["file"];
 readfile($file);
 ?>
