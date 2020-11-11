@@ -20,7 +20,7 @@
        <h3 class="uppercase">Menu de opciones</h3>
     </li>
     {if in_array(1,$privilegios) or $Usr.rolId eq 1}
-    <li class="nav-item {if $page=='config' || $page=='usuario' || $page=='rol' || $page=='empresa'}active open{/if}">
+    <li class="nav-item {if $page=='config' || $page=='usuario' || $page=='rol' || $page=='empresa' || $page=='evidencia'}active open{/if}">
         <a href="javascript:;" class="nav-link nav-toggle">
         <i class="icon-settings"></i>
         <span class="title">Configuraciones</span>
@@ -54,6 +54,14 @@
 					<a class="nav-link " href="{$WEB_ROOT}/usuario">
 						<i class="icon-settings"></i>
 						<span class="title">Usuarios</span>
+					</a>
+				</li>
+			{/if}
+			{if $Usr.rolId eq 1}
+				<li class="nav-item {if $page=='evidencia'}active open{/if}">
+					<a class="nav-link " href="{$WEB_ROOT}/evidencia">
+						<i class="fa fa-file-o"></i>
+						<span class="title">Evidencias</span>
 					</a>
 				</li>
 			{/if}
