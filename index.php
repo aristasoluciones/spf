@@ -37,6 +37,7 @@
         'download-formato',
 
 		#'imagenes',
+		'evidencia',
 
 		#encuestasrealizadas
 		'customer-basic',
@@ -45,6 +46,7 @@
         'poll-result-pdf',
         'done-polls',
         'statistics',
+
 
 
 	);
