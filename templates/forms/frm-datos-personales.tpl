@@ -74,6 +74,7 @@
                             <input type="hidden" id="currentLugarNacimiento" value="{$post.lugarNacimiento}">
                             <select  class="form-control" name="lugarDeNacimiento" id="lugarDeNacimiento">
                             </select>
+                            <small>Lugar capturado: {$post.lugarNacimiento}</small>
                         </div>
                     </div>
                 </div>

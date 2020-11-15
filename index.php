@@ -57,7 +57,7 @@
 		$page = 'homepage';
 
 	$currentUser = $user->refreshUser();
-	
+
 	include_once(DOC_ROOT.'/modules/user.php');
 	include_once(DOC_ROOT.'/modules/'.$page.'.php');
 
