@@ -165,15 +165,13 @@ class Usuario extends Main
 		return $info;
 	}//Info
 
-	public function EnumerateAll(){
-
-		$sql = 'SELECT * FROM usuario WHERE activo="1" ORDER BY nombre ASC';
+	public function EnumerateAll() {
+		$sql = 'SELECT * FROM usuario WHERE activo="1" and role_id > 1 ORDER BY nombre ASC';
 		$this->Util()->DB()->setQuery($sql);
 		$registros = $this->Util()->DB()->GetResult();
-
 		return $registros;
+	}
 
-	}//EnumerateAll
 	public function Enumerate(){
 
 		$filtro ="";
@@ -232,41 +230,28 @@ class Usuario extends Main
                 nombre, 
                 apaterno, 
                 amaterno, 
-                calle, 
-                noExterior, 
-                colonia, 
-                ciudad, 
-                estado, 
-                pais, 
+                municipio_id, 
                 telefono, 
                 email,
                 fechaNacimiento, 
                 usuario, 
                 passwd, 
                 role_id, 
-                activo,
-                sucursalId
+                activo
             )
             VALUES(
                 "'.$this->nombre.'",
                 "'.$this->apaterno.'",
                 "'.$this->amaterno.'",
-                "'.$this->calle.'",
-                "'.$this->noExterior.'",
-                "'.$this->colonia.'",
                 "'.$this->ciudad.'",
-                "'.$this->estado.'",
-                "'.$this->pais.'",
                 "'.$this->telefono.'",
                 "'.$this->email.'",
                 "'.$this->fnacimento.'", 
                 "'.$this->usuario.'",
                 "'.md5($this->passwd).'",
                 '.$this->tipo.',
-                "'.$this->activo.'",
-                "'.$this->sucursalId.'"
+                "'.$this->activo.'"
             )';
-            // exit;
             $this->Util()->DB()->setQuery($sql);
             $id_insert = $this->Util()->DB()->InsertData();
 
@@ -296,59 +281,37 @@ class Usuario extends Main
         if($this->Util()->PrintErrors()){
           return false;
         }
+        $passwd = $this->passwd !== '' ?  ' passwd= "'.md5($this->passwd).'", ': '';
 
-
-        if($this->passwd){
-             $sql = 'UPDATE usuario SET 
-                    apaterno = "'.($this->apaterno).'",
-                    amaterno = "'.($this->amaterno).'",
-                    calle = "'.($this->calle).'",
-                    noExterior = "'.($this->noexterior).'",
-                    colonia = "'.($this->colonia).'",
-                    ciudad = "'.($this->ciudad).'",
-                    estado = "'.($this->estado).'",
-                    pais = "'.($this->pais).'",
-                    nombre = "'.($this->nombre).'", 
-                    telefono = "'.$this->telefono.'",
-                    email = "'.($this->email).'",
-                    fechaNacimiento = "'.($this->fnacimento).'", 
-                    usuario = "'.($this->usuario).'",
-                    passwd = "'.md5($this->passwd).'", 
-                    role_id= '.$this->tipo.', 
-                    activo = "'.$this->activo.'",
-                    sucursalId = "'.$this->sucursalId.'"
-                    
-                    WHERE usuarioId = "'.$this->id.'"';
-        }else{
-             $sql = 'UPDATE usuario SET 
-                    apaterno = "'.($this->apaterno).'",
-                    amaterno = "'.($this->amaterno).'",
-                    calle = "'.($this->calle).'",
-                    noExterior = "'.($this->noexterior).'",
-                    colonia = "'.($this->colonia).'",
-                    ciudad = "'.($this->ciudad).'",
-                    estado = "'.($this->estado).'",
-                    pais = "'.($this->pais).'",
-                    nombre = "'.($this->nombre).'", 
-                    telefono = "'.$this->telefono.'",
-                    email = "'.($this->email).'", 
-                    fechaNacimiento = "'.($this->fnacimento).'",
-                    usuario = "'.($this->usuario).'",
-                    role_id= '.$this->tipo.', 
-                    activo = "'.$this->activo.'",
-                    sucursalId = "'.$this->sucursalId.'"
-                    WHERE usuarioId = "'.$this->id.'"';
-        }
+		 $sql = 'UPDATE usuario SET 
+				nombre = "'.($this->nombre).'",
+				apaterno = "'.($this->apaterno).'",
+				amaterno = "'.($this->amaterno).'",
+				calle = "'.($this->calle).'",
+				noExterior = "'.($this->noexterior).'",
+				colonia = "'.($this->colonia).'",
+				municipio_id = "'.($this->ciudad).'",
+				estado = "'.($this->estado).'",
+				pais = "'.($this->pais).'",
+				nombre = "'.($this->nombre).'", 
+				telefono = "'.$this->telefono.'",
+				'.$passwd.'
+				email = "'.($this->email).'", 
+				fechaNacimiento = "'.($this->fnacimento).'",
+				usuario = "'.($this->usuario).'",
+				role_id= '.$this->tipo.', 
+				activo = "'.$this->activo.'",
+				sucursalId = "'.$this->sucursalId.'"
+				WHERE usuarioId = "'.$this->id.'"';
 
             $this->Util()->DB()->setQuery($sql);
             $id_update = $this->Util()->DB()->UpdateData();
             $this->Util()->setError(10113, 'complete', 'El registro se actualizo correctamente ');
             $this->Util()->PrintErrors();
             return true;
-	}//Update
+	}
 
 	public function Delete(){
-
 		$sql = 'UPDATE usuario SET activo="0" WHERE usuarioId = "'.$this->id.'"';
 		$this->Util()->DB()->setQuery($sql);
 		$this->Util()->DB()->UpdateData();

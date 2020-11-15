@@ -4,21 +4,14 @@
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]--><head>
 	{include file="{$DOC_ROOT}/templates/1-default-meta.tpl"}
     {include file="{$DOC_ROOT}/templates/2-default-css.tpl"}
-
     {if $page == "login"}
-	 <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <link href="assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
-     <!-- END PAGE LEVEL PLUGINS -->
 	   <link href="assets/pages/css/login-3.css" rel="stylesheet" type="text/css" />
     {/if}
 
 </head>
 
 <body class="login">
-
 	<div class="logo">
-
 	</div>
 	<div class="content">
 		{include file="{$DOC_ROOT}/templates/forms/login.tpl"}

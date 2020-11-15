@@ -56,7 +56,8 @@
 	if(!in_array($page, $pages))
 		$page = 'homepage';
 
-	//echo $page; exit;
+	if (!$currentUser = $user->refreshUser())
+		$user->AllowAccess();
 
 	include_once(DOC_ROOT.'/modules/user.php');
 	include_once(DOC_ROOT.'/modules/'.$page.'.php');
@@ -64,6 +65,9 @@
 	$smarty->assign('page', $page);
 	$smarty->assign('section', $section);
 	$smarty->assign('time', time());
+
+
+	$smarty->assign('Usr', $currentUser);
 
 	$pageTpl = ($section == '') ? $page : $page.'_'.$section;
 

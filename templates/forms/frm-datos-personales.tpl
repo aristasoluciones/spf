@@ -7,6 +7,7 @@
     </div>
     <div class="portlet-body">
         <form enctype="multipart/form-data" name="frmDatosPersonales" id="frmDatosPersonales" method="post" onsubmit="return false" >
+            {if $Usr.municipio_id}<input type="hidden"  id="municipioLimited" value="{$Usr.municipio_id}">{/if}
             {if $post}
                 <input type="hidden" name="type" id="type" value="updateVictima">
                 <input type="hidden" name="id" id="id" value="{$post.victimaId}">
@@ -18,7 +19,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label><span class="reqIcon"> * </span>Nombre</label>
-                            <input class="form-control spinner" name="nombre" id="nombre" value="{$post.nombre}" >
+                            <input type="text" class="form-control" name="nombre" id="nombre" value="{$post.nombre}" autocomplete="off" >
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -69,8 +70,10 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label><span class="reqIcon"> * </span> Lugar de nacimiento</label>
-                            <input class="form-control" name="lugarDeNacimiento" id="lugarDeNacimiento" value="{$post.lugarNacimiento}" >
+                            <label><span class="reqIcon"> * </span> Municipio de nacimiento</label>
+                            <input type="hidden" id="currentLugarNacimiento" value="{$post.lugarNacimiento}">
+                            <select  class="form-control" name="lugarDeNacimiento" id="lugarDeNacimiento">
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -78,30 +81,37 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label><span class="reqIcon"> * </span> Municipio donde habita</label>
-                            <input class="form-control spinner" name="municipio" id="municipio" value="{$post.municipio}" >
+                            <input type="hidden" id="currentMunicipio" value="{$post.municipio_id}">
+                            <select class="form-control select2" name="municipio" id="municipio">
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label><span class="reqIcon"> * </span> Colonia , ejido o localidad donde vive</label>
-                            <input class="form-control" name="colonia" id="colonia" value="{$post.colonia}">
+                            <label  class="control-label"><span class="reqIcon"> * </span> Colonia , ejido o localidad donde vive</label>
+                            <input type="hidden" id="currentColonia" value="{$post.colonia}">
+                            <select class="form-control select2 " name="colonia" id="colonia">
+                            </select>
+                            <small>Lugar capturado: {$post.colonia}</small>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label><span class="reqIcon"> * </span> Fecha incidente</label>
+                            <label class="control-label"><span class="reqIcon"> * </span> Fecha incidente</label>
                             <input class="form-control" name="fechaIncidente" id="fechaIncidente" onclick="Calendario(this)" value="{$post.fechaIncidente}">
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label><span class="reqIcon"> * </span> tiempo de reación con su pareja</label>
+                            <label class="control-label"><span class="reqIcon"> * </span> Tiempo de reación con su pareja</label>
                             <input class="form-control" name="timeRelacion" id="timeRelacion" value="{$post.timeRelacion}">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label><span class="reqIcon"> * </span> Cuantos Hijos tiene</label>
+                            <label class="control-label"><span class="reqIcon"> * </span> Cuantos Hijos tiene</label>
                             <input class="form-control" name="numHijo" id="numHijo"  value="{$post.numHijo}">
                         </div>
                     </div>

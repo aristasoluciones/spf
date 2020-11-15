@@ -4,7 +4,7 @@ if(urlLoc == "localhost")
 else if(urlLoc == "192.168.1.3")
 	var WEB_ROOT = "http://" + urlLoc + "/spf";
 else
-	var WEB_ROOT = "http://" + urlLoc + "/spf";
+	var WEB_ROOT = "http://" + urlLoc + "";
 
 var LOADER = "<img src='"+WEB_ROOT+"/images/loading.gif'><br>Cargando...";
 var LOADER2 = "<img src='"+WEB_ROOT+"/images/loader.gif'>";
@@ -165,4 +165,9 @@ function saveImportarCsv()
         }
     });
 
+}
+function camelize(str) {
+    return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+        return index === 0 ? word.toLowerCase() : word.toUpperCase();
+    }).replace(/\s+/g, '');
 }

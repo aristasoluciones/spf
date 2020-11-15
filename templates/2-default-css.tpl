@@ -7,7 +7,8 @@
 <!-- END GLOBAL MANDATORY STYLES -->
   <!-- BEGIN PAGE LEVEL PLUGINS -->
 <link href="{$WEB_ROOT}/assets/global/plugins/typeahead/typeahead.css" rel="stylesheet" type="text/css" />
-<link href="{$WEB_ROOT}/assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
+<link href="{$WEB_ROOT}/assets/global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+<link href="{$WEB_ROOT}/assets/global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="{$WEB_ROOT}/assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.css" rel="stylesheet" type="text/css" />
 <link href="{$WEB_ROOT}/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" type="text/css" />
 <link href="{$WEB_ROOT}/assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" />

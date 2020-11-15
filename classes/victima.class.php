@@ -125,6 +125,7 @@ class Victima extends main
         $fechaIncidente = $this->fechaIncidente;
         $timeRelacion = $this->timeRelacion;
         $numHijo = $this->numHijo;
+        $usuario_id = $_SESSION['Usr']['usuarioId'];
 
         $sql ="insert into victima(
                     nombre,
@@ -136,13 +137,14 @@ class Victima extends main
                     gradoEstudio,
                     ocupacion,
                     lugarNacimiento,
-                    municipio,
+                    municipio_id,
                     colonia,
                     tipo,
                     cordenada,
                     fechaIncidente,
                     timeRelacion,
-                    numHijo
+                    numHijo,
+                    usuario_id
                     )values(
                      '$nombre',
                      '$apaterno',
@@ -159,7 +161,8 @@ class Victima extends main
                      '$cordenada',
                      '$fechaIncidente',
                      '$timeRelacion',
-                     '$numHijo'
+                     '$numHijo',
+                     '$usuario_id'
                     )";
         $this->Util()->DB()->setQuery($sql);
         $id = $this->Util()->DB()->InsertData();
@@ -198,7 +201,7 @@ class Victima extends main
                     gradoEstudio = '$gradoEstudio',
                     ocupacion = '$ocupacion',
                     lugarNacimiento = '$lugarNacimiento',
-                    municipio = '$municipio',
+                    municipio_id = '$municipio',
                     colonia = '$colonia',
                     tipo = '$tipo',
                     fechaIncidente  = '$fechaIncidente',
@@ -228,9 +231,12 @@ class Victima extends main
         $this->Util()->DB()->setQuery($sql);
         return $this->Util()->DB()->GetRow();
     }
-    public function Enumerate(){
+    public function Enumerate() {
         global $question;
-        $sql  = "select * from victima ";
+        if($_SESSION['Usr']['rolId'] != '1')
+            $add =  ' and municipio_id = "'.$_SESSION['Usr']['municipio_id'].'" ';
+
+        $sql  = 'select * from victima  where 1  ' . $add;
         $this->Util()->DB()->setQuery($sql);
         $victimas = $this->Util()->DB()->GetResult();
         foreach($victimas as $key=> $value){

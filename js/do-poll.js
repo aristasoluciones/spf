@@ -1,8 +1,67 @@
+$(window).load(function() {
+    var initMunicipio = $('#municipioLimited').length ? $('#municipioLimited').val() : '';
+    var options = {
+        placeholder: 'Seleccionar un elemento',
+        search: false,
+        width: '100%',
+        minimumResultsForSearch: Infinity,
+        ajax: {
+            type: 'get',
+            url: 'https://gaia.inegi.org.mx/wscatgeo/mgem/07' + initMunicipio,
+            dataType: 'json',
+            processResults: function (data) {
+                var data = $.map(data.datos, function (obj) {
+                    return {id: obj.cve_agem, text: obj.nom_agem};
+                })
+                data.sort(function (a, b) {
+                    if (a.text > b.text) {
+                        return 1;
+                    }
+                    if (a.text < b.text) {
+                        return -1;
+                    }
+                    return 0;
+                })
+                return {
+                    results:data
+                }
+            }
+        },
+    }
+    var optionsChild =  {
+        placeholder: 'Seleccionar un elemento',
+        search: false,
+        width: '100%',
+        minimumResultsForSearch: Infinity,
+    }
+    var placeNacimiento = $('#lugarDeNacimiento');
+    var currentNacimiento = $('#currentLugarNacimiento');
+    placeNacimiento.select2(options);
+    if (currentNacimiento.val()) {
+        $.ajax({
+            type: 'GET',
+            url: 'https://gaia.inegi.org.mx/wscatgeo/mgem/07/' + currentNacimiento.val()
+        }).then(function (data) {
+            var datos = data.datos;
+            var option = new Option(datos[0].nom_agem, datos[0].cve_agem, true, true);
+            placeNacimiento.append(option).trigger('change');
+            placeNacimiento.trigger({
+                type: 'select2:select',
+                params: {
+                    data: data.datos
+                }
+            });
+        })
+    }
+
+    $('#colonia').select2( { width: '100%', search: false,  minimumResultsForSearch: Infinity });
+    Select2Cascade($('#municipio'), $('#colonia'), 'https://gaia.inegi.org.mx/wscatgeo',optionsChild, options)
+});
 $(function () {
     var AJAX_PATH = WEB_ROOT+"/ajax/poll.php";
     $("ul.steps a").on("click",function () {
         var id = $(this).data("id");
-        var victimaId  = $("#id").length ? $("#id").val() : "";
+        var victimaId  = $('#id').length ? $("#id").val() : "";
         var name = $(this).data("name");
         $.ajax({
             type: "POST",

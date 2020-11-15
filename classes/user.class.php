@@ -5,47 +5,47 @@ class User extends Main
 	private $usuarioId = 0;
 	private $username;
 	private $email;
-	private $password;	
-	
+	private $password;
+
 	public function setUsuarioId($value){
 		$this->Util()->ValidateInteger($value);
 		$this->usuarioId = $value;
 	}
-		
-	public function setEmail($value, $validate = false){	
+
+	public function setEmail($value, $validate = false){
 		if($this->Util()->ValidateRequireField($value, 'Correo Electr&oacute;nico')){
 			if($validate)
-				$this->Util()->ValidateMail($value);			
+				$this->Util()->ValidateMail($value);
 			$this->Util()->ValidateString($value, 100, 1, '');
-			$this->email = $value;			
-		}		
+			$this->email = $value;
+		}
 	}
-	
-	public function setUsername($value){	
+
+	public function setUsername($value){
 		if($this->Util()->ValidateRequireField($value, 'Usuario')){
 			$this->Util()->ValidateString($value, 100, 1, '');
 			$this->username = $value;
-		}		
+		}
 	}
-		
-	public function setPasswd($value){	
+
+	public function setPasswd($value){
 		if($this->Util()->ValidateRequireField($value, 'Contrase&ntilde;a')){
 			$this->Util()->ValidateString($value, 100, 1, 'Password');
 			$this->password = $value;
-		}		
-	}	
-		
+		}
+	}
+
 	public function Info(){
-		
+
 		$this->Util()->DB()->setQuery('SELECT * FROM personal WHERE personalId = "'.$this->usuarioId.'"');
 		$user = $this->Util()->DB()->GetRow();
-		
+
 		$user['version'] = 'v3';
-		
+
 		return $user;
 	}
-		
-		
+
+
 	public function AllowAccess($page = ''){
         $User = $_SESSION['Usr'];
 
@@ -59,7 +59,7 @@ class User extends Main
                 exit;
             }
         }
-				
+
 	}//AllowAccess
 	public function allow_access_module($page){
 		global $objRole;
@@ -70,36 +70,34 @@ class User extends Main
         else
             return false;
 	}//AllowAccessModule
-	
+
 	public function DoLoginCheck(){
-						
-		if($this->Util()->PrintErrors()){ 
-			return false; 
+
+		if($this->Util()->PrintErrors()){
+			return false;
 		}
-		
+
 		return true;
 	}
-	
+
 	public function DoLogin(){
-						
-		if($this->Util()->PrintErrors()){ 
-			return false; 
+
+		if($this->Util()->PrintErrors()){
+			return false;
 		}
-		 
-		$sql = 'SELECT 
-				* 
-			 FROM 
-				usuario 
-			WHERE 
-				usuario = "'.$this->username.'"
-			AND 
-				passwd = "'.md5($this->password).'"';
-	
+
+		$sql = 'SELECT * FROM usuario 
+                WHERE 
+                    usuario = "'.$this->username.'"
+                AND 
+                    passwd = "'.md5($this->password).'"';
+
 		$this->Util()->DB()->setQuery($sql);
 		$row = $this->Util()->DB()->GetRow();
-			
+
 		if($row){
-			$card['usuarioId'] = $row['usuarioId'];	
+			$card['usuarioId'] = $row['usuarioId'];
+			$card['municipio_id'] = $row['role_id'] != '1' ?  $row['municipio_id']: '';
 			$card['rolId'] = $row['role_id'];
             $card['sucursalId'] = $row['sucursalId'];
 	        $card['usuario'] = $row['usuario'];
@@ -107,22 +105,44 @@ class User extends Main
 			$card['isLogged'] = true;;
 			$_SESSION['Usr'] = $card;
 			return true;
-		}else{					
-			
+		}else{
 			$this->Util()->setError(10006, 'error', '');
 			$this->Util()->PrintErrors();
-		}//else
+		}
 		return false;
-	}//DoLogin
-	
-	public function DoLogout(){		
-				
+	}
+	public function refreshUser () 	{
+
+		if (!isset($_SESSION['Usr']))
+			return false;
+
+		$sql = 'SELECT * FROM usuario  
+                WHERE 
+                    usuarioId = "' . $_SESSION['Usr']['usuarioId'] . '" ';
+		$this->Util()->DB()->setQuery($sql);
+		$row = $this->Util()->DB()->GetRow();
+
+		if ($row) {
+			$card['usuarioId'] = $row['usuarioId'];
+			$card['municipio_id'] = $row['role_id'] != '1' ? $row['municipio_id'] : '';
+			$card['rolId'] = $row['role_id'];
+			$card['sucursalId'] = $row['sucursalId'];
+			$card['usuario'] = $row['usuario'];
+			$card['email'] = $row['email'];
+			$card['isLogged'] = true;;
+			$_SESSION['Usr'] = $card;
+			return $_SESSION['Usr'];
+		}
+	}
+
+	public function DoLogout(){
+
 		$_SESSION['User'] = '';
 		unset($_SESSION['User']);
-		session_destroy();		
-		
+		session_destroy();
+
 	}//DoLogout
-					
+
 }//User
 
 ?>

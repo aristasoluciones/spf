@@ -1,6 +1,4 @@
 <?php
-
-    //comprobar privilegios de acceso a modulo
     $user->AllowAccess(1);
     $user->AllowAccess(7);
 
