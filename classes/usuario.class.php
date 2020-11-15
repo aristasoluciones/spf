@@ -196,8 +196,6 @@ class Usuario extends Main
 		$this->Util()->DB()->setQuery($sql);
 		$data['result'] = $this->Util()->DB()->GetResult();
 
-		// echo "<pre>"; print_r($data);
-
 		$data['pages'] = $resPage['pages'];
 		$data['info'] = $resPage['info'];
 

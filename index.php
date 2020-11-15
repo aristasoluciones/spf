@@ -56,9 +56,8 @@
 	if(!in_array($page, $pages))
 		$page = 'homepage';
 
-	if (!$currentUser = $user->refreshUser())
-		$user->AllowAccess();
-
+	$currentUser = $user->refreshUser();
+	
 	include_once(DOC_ROOT.'/modules/user.php');
 	include_once(DOC_ROOT.'/modules/'.$page.'.php');
 
