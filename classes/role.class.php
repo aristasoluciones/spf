@@ -90,13 +90,13 @@ class Role extends Main
 
     public function getListRoles()
     {
-        $sql = "SELECT * FROM roles where status ='activo' ORDER BY name DESC";
+        $sql = "SELECT * FROM roles where status ='activo' and rolId > 1 ORDER BY name DESC";
         $this->Util()->DB()->setQuery($sql);
         $data = $this->Util()->DB()->GetResult();
         return $data;
     }//Enumerate
+
     function getConfigRol(){
-        //find permisos by rol
         $sql =  "SELECT permisoId from rolesPermisos where rolId='".$this->roleId."'";
         $this->Util()->DB()->setQuery($sql);
         $array_perm = $this->Util()->DB()->GetResult();
