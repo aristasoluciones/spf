@@ -85,7 +85,7 @@
             </tr>
             <tr class="border-bottom">
                 <td width="35%" class="mayuscula"><b>Municipio</b></td>
-                <td width="35%" class="mayuscula">{$info.municipio}</td>
+                <td width="35%" class="mayuscula">{$info.municipio.nom_agem}</td>
                 <td width="10%" class="mayuscula"><b>Zona</b></td>
                 <td class="mayuscula">{$info.tipo}</td>
             </tr>

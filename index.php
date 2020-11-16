@@ -66,9 +66,6 @@
 	$smarty->assign('section', $section);
 	$smarty->assign('time', time());
 
-
-
-
 	$pageTpl = ($section == '') ? $page : $page.'_'.$section;
 
 	$smarty->assign('pageTpl', $pageTpl);

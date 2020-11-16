@@ -9,9 +9,7 @@ var TableDatatablesAjax = function () {
     }
 
     var handleDemo1 = function () {
-
         var grid = new Datatable();
-
         grid.init({
             src: $("#datatable_ajax"),
             onSuccess: function (grid, response) {
@@ -20,28 +18,28 @@ var TableDatatablesAjax = function () {
                 // execute some code after table records loaded
             },
             onError: function (grid) {
-                // execute some code on network or other general error  
+                // execute some code on network or other general error
             },
             onDataLoad: function(grid) {
                 // execute some code on ajax data load
             },
             loadingMessage: 'Loading...',
-            dataTable: { // here you can define a typical datatable settings from http://datatables.net/usage/options 
+            dataTable: { // here you can define a typical datatable settings from http://datatables.net/usage/options
 
                 // Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
-                // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/scripts/datatable.js). 
-                // So when dropdowns used the scrollable div should be removed. 
+                // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/scripts/datatable.js).
+                // So when dropdowns used the scrollable div should be removed.
                 //"dom": "<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'<'table-group-actions pull-right'>>r>t<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'>>",
-                
+
                 // save datatable state(pagination, sort, etc) in cookie.
-                "bStateSave": true, 
+                "bStateSave": true,
 
                  // save custom filters to the state
                 "fnStateSaveParams":    function ( oSettings, sValue ) {
                     $("#datatable_ajax tr.filter .form-control").each(function() {
                         sValue[$(this).attr('name')] = $(this).val();
                     });
-                   
+
                     return sValue;
                 },
 
@@ -54,7 +52,7 @@ var TableDatatablesAjax = function () {
                             element.val( oData[element.attr('name')] );
                         }
                     });
-                    
+
                     return true;
                 },
 
@@ -118,30 +116,30 @@ var TableDatatablesAjax = function () {
                 // execute some code after table records loaded
             },
             onError: function (grid) {
-                // execute some code on network or other general error  
+                // execute some code on network or other general error
             },
             onDataLoad: function(grid) {
                 // execute some code on ajax data load
             },
 
-            dataTable: { // here you can define a typical datatable settings from http://datatables.net/usage/options 
+            dataTable: { // here you can define a typical datatable settings from http://datatables.net/usage/options
 
                 // Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
-                // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/scripts/datatable.js). 
-                // So when dropdowns used the scrollable div should be removed. 
+                // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/scripts/datatable.js).
+                // So when dropdowns used the scrollable div should be removed.
                 //"dom": "<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'<'table-group-actions pull-right'>>r>t<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'>>",
-               
+
                 "dom": "<'row'<'col-md-8 col-sm-12'i><'col-md-4 col-sm-12'<'table-group-actions pull-right'>>r>t<'row'<'col-md-8 col-sm-12'i><'col-md-4 col-sm-12'>>",
 
                 // save datatable state(pagination, sort, etc) in cookie.
-                "bStateSave": true, 
+                "bStateSave": true,
 
                  // save custom filters to the state
                 "fnStateSaveParams":    function ( oSettings, sValue ) {
                     $("#datatable_ajax_2 tr.filter .form-control").each(function() {
                         sValue[$(this).attr('name')] = $(this).val();
                     });
-                   
+
                     return sValue;
                 },
 
@@ -154,7 +152,7 @@ var TableDatatablesAjax = function () {
                             element.val( oData[element.attr('name')] );
                         }
                     });
-                    
+
                     return true;
                 },
 
@@ -220,7 +218,6 @@ var TableDatatablesAjax = function () {
 
         //main function to initiate the module
         init: function () {
-
             initPickers();
             handleDemo1();
             handleDemo2();

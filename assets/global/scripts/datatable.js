@@ -35,7 +35,7 @@ var Datatable = function() {
 
             // default settings
             options = $.extend(true, {
-                src: "", // actual table  
+                src: "", // actual table
                 filterApplyAction: "filter",
                 filterCancelAction: "filter_cancel",
                 resetGroupActionInputOnSuccess: true,
@@ -54,7 +54,7 @@ var Datatable = function() {
                         "infoEmpty": "No records found to show",
                         "emptyTable": "No data available in table",
                         "zeroRecords": "No se encontraron registros",
-						
+
                         "paginate": {
                             "previous": "Prev",
                             "next": "Next",

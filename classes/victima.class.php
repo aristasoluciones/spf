@@ -229,22 +229,49 @@ class Victima extends main
     public function info(){
         $sql  = "select * from victima where victimaId= '".$this->victimaId."' ";
         $this->Util()->DB()->setQuery($sql);
-        return $this->Util()->DB()->GetRow();
+        $row = $this->Util()->DB()->GetRow();
+        if($row) {
+            $municipiosLineal = $this->Util()->MunicipioByCve();
+            $row['municipio'] =  $municipiosLineal[$row['municipio_id']];
+            $row['municipioNacimiento'] =  $municipiosLineal[$row['lugarNacimiento']];
+        }
+        return $row;
     }
     public function Enumerate() {
         global $question;
         if($_SESSION['Usr']['rolId'] != '1')
             $add =  ' and municipio_id = "'.$_SESSION['Usr']['municipio_id'].'" ';
 
-        $sql  = 'select * from victima  where 1  ' . $add;
+        $sql  = 'select count(*) from victima  where 1  ' . $add;
+        $this->Util()->DB()->setQuery($sql);
+        $total = $this->Util()->DB()->GetSingle();
+
+        $iDisplayLength =  intval($_REQUEST['length']);
+        $iDisplayLength =  $iDisplayLength < 0 ? $total : $iDisplayLength;
+        $iDisplayStart = intval($_REQUEST['start']);
+        $draw = intval($_REQUEST['draw']);
+        $end = $iDisplayStart + $iDisplayLength;
+        $end = $end > $total ? $total : $end;
+        $data['recordsTotal'] =  $total;
+
+        $sqlLim = "LIMIT ".$iDisplayStart.", ".$end;
+
+        $sql  = 'select * from victima  where 1  ' . $add . $sqlLim;
         $this->Util()->DB()->setQuery($sql);
         $victimas = $this->Util()->DB()->GetResult();
+
+        $municipiosLineal =  $this->Util()->MunicipioByCve();
         foreach($victimas as $key=> $value){
               $question->setVictimaId($value["victimaId"]);
               $question->setContexto($value["tipo"]);
               $victimas[$key]["completePoll"] = $question->validateFullResolvePoll();
+              $victimas[$key]["municipio"] = $municipiosLineal[$value['municipio_id']];
         }
-        return $victimas;
+        $data['draw'] =  $draw;
+        $data['recordsTotal'] = $total;
+        $data['recordsFiltered'] = $total;
+        $data['data'] = $victimas;
+        return $data;
     }
     public function EnumerateVictimasForMaps(){
         $filtro ="";

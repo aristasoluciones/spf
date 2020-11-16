@@ -253,4 +253,8 @@
             $results =$encuesta->getDataForChartGeneral();
             echo $results;
         break;
+        case 'enumerate':
+            $data = $victima->Enumerate();
+            echo json_encode($data);
+        break;
 }
