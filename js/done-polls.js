@@ -88,7 +88,7 @@ var TableDonePolls = function () {
                     [1, "asc"]
                 ],// set first column as a default sort by asc
                 "language": {
-                    "url":'../../properties/i18n/Spanish.json',
+                    "url":WEB_ROOT + '/properties/i18n/Spanish.json',
                 },
                 "pagingType": "simple_numbers",
             }
