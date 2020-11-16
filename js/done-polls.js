@@ -27,7 +27,7 @@ var TableDonePolls = function () {
                 // Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
                 // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/scripts/datatable.js).
                 // So when dropdowns used the scrollable div should be removed.
-                //"dom": "<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'<'table-group-actions pull-right'>>r>t<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'>>",
+                "dom": "<'row'<'col-md-8 col-sm-12'><'col-md-4 col-sm-12'<'table-group-actions pull-right'>>r>t<'row'<'col-md-8 col-sm-12'i><'col-md-4 col-sm-12'p>>",
 
                 // save datatable state(pagination, sort, etc) in cookie.
                 "bStateSave": true,
@@ -90,7 +90,7 @@ var TableDonePolls = function () {
                 "language": {
                     "url":WEB_ROOT + '/properties/i18n/Spanish.json',
                 },
-                "pagingType": "simple_numbers",
+                "pagingType": "bootstrap_number",
             }
         });
 

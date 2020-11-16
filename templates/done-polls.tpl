@@ -1,6 +1,6 @@
 <!-- BEGIN PAGE HEADER-->
 	<div class="page-bar">
-		<div class="span12">           
+		<div class="span12">
 			<h3 class="page-title">
 				<!--Dependencia-->
 			</h3>
@@ -31,7 +31,7 @@
 <!-- BEGIN PAGE CONTENT-->
 	<div class="row">
 		<div class="col-md-12">
-			<div class="portlet light bordered" id="frm-poll-wizard">
+			<div class="portlet light bordered">
 				<div class="portlet-title">
 					<div class="caption">
 						<i class="icon-layers font-red"></i>
