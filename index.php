@@ -57,6 +57,7 @@
 		$page = 'homepage';
 
 	$currentUser = $user->refreshUser();
+    $smarty->assign('Usr', $currentUser);
 
 	include_once(DOC_ROOT.'/modules/user.php');
 	include_once(DOC_ROOT.'/modules/'.$page.'.php');
@@ -66,7 +67,7 @@
 	$smarty->assign('time', time());
 
 
-	$smarty->assign('Usr', $currentUser);
+
 
 	$pageTpl = ($section == '') ? $page : $page.'_'.$section;
 

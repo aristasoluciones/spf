@@ -22,9 +22,9 @@
 <script src="{$WEB_ROOT}/assets/global/plugins/bootbox/bootbox.min.js" type="text/javascript"></script>
 <script src="{$WEB_ROOT}/assets/global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
 {if $datatable_flag}
-<script src="{$WEB_ROOT}/assets/global/scripts/datatable.js" type="text/javascript"></script>
 <script src="{$WEB_ROOT}/assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
 <script src="{$WEB_ROOT}/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
+<script src="{$WEB_ROOT}/assets/global/scripts/datatable.js" type="text/javascript"></script>
 {/if}
 
 

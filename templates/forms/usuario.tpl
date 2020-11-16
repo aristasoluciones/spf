@@ -124,7 +124,7 @@
                                     <label class="control-label col-md-3"><span class="reqIcon">*</span> Tipo / Rol</label>
                                     <div class="col-md-9">
                                         <select class="form-control" name="tipo" id="tipo">
-                                        <option value=""></option>
+                                        <option value="">---seleccione un rol---</option>
                                         {foreach from=$registros_roles item=item key=key}
                                            <option value="{$item.rolId}" {if $info.role_id == $item.rolId}selected{/if}>{$item.name}</option>}
                                         {/foreach}
