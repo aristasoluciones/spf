@@ -59,6 +59,9 @@ $(window).load(function() {
 });
 $(function () {
     var AJAX_PATH = WEB_ROOT+"/ajax/poll.php";
+    var steps = [
+
+    ]
     $("ul.steps a").on("click",function () {
         var id = $(this).data("id");
         var victimaId  = $('#id').length ? $("#id").val() : "";
