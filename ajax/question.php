@@ -19,9 +19,8 @@
 	switch($_POST['type']){
 
 		case 'add_translate':
-                $current_translate = json_decode($_POST['current_translate'], true);
-				$question->setLanguageTranslate($current_translate['language_id']);
-				$question->setTextTranslate($current_translate['translate_text']);
+				$question->setLanguageTranslate($_POST['language_id']);
+				$question->setTextTranslate($_POST['translate_text']);
 				if($question->saveTranslateInSession()) {
 				    $data['status'] = 'ok';
                     $smarty->assign('result', $_SESSION['question_translate']);

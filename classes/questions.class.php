@@ -358,10 +358,32 @@ class Question extends Encuesta
         if(!isset($_SESSION['question_translate']))
             $_SESSION['question_translate'] = [];
 
+
         end($_SESSION['question_translate']);
         $key = key($_SESSION['question_translate']);
         $cad['language_id'] = $this->languageId;
         $cad['text'] = $this->textTranslate;
+        if($_FILES['track_translate']['error'] === 0) {
+           $current_file =  $_FILES['track_translate']['name'];
+           $file_tmp_upload =  $_FILES['track_translate']['tmp_name'];
+           $current_file_array = explode('.', $current_file);
+           $ext = end($current_file_array);
+
+           $tmp_dir =  DOC_ROOT. '/tmpfiles';
+           if (!is_dir($tmp_dir))
+               mkdir($tmp_dir);
+
+           $name_file = uniqid('tmp', true).'.'.$ext;
+           $destiny_path_tmp = $tmp_dir.'/'.$name_file;
+           $web_url = WEB_ROOT.'/tmpfiles/'.$name_file;
+           $cad['audio'] =  false;
+           if (move_uploaded_file($file_tmp_upload, $destiny_path_tmp)) {
+               $cad['audio'] =  true;
+               $cad['web_url'] = $web_url;
+               $cad['name_file'] = $name_file;
+               $cad['doc_tmp'] = $destiny_path_tmp;
+           }
+        }
         $_SESSION['question_translate'][$key + 1] = $cad;
         return $_SESSION['question_translate'];
     }

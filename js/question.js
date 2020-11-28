@@ -1,15 +1,40 @@
 var AJAX_PATH = WEB_ROOT+"/ajax/poll.php";
+$(document).on('click','.control-audio', function () {
+	var element = document.getElementById(this.id);
+	var id_complete = this.id.split('_');
+	var id = id_complete[1];
 
+	if (element.classList.contains('play')) {
+		document.getElementById('src_audio_' + id).pause();
+		document.querySelector('a#' + this.id + '>i').style.opacity='0.5';
+		element.classList.toggle('play');
+	} else {
+		document.getElementById('src_audio_' + id).play();
+		document.querySelector('a#' + this.id + '>i').style.opacity='1';
+		element.classList.toggle('play');
+	}
+
+
+})
 function addTranslateQuestion() {
+
 	var translate = {
 		language_id: $('#language_id').val(),
 		translate_text: $('#translate_text').val()
 	}
+
+	var form = new FormData();
+	form.append('language_id',translate.language_id);
+	form.append('translate_text', translate.translate_text);
+	form.append('track_translate', $('#track_translate').prop('files')[0]);
+	form.append('type','add_translate');
+
 	$.ajax({
 		type: "POST",
 		url: WEB_ROOT +'/ajax/question.php',
-		data: "type=add_translate&current_translate=" + JSON.stringify(translate),
-		datatype: 'json',
+		data: form,
+		processData:false,
+		contentType:false,
 		beforeSend: function() {
 			$('#txtErrMsg').hide();
 		},
@@ -17,6 +42,7 @@ function addTranslateQuestion() {
 			var response = JSON.parse(data);
 			if(response.status === 'ok') {
 				$('#translate_text').val('');
+				$('#track_translate').val('');
 				$('#list_languages').html(response.content)
 			} else {
 				$('#txtErrMsg').show();

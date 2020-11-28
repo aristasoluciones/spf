@@ -93,6 +93,7 @@ $(function () {
               data: frm,
               processData:false,
               contentType:false,
+              dataType: 'json',
               beforeSend: function(){
               },
               success: function(response) {

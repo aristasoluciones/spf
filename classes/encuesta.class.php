@@ -270,15 +270,26 @@ class Encuesta extends Main
 			$info = $this->InfoPregunta();
             $translates  = !is_array($_SESSION['question_translate']) ? [] : $_SESSION['question_translate'];
             $arrayDif = array_diff(array_column($info['question_translate'], 'id'), array_column($translates, 'id'));
-            $sql = "replace into question_translate(id, pregunta_id, text, language_id) values";
+            $sql = "replace into question_translate(id, pregunta_id, text, file_path, language_id) values";
+			$folder = DOC_ROOT . '/audios';
+			if (!is_dir($folder))
+				mkdir($folder);
+
             $valuesStr = "";
             $pregunta_id = $this->id;
             foreach ($translates as $var) {
                 $id = $var['id'] ? $var['id'] : 'null';
                 $text = $var['text'];
                 $language_id = $var['language_id'];
+				$path = $var['doc_tmp'];
+				$name_file= $var['name_file'];
+				if(file_exists($path)) {
+					$name_file = '';
+					if(rename($path, $folder.'/'.$var['name_file']))
+						$name_file = $var['name_file'];
+				}
                 if(!in_array($var['id'], $arrayDif))
-                    $valuesStr .= "($id, '$pregunta_id', '$text', $language_id),";
+                    $valuesStr .= "($id, '$pregunta_id', '$text', '$name_file', $language_id),";
             }
             if($valuesStr !== "") {
                 $valuesStr =  substr($valuesStr, 0, strlen($valuesStr)-1);
@@ -320,12 +331,23 @@ class Encuesta extends Main
 			$translates  = !is_array($_SESSION['question_translate']) ? [] : $_SESSION['question_translate'];
 			$valuesStr = "";
 			$pregunta_id = $this->id;
-			$sql = "replace into question_translate(id, pregunta_id, text, language_id) values";
+			$sql = "replace into question_translate(id, pregunta_id, text, file_path, language_id) values";
+
+			$folder = DOC_ROOT . '/audios';
+			if (!is_dir($folder))
+				mkdir($folder);
+
 			foreach ($translates as $var) {
 				$id = $var['id'] ? $var['id'] : 'null';
 				$text = $var['text'];
 				$language_id = $var['language_id'];
-				$valuesStr .= "($id, '$pregunta_id', '$text', $language_id),";
+				$path = $var['doc_tmp'];
+				if(file_exists($path)) {
+					$name_file = '';
+					if(rename($var['doc_tmp'], $folder.'/'.$var['name_file']))
+						$name_file = $var['name_file'];
+				}
+				$valuesStr .= "($id, '$pregunta_id', '$text', '$name_file', $language_id),";
 			}
 			if($valuesStr !== "") {
 				$valuesStr =  substr($valuesStr, 0, strlen($valuesStr)-1);
@@ -431,6 +453,18 @@ class Encuesta extends Main
 			$sql = "select * from question_translate where pregunta_id = '" . $info['preguntaId'] . "' ";
 			$this->Util()->DB()->setQuery($sql);
 			$results = $this->Util()->DB()->GetResult();
+			foreach ($results as $key => $value) {
+				$results[$key]['audio'] =  false;
+				if($value['file_path'] !== '') {
+					$file =  DOC_ROOT . '/audios/'.$value['file_path'];
+					if (is_file($file)) {
+						$results[$key]['audio'] =  true;
+						$results[$key]['name_file'] =  $value['file_path'];
+						$results[$key]['web_url'] =  WEB_ROOT.'/audios/'.$value['file_path'];
+						$results[$key]['doc_tmp'] = $file;
+					}
+				}
+			}
 			$info['question_translate'] = count($results) ? $results : [];
 		}
 		return $info;

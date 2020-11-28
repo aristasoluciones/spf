@@ -96,10 +96,20 @@
                         <div class="form-group">
                             <label class="col-md-12"><span class="reqIcon">*</span> Pregunta traducida</label>
                             <div class="col-md-12">
-                                <input name="translate_text" id="translate_text" class="form-control" />
+                                <input type="text" name="translate_text" id="translate_text" class="form-control" />
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-12"><span class="reqIcon"></span> Adjuntar audio</label>
+                            <div class="col-md-12">
+                                <input type="file" name="track_translate" id="track_translate" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-3">
                         <button class="btn btn-primary" id="btnAddLanguage">Agregar</button>
                     </div>
