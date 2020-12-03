@@ -1,0 +1,86 @@
+[
+  {
+    "personal_data": {
+      "title": {
+        "label": "Datos personales(tsotsil)"
+      },
+      "nombre": {
+        "label": "Nombre(tsotsil)"
+      },
+      "firstLastName": {
+        "label": "Apellido paterno(tsotsil)"
+      },
+      "secondLastName": {
+        "label": "Apellido materno(tsotsil)"
+      },
+      "edad": {
+        "label": "Edad(tsotsil)"
+      },
+      "estadoCivil": {
+        "label": "Estado civil(tsotsil)"
+      },
+      "nacionalidad": {
+        "label": "Nacionalidad(tsotsil)"
+      },
+      "gradoEstudio": {
+        "label": "Grado de estudio(tsotsil)"
+      },
+      "ocupacion": {
+        "label": "Ocupacion(tsotsil)"
+      },
+      "lugarDeNacimiento": {
+        "label": "Municipio de nacimiento(tsotsil)"
+      },
+      "municipio": {
+        "label": "Municipio donde habita(tsotsil)"
+      },
+      "colonia": {
+        "label": "Colonia , ejido o localidad donde vive(tsotsil)"
+      },
+      "timeRelacion": {
+        "label": "Tiempo de relación con su pareja(tsotsil)"
+      },
+      "numHijo": {
+        "label": "Cuantos Hijos tiene(tsotsil)"
+      },
+      "latLng": {
+        "label": "Ubicar en el mapa el lugar aproximado de los hechos(tsotsil)"
+      },
+      "fieldRequired": {
+        "label": "Campos requeridos(tsotsil)"
+      },
+      "saveButton": {
+        "label": "Guardar(tsotsil)"
+      },
+      "updateButton": {
+        "label": "Actualizar(tsotsil)"
+      },
+      "endStep": {
+        "label": "Ver resultado(tsotsil)"
+      }
+    },
+    "question_option": {
+      "siempre": {
+        "label": "Siempre(tsotsil)"
+      },
+      "frecuentemente": {
+        "label": "Frecuentemente(tsotsil)"
+      },
+      "masdedosveces": {
+        "label": "Mas de dos veces(tsotsil)"
+      },
+      "porlomenosunavez": {
+        "label": "Por lo menos una vez(tsotsil)"
+      },
+      "nunca": {
+        "label": "Nunca(tsotsil)"
+      },
+      "si": {
+        "label": "Si(tsotsil)"
+      },
+      "no": {
+        "label": "No(tsotsil)"
+      }
+    }
+  }
+]

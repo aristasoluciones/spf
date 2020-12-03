@@ -16,9 +16,9 @@
 			<span></span>
 		</a>
 		<!-- END RESPONSIVE MENU TOGGLER -->
-		<!-- BEGIN TOP NAVIGATION MENU -->  
+		<!-- BEGIN TOP NAVIGATION MENU -->
 		<div class="top-menu">
-            <ul class="nav navbar-nav pull-right">                 
+            <ul class="nav navbar-nav pull-right">
                 <!-- BEGIN USER LOGIN DROPDOWN -->
                 <li class="dropdown dropdown-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
@@ -26,8 +26,9 @@
                     <span class="username username-hide-on-mobile">{$Usr.usuario}</span>
                     <i class="fa fa-angle-down"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-default">                        
-                        <li><a href="{$WEB_ROOT}/logout"><i class="icon-key"></i> Salir</a></li>
+                    <ul class="dropdown-menu dropdown-menu-default">
+                        <li><a href="javascript:;" onclick="Logout()" title="Cerrar session"><i class="fa fa-sign-out"></i> Salir</a></li>
+                        <li><a href="javascript:;" onclick="LoadLocalLanguage()" title="Cambiar lenguaje predeterminada"><i class="fa fa-refresh"></i> Cambiar lenguaje</a></li>
                     </ul>
                 </li>
                 <!-- END USER LOGIN DROPDOWN -->
@@ -36,11 +37,11 @@
                                     <i class="icon-logout"></i>
                                 </a>
                             </li>
-                
+
             </ul>
 		</div>
-         <!-- END TOP NAVIGATION MENU --> 
+         <!-- END TOP NAVIGATION MENU -->
     </div>
     <!-- END TOP NAVIGATION BAR -->
-	
+
 </div>

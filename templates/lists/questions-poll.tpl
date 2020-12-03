@@ -20,9 +20,16 @@
                             </a>
                         </div>
                         <div class="list-datetime">
-                            <div class="text-center">
-                                <a class="btn btn-circle btn-icon-only blue" title="Reproducir en lengua"><i class="fa fa-play-circle"></i></a>
-                            </div>
+                            {if $item.audio}
+                                <a class="btn-icon-only control-audio" href="javascript:;" title="Reproducir audio" id="control_{$key}">
+                                    <i class="fa fa-volume-up fa-2x" style="color:#878585; opacity: .5"></i>
+                                </a>
+                                <audio
+                                        src="{$item.path_file}"
+                                        hidden
+                                        id="src_audio_{$key}"
+                                ></audio>
+                            {/if}
                         </div>
                         <div class="list-item-content">
                             <h3 class="uppercase">
@@ -34,12 +41,12 @@
                                     <div class="md-radio-inline">
                                         {foreach from=$item.opciones item=item2 key=key}
                                             <div class="md-radio">
-                                                <input type="radio" name="question_{$item.preguntaId}" id="question_{$item.preguntaId}_{$key}" value='{$item2}' class="md-radiobtn" {if $item.currentAnswer eq $item2}checked{/if}>
+                                                <input type="radio" name="question_{$item.preguntaId}" id="question_{$item.preguntaId}_{$key}" value='{$item2.value}' class="md-radiobtn" {if $item.currentAnswer eq $item2.value}checked{/if}>
                                                 <label for="question_{$item.preguntaId}_{$key}">
                                                     <span class="inc"></span>
                                                     <span class="check"></span>
                                                     <span class="box"></span>
-                                                    {$item2}
+                                                    {$item2.label}
                                                 </label>
                                             </div>
                                         {/foreach}

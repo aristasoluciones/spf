@@ -1,21 +1,4 @@
 var AJAX_PATH = WEB_ROOT+"/ajax/poll.php";
-$(document).on('click','.control-audio', function () {
-	var element = document.getElementById(this.id);
-	var id_complete = this.id.split('_');
-	var id = id_complete[1];
-
-	if (element.classList.contains('play')) {
-		document.getElementById('src_audio_' + id).pause();
-		document.querySelector('a#' + this.id + '>i').style.opacity='0.5';
-		element.classList.toggle('play');
-	} else {
-		document.getElementById('src_audio_' + id).play();
-		document.querySelector('a#' + this.id + '>i').style.opacity='1';
-		element.classList.toggle('play');
-	}
-
-
-})
 function addTranslateQuestion() {
 
 	var translate = {

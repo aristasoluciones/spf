@@ -58,10 +58,8 @@ $(window).load(function() {
     Select2Cascade($('#municipio'), $('#colonia'), 'https://gaia.inegi.org.mx/wscatgeo',optionsChild, options)
 });
 $(function () {
+    $('.nav-pills > li a[title]').tooltip()
     var AJAX_PATH = WEB_ROOT+"/ajax/poll.php";
-    var steps = [
-
-    ]
     $("ul.steps a").on("click",function () {
         var id = $(this).data("id");
         var victimaId  = $('#id').length ? $("#id").val() : "";
@@ -74,7 +72,7 @@ $(function () {
             },
             success: function(response) {
                 $("#"+name).html(response);
-                var stepper = new Stepper($('.bs-stepper')[0])
+                $('a.control-audio[title]').tooltip()
             },
             error:function(){
                 alert(msgError);
@@ -138,6 +136,7 @@ $(function () {
         $(tab).html("");
        });
     };
+
     $("#tipoContexto").on(
         "change",
         function () {

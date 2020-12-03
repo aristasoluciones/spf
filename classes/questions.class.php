@@ -118,6 +118,7 @@ class Question extends Encuesta
         }
     }
     public function questionsByPoll(){
+        global $local_language;
         $this->getAnswersIfExist();
 
         $sql = "SELECT * 
@@ -133,30 +134,56 @@ class Question extends Encuesta
 				where
 				encuestaId = '.$infoEncuesta['encuestaId'].'';
         $this->Util()->DB()->setQuery($sql);
-        $answers = $this->Util()->DB()->GetResult();
+        $questions = $this->Util()->DB()->GetResult();
 
-        foreach($answers as $key=>$aux){
+        $name_file = $_SESSION['local_language'] > 0 ? $local_language[$_SESSION['local_language']] : 'default';
+        $file  = DOC_ROOT . "/properties/".$name_file.".json";
+        $string = file_get_contents($file);;
+        $options = json_decode($string, true);
+        $options = $options[0]['question_option'];
+
+        foreach($questions as $key=>$aux){
+            if($_SESSION['local_language']>0) {
+                $sql = "SELECT text, file_path from question_translate where pregunta_id = '".$aux['preguntaId']."' 
+                        and language_id= '".$_SESSION['local_language']."' ";
+                $this->Util()->DB()->setQuery($sql);
+                $translate = $this->Util()->DB()->GetRow();
+                if ($translate) {
+                    $questions[$key]['translated'] = true;
+                    $questions[$key]['pregunta'] = $translate['text'];
+                    $file = DOC_ROOT . '/audios/'.$translate['file_path'];
+                    $file_web = WEB_ROOT . '/audios/'.$translate['file_path'];
+                    if (is_file($file)) {
+                        $questions[$key]['audio'] =  true;
+                        $questions[$key]['path_file'] =  $file_web;
+                    }
+                }
+
+            }
+
             if($aux["tiporespuesta"]=="opcional"){
                 unset($opciones);
                 $selfOptions = explode("_",$aux["opcional"]);
 
                 for($i=0;$i<=count($selfOptions);$i++){
-                    if($selfOptions[$i]<>""){
-                        $opciones[] = $selfOptions[$i];
+                    if($selfOptions[$i]<>"") {
+                        $cadopt['label'] = $options[strtolower(str_replace(" ","", $selfOptions[$i]))]['label'];
+                        $cadopt['value'] = $selfOptions[$i];
+                        $opciones[] = $cadopt;
                     }
                 }
-                $answers[$key]["opciones"] = $opciones;
+                $questions[$key]["opciones"] = $opciones;
                 if(array_key_exists($aux["preguntaId"],$this->answersExist))
-                    $answers[$key]["currentAnswer"] = $this->answersExist[$aux["preguntaId"]];
+                    $questions[$key]["currentAnswer"] = $this->answersExist[$aux["preguntaId"]];
 
             }else if($aux["tiporespuesta"]=="punto"){
                 $r = explode("_",$aux["rango"]);
-                $answers[$key]["rango1"] = $r[0];
-                $answers[$key]["rango2"] = $r[1];
+                $questions[$key]["rango1"] = $r[0];
+                $questions[$key]["rango2"] = $r[1];
             }
 
         }
-        return $answers;
+        return $questions;
     }
     public function validateFullResolvePoll(){
         $pendiente = 0;

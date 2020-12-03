@@ -96,12 +96,14 @@ $objRole->setRoleId($Usr['rolId']);
 $permissions = $objRole->GetPermisosByRol();
 $smarty->assign('privilegios', $permissions);
 $smarty->assign('Usr', $Usr);
+$_SESSION['local_language'] = $_COOKIE['local_language'];
 
-$file  = DOC_ROOT . "/properties/config.json";
+$name_file = $_SESSION['local_language'] > 0 ? $local_language[$_SESSION['local_language']] : 'default';
+$file  = DOC_ROOT . "/properties/".$name_file.".json";
 $string = file_get_contents($file);;
 $headers = json_decode($string, true);
-$smarty->assign('personal_field', $headers[0]['personal_field']);
-
+$smarty->assign('translates', $headers[0]);
+$smarty->assign('local_language',$_SESSION['local_language']);
 $smarty->assign('DOC_ROOT',DOC_ROOT);
 $smarty->assign('WEB_ROOT',WEB_ROOT);
 $smarty->assign('property', $property);

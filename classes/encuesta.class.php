@@ -141,7 +141,20 @@ class Encuesta extends Main
 
 		$sql = 'SELECT * FROM encuesta order by position asc';
 		$this->Util()->DB()->setQuery($sql);
-		return $this->Util()->DB()->GetResult();
+		$result =  $this->Util()->DB()->GetResult();
+		if ($_SESSION['local_language'] > 0 ) {
+			foreach($result as $key => $value) {
+					$sql = "SELECT text from poll_translate where poll_id = '".$value['encuestaId']."'
+                        	and language_id= '".$_SESSION['local_language']."' ";
+					$this->Util()->DB()->setQuery($sql);
+					$translate = $this->Util()->DB()->GetRow();
+					if ($translate) {
+						$result[$key]['translated'] = true;
+						$result[$key]['nombre'] = $translate['text'];
+					}
+				}
+		}
+		return $result;
 	}
 
 	public function Enumerate(){
@@ -189,7 +202,7 @@ class Encuesta extends Main
 			$poll_id = $this->id;
 			foreach ($translates as $var) {
 				$id = $var['id'] ? $var['id'] : 'null';
-				$text = $var['text'];
+				$text = $id ? htmlspecialchars(htmlspecialchars_decode($var['text'], ENT_QUOTES), ENT_QUOTES): htmlspecialchars($var['text'], ENT_QUOTES);
 				$language_id = $var['language_id'];
 				if(!in_array($var['id'], $arrayDif))
 					$valuesStr .= "($id, '$poll_id', '$text', $language_id),";
@@ -232,7 +245,7 @@ class Encuesta extends Main
 			$sql = "replace into poll_translate(id, poll_id, text, language_id) values";
 			foreach ($translates as $var) {
 				$id = $var['id'] ? $var['id'] : 'null';
-				$text = $var['text'];
+				$text = htmlspecialchars($var['text'], ENT_QUOTES);
 				$language_id = $var['language_id'];
 				$valuesStr .= "($id, '$poll_id', '$text', $language_id),";
 			}
@@ -279,7 +292,7 @@ class Encuesta extends Main
             $pregunta_id = $this->id;
             foreach ($translates as $var) {
                 $id = $var['id'] ? $var['id'] : 'null';
-                $text = $var['text'];
+                $text = $id ? htmlspecialchars(htmlspecialchars_decode($var['text'], ENT_QUOTES), ENT_QUOTES): htmlspecialchars($var['text'], ENT_QUOTES);
                 $language_id = $var['language_id'];
 				$path = $var['doc_tmp'];
 				$name_file= $var['name_file'];
@@ -339,7 +352,7 @@ class Encuesta extends Main
 
 			foreach ($translates as $var) {
 				$id = $var['id'] ? $var['id'] : 'null';
-				$text = $var['text'];
+				$text = htmlspecialchars($var['text'], ENT_QUOTES);
 				$language_id = $var['language_id'];
 				$path = $var['doc_tmp'];
 				if(file_exists($path)) {
@@ -594,5 +607,4 @@ class Encuesta extends Main
 	}
 
 }
-
 ?>

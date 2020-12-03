@@ -1,5 +1,4 @@
 <?php
-
 $property['error'][1] = 'Has editado satisfactoriamente un Registro';
 $property['error'][2] = 'Has insertado satisfactoriamente un Registro';
 $property['error'][3] = 'El Registro se elimino Exitosamente';
@@ -95,6 +94,11 @@ $globalNameMonths = [
     10=>"Octubre",
     11=>"Noviembre",
     12=>"Diciembre",
+    ];
+
+$local_language = [
+    1 => "tsotsil",
+    2 => "tseltal",
     ];
 
 ?>

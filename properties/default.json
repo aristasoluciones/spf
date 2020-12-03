@@ -1,0 +1,86 @@
+[
+  {
+    "personal_data": {
+      "title": {
+        "label": "Datos personales"
+      },
+      "nombre": {
+        "label": "Nombre"
+      },
+      "firstLastName": {
+        "label": "Apellido paterno"
+      },
+      "secondLastName": {
+        "label": "Apellido materno"
+      },
+      "edad": {
+        "label": "Edad"
+      },
+      "estadoCivil": {
+        "label": "Estado civil"
+      },
+      "nacionalidad": {
+        "label": "Nacionalidad"
+      },
+      "gradoEstudio": {
+        "label": "Grado de estudio"
+      },
+      "ocupacion": {
+        "label": "Ocupacion"
+      },
+      "lugarDeNacimiento": {
+        "label": "Municipio de nacimiento"
+      },
+      "municipio": {
+        "label": "Municipio donde habita"
+      },
+      "colonia": {
+        "label": "Colonia , ejido o localidad donde vive"
+      },
+      "timeRelacion": {
+        "label": "Tiempo de relación con su pareja"
+      },
+      "numHijo": {
+        "label": "Cuantos Hijos tiene"
+      },
+      "latLng": {
+        "label": "Ubicar en el mapa el lugar aproximado de los hechos"
+      },
+      "fieldRequired": {
+        "label": "Campos requeridos"
+      },
+      "saveButton": {
+        "label": "Guardar"
+      },
+      "updateButton": {
+        "label": "Actualizar"
+      },
+      "endStep": {
+        "label": "Ver resultado"
+      }
+    },
+    "question_option": {
+      "siempre": {
+        "label": "Siempre"
+      },
+      "frecuentemente": {
+        "label": "Frecuentemente"
+      },
+      "masdedosveces": {
+        "label": "Mas de dos veces"
+      },
+      "porlomenosunavez": {
+        "label": "Por lo menos una vez"
+      },
+      "nunca": {
+        "label": "Nunca"
+      },
+      "si": {
+        "label": "Si"
+      },
+      "no": {
+        "label": "No"
+      }
+    }
+  }
+]

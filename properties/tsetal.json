@@ -1,0 +1,86 @@
+[
+  {
+    "personal_data": {
+      "title": {
+        "label": "Datos personales(tseltal)"
+      },
+      "nombre": {
+        "label": "Nombre(tseltal)"
+      },
+      "firstLastName": {
+        "label": "Apellido paterno(tseltal)"
+      },
+      "secondLastName": {
+        "label": "Apellido materno(tseltal)"
+      },
+      "edad": {
+        "label": "Edad(tseltal)"
+      },
+      "estadoCivil": {
+        "label": "Estado civil(tseltal)"
+      },
+      "nacionalidad": {
+        "label": "Nacionalidad(tseltal)"
+      },
+      "gradoEstudio": {
+        "label": "Grado de estudio(tseltal)"
+      },
+      "ocupacion": {
+        "label": "Ocupacion(tseltal)"
+      },
+      "lugarDeNacimiento": {
+        "label": "Municipio de nacimiento(tseltal)"
+      },
+      "municipio": {
+        "label": "Municipio donde habita(tseltal)"
+      },
+      "colonia": {
+        "label": "Colonia , ejido o localidad donde vive(tseltal)"
+      },
+      "timeRelacion": {
+        "label": "Tiempo de relación con su pareja(tseltal)"
+      },
+      "numHijo": {
+        "label": "Cuantos Hijos tiene(tseltal)"
+      },
+      "latLng": {
+        "label": "Ubicar en el mapa el lugar aproximado de los hechos(tseltal)"
+      },
+      "fieldRequired": {
+        "label": "Campos requeridos(tseltal)"
+      },
+      "saveButton": {
+        "label": "Guardar(tseltal)"
+      },
+      "updateButton": {
+        "label": "Actualizar(tseltal)"
+      },
+      "endStep": {
+        "label": "Ver resultado(tseltal)"
+      }
+    },
+    "question_option": {
+      "siempre": {
+        "label": "Siempre(tseltal)"
+      },
+      "frecuentemente": {
+        "label": "Frecuentemente(tseltal)"
+      },
+      "masdedosveces": {
+        "label": "Mas de dos veces(tseltal)"
+      },
+      "porlomenosunavez": {
+        "label": "Por lo menos una vez(tseltal)"
+      },
+      "nunca": {
+        "label": "Nunca(tseltal)"
+      },
+      "si": {
+        "label": "Si(tseltal)"
+      },
+      "no": {
+        "label": "No(tseltal)"
+      }
+    }
+  }
+]

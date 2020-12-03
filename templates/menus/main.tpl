@@ -68,31 +68,6 @@
         </ul>
 	</li>
 	{/if}
-
-	{*if in_array(2,$privilegios) or $Usr.rolId eq 1}
-    <li class="nav-item {if $page =='imagenes'}active open{/if}">
-        <a href="javascript:;" class="nav-link nav-toggle">
-        <i class="icon-briefcase"></i>
-        <span class="title">Pagina Web</span>
-		{if $page=='imagenes'}
-		 <span class="selected"></span>
-         <span class="arrow open"></span>
-        {else}
-		   <span class="arrow"></span>
-		{/if}
-        </a>
-        <ul class="sub-menu">
-			{if in_array(14,$privilegios) or $Usr.rolId eq 1}
-				<li class="nav-item {if $page=='imagenes'}active open{/if}">
-					<a class="nav-link " href="{$WEB_ROOT}/imagenes">
-						<i class="ui-icon-image"></i>
-						<span class="title">Imagenes</span>
-					</a>
-				</li>
-			{/if}
-        </ul>
-	</li>
-	{/if*}
     {if in_array(15,$privilegios) || $Usr.rolId eq 1}
 	 <li class="nav-item {if $page =='poll' || $page =='question' || $page =='colonia'}active open{/if}">
         <a href="javascript:;" class="nav-link nav-toggle">
@@ -114,14 +89,6 @@
 				</a>
 			</li>
 			{/if}
-			{*if in_array(16,$privilegios) or $usr.rolId eq 1}
-				<li class="nav-item {if $page=='colonia'}active open{/if}">
-					<a class="nav-link " href="{$WEB_ROOT}/colonia">
-						<i class="icon-settings"></i>
-						<span class="title">Colonias</span>
-					</a>
-				</li>
-			{/if*}
 		</ul>
       </li>
     {/if}
@@ -130,7 +97,7 @@
 		<a href="javascript:;" class="nav-link nav-toggle">
 			<i class="icon-list"></i>
 			<span class="title">Encuestas Aplicadas</span>
-			{if $page=='report'}
+			{if $page =='report' || $page =='geolocation' || $page =='do-poll' || $page =='done-polls' || $page == 'statistics'}
 				<span class="selected"></span>
 				<span class="arrow open"></span>
 			{else}

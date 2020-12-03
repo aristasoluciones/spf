@@ -20,9 +20,9 @@
                     {$item.parametros}
                     {if $item.tiporespuesta eq "punto"}
                         {$item.rango}
-                    {else if $item.tiporespuesta eq "opcional"}
+                    {elseif $item.tiporespuesta eq "opcional"}
                         {$item.opcional}
-                    {else if $item.tiporespuesta eq "abierta"}
+                    {elseif $item.tiporespuesta eq "abierta"}
                         {$item.numCaracter}
                     {/if}
 
