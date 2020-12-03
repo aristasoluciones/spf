@@ -1,7 +1,7 @@
 var urlLoc = document.location.hostname;
 if(urlLoc == "localhost")
 	var WEB_ROOT = "http://" + urlLoc + "/spf";
-else if(urlLoc == "192.168.1.3")
+else if(urlLoc == "cecom.org.mx")
 	var WEB_ROOT = "http://" + urlLoc + "/spf";
 else
 	var WEB_ROOT = "http://" + urlLoc + "";
