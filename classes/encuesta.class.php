@@ -222,11 +222,13 @@ class Encuesta extends Main
 			$sql = 'INSERT INTO encuesta (
 			nombre, 
 			fechaRegistro, 
+			tipo,
 			usuarioregistraId
 			)
 			VALUES(
 				"' . $this->nombre . '",
 				"' . date("Y-m-d") . '",
+				"' . $this->contexto. '",
 				"' . $_SESSION['Usr']["usuarioId"] . '",
 			)';
 
