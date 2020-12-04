@@ -21,13 +21,13 @@
                         </div>
                         <div class="list-datetime">
                             {if $item.audio}
-                                <a class="btn-icon-only control-audio" href="javascript:;" title="Reproducir audio" id="control_{$key}">
+                                <a class="btn-icon-only control-audio" href="javascript:;" title="Reproducir audio" id="control_{$item.preguntaId}">
                                     <i class="fa fa-volume-up fa-2x" style="color:#878585; opacity: .5"></i>
                                 </a>
                                 <audio
                                         src="{$item.path_file}"
                                         hidden
-                                        id="src_audio_{$key}"
+                                        id="src_audio_{$item.preguntaId}"
                                 ></audio>
                             {/if}
                         </div>
