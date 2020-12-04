@@ -93,7 +93,7 @@ class Question extends Encuesta
         $this->Util()->DB()->setQuery($sql);
         $this->Util()->DB()->UpdateData();
 
-        $this->generateResultPoll($this->pollVictimaId);
+        $this->generateResultPollAlternative($this->pollVictimaId);
 
         $this->Util()->setError(0,"complete","Se ha guardado correctamente");
         $this->Util()->PrintErrors();
@@ -226,6 +226,36 @@ class Question extends Encuesta
         $this->Util()->DB()->setQuery($sql);
         return  $this->Util()->DB()->GetSingle();
     }
+    public function generateResultPollAlternative($pollVictimaId){
+        $frecuencias = ["Siempre"=>1,"Frecuentemente"=>.75,"Mas de dos veces"=>.50,"Por lo menos una vez"=>.25,"Nunca"=>0];
+        //$frecuencias = ["Siempre"=>1,"Frecuentemente"=>.75,"Por lo menos una vez"=>.50,"Nunca"=>.25];
+        $sumMat = 0;
+        $totalPreguntas =0;
+
+        $sql = "select a.*,b.riesgo,b.orden from answerPollVictima a 
+                inner join pregunta b on a.preguntaId=b.preguntaId 
+                where a.pollVictimaId = '$pollVictimaId' ";
+        $this->Util()->DB()->setQuery($sql);
+        $answers = $this->Util()->DB()->GetResult();
+
+        $totalPreguntas = (double) count($answers);
+        $resultDecimal = 0;
+        foreach($answers as $key => $var) {
+            $resultDecimal += (double) $frecuencias[ucfirst(strtolower($var["respuesta"]))] * (double)(1/ $totalPreguntas);
+        }
+
+        $resultPorcent = $resultDecimal * 100;
+        if ($resultPorcent <= 20.00)
+            $resultadoEncuesta = 'Baja';
+        elseif ($resultPorcent > 20 && $resultPorcent <= 40)
+            $resultadoEncuesta = 'Moderada';
+        elseif ($resultPorcent > 40)
+            $resultadoEncuesta =  'Severa';
+
+        $sql  ="update pollVictima set resultadoEncuesta ='$resultadoEncuesta', puntos = '$resultPorcent', porcentInchart = '$resultPorcent' where pollVictimaId = '".$this->pollVictimaId."' ";
+        $this->Util()->DB()->setQuery($sql);
+        $this->Util()->DB()->UpdateData();
+    }
     public function generateResultPoll($pollVictimaId){
         $frecuencias = ["Siempre"=>1,"Frecuentemente"=>.75,"Mas de dos veces"=>.50,"Por lo menos una vez"=>.25,"Nunca"=>0];
         //$frecuencias = ["Siempre"=>1,"Frecuentemente"=>.75,"Por lo menos una vez"=>.50,"Nunca"=>.25];
@@ -319,19 +349,16 @@ class Question extends Encuesta
         }
     }
     public function generatePointsForViolentometro(){
-        $points = 0;
-        foreach($this->dataChart as $var){
-            $porcentOver100 =  number_format($var["porcentInChart"],2);
-            $points += $porcentOver100;
-        }
-        return $points;
+        $porcent = 0;
+        $porcents =  array_column($this->dataChart, 'porcentInChart');
+        $total =  array_sum($porcents) / count($porcents);
+        return number_format($total, 2);
     }
     public function generateChartToImg(){
         $data = [];
         $labels = [];
         foreach($this->dataChart as $var){
-            $porcentOver100 =  number_format((($var["porcentInChart"]*100)/33.3333),4);
-            $data[] = number_format($porcentOver100,2);
+            $data[] = number_format($var['porcentInChart'],2);
             $labels[] = substr($var["nombre"],9,10);
         }
         /* Create and populate the pData object */
