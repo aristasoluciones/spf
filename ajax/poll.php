@@ -100,10 +100,8 @@
 			break;
 
 		case 'save':
+                $encuesta->setId($_POST['encuestaId']);
 				$encuesta->setNombre($_POST['nombre']);
-				$encuesta->setInicio($_POST['inicio']);
-				$encuesta->setFin($_POST['fin']);
-				$encuesta->setId($_POST['encuestaId']);
 				$encuesta->setContexto($_POST["contexto"]);
 				$success = $encuesta->Save();
 				if($success){
@@ -163,7 +161,6 @@
 		break;
 
 		case 'DeleteReg':
-
 				$encuesta->setId($_POST['id']);
 				if($encuesta->Delete())
 					echo 'ok[#]';

@@ -21,18 +21,6 @@
 					  </select>
 				  </div>
 			  </div>
-			  <div class="form-group">
-				  <label class="col-md-12"><span class="reqIcon"> * </span>Inicio</label>
-				  <div class="col-md-12">
-					  <input type="text" class="form-control" name="inicio"  id="fecha_1" value="{$info.inicio}"  onClick='cargaDate(1)' />
-				  </div>
-			  </div>
-			  <div class="form-group">
-				  <label class="col-md-12"><span class="reqIcon"> * </span>Fin</label>
-				  <div class="col-md-12">
-					  <input type="text" class="form-control" name="fin" id="fecha_2" value="{$info.fin}"  onClick='cargaDate(2)' />
-				  </div>
-			  </div>
 		  </div>
 		  <div class="col-md-6">
 			  <label>Traducir encuesta a las siguientes lenguas.</label>

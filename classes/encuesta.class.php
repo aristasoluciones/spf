@@ -186,9 +186,7 @@ class Encuesta extends Main
 		}
 		if($this->id){
 			$sql = 'UPDATE encuesta SET 
-					nombre = "'.utf8_decode($this->nombre).'", 
-					inicio = "'.($this->inicio).'", 
-					fin = "'.($this->fin).'"
+					nombre = "'.utf8_decode($this->nombre).'"
 					WHERE encuestaId = "'.$this->id.'"';
 			$this->Util()->DB()->setQuery($sql);
 			$this->Util()->DB()->UpdateData();
@@ -224,16 +222,12 @@ class Encuesta extends Main
 			$sql = 'INSERT INTO encuesta (
 			nombre, 
 			fechaRegistro, 
-			usuarioregistraId, 
-			inicio, 
-			fin
+			usuarioregistraId
 			)
 			VALUES(
 				"' . $this->nombre . '",
 				"' . date("Y-m-d") . '",
 				"' . $_SESSION['Usr']["usuarioId"] . '",
-				"' . $this->inicio . '",
-				"' . $this->fin . '"
 			)';
 
 			$this->Util()->DB()->setQuery($sql);
