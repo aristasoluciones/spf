@@ -229,7 +229,7 @@ class Encuesta extends Main
 				"' . $this->nombre . '",
 				"' . date("Y-m-d") . '",
 				"' . $this->contexto. '",
-				"' . $_SESSION['Usr']["usuarioId"] . '",
+				"' . $_SESSION['Usr']["usuarioId"] . '"
 			)';
 
 			$this->Util()->DB()->setQuery($sql);
