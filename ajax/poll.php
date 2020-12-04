@@ -123,7 +123,7 @@
 				}
 				else if($_POST["tipo"]=="opcional"){
 
-					for($i=1;$i<=4;$i++){
+					for($i=1;$i<=5;$i++){
 						if($_POST["res_".$i]==""){
 							$va  = $va + 1;
 						}
@@ -138,7 +138,7 @@
 
 				$idReg = $_POST['encuestaId'];
 				$rango = $_POST["de"]."_".$_POST["a"];
-				$opcional = $_POST["res_1"]."_".$_POST["res_2"]."_".$_POST["res_3"]."_".$_POST["res_4"];
+				$opcional = $_POST["res_1"]."_".$_POST["res_2"]."_".$_POST["res_3"]."_".$_POST["res_4"]."_".$_POST['res_5'];
 				$encuesta->setEncuestaId($_POST["encuestaId"]);
 				$encuesta->setPregunta($_POST['nombre']);
 				$encuesta->setTipoEncuesta($_POST['tipo']);
