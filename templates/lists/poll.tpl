@@ -6,17 +6,17 @@
             <th>Clave</th>
             <th>Nombre </th>
             <th>Fecha de Registro</th>
-            <th>Vigencia de la Encuesta</th>
+            <th>Contexto</th>
             <th>Acci&oacute;n </th>
         </tr>
     </thead>
     <tbody>
-    	{foreach from=$registros.result item=item key=key}        	
+    	{foreach from=$registros.result item=item key=key}
         <tr>
             <td>{$key+1}</td>
             <td>{$item.nombre}</td>
+            <td>{$item.tipo}</td>
             <td>{$item.fechaRegistro}</td>
-            <td>{$item.inicio} - {$item.fin}</td>
 			<td>
                 <div align="center">
                     {if in_array(22,$privilegios) or $Usr.rolId eq 1}
