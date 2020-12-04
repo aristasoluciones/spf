@@ -2,7 +2,7 @@
   {
     "personal_data": {
       "title": {
-        "label": "Datos personales(tseltal)"
+        "label": "Snabeyel skotol a bi´il"
       },
       "nombre": {
         "label": "Nombre(tseltal)"
@@ -56,7 +56,7 @@
         "label": "Actualizar(tseltal)"
       },
       "endStep": {
-        "label": "Ver resultado(tseltal)"
+        "label": "Yilel slajibal jun"
       }
     },
     "question_option": {
