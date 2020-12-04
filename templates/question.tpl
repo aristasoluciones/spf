@@ -1,13 +1,13 @@
 <!-- BEGIN PAGE HEADER-->
 	<div class="page-bar">
-		<div class="span12">           
+		<div class="span12">
 			<h3 class="page-title">
 				<!--Dependencia-->
 			</h3>
 		 <ul class="page-breadcrumb">
 			<li>
 				<i class="icon-home"></i>
-				<a href="index.html">Inicio</a> 
+				<a href="index.html">Inicio</a>
 				<i class="fa fa-circle"></i>
 			</li>
 			<li>
@@ -31,8 +31,8 @@
 			<div class="portlet-title">
 				<div class="caption">
 				   <i class="icon-settings font-green"></i>
-				   <span class="caption-subject font-green sbold">Nombre de la encuesta: {$info.nombre}</span>
-				 </div>  
+				   <span class="caption-subject font-green sbold">Nombre de la encuesta: {$info.nombre} {$info.tipo}</span>
+				 </div>
 				<div class="actions">
 				    <div class="btn-group btn-group-devided" data-toggle="buttons">
 						{if in_array(40,$privilegios) or $Usr.rolId eq 1}
@@ -51,4 +51,4 @@
 		    <b>Este documento deberá resguardarse conforme a lo establecido bajo la Ley  General de Protección de Datos Personales en Posesión de Sujetos Obligados, Artículo 45 Fracción 1,  de la Constitución Política del Estado de Chiapas</b>
 	    </center>
 	</div>
-	<!-- END PAGE CONTENT-->	
+	<!-- END PAGE CONTENT-->
