@@ -45,10 +45,10 @@ var TableDonePolls = function () {
                         "render": function (data) {
                             var content = '<div class="center">';
                             content = content +  '<a class="btn btn-xs yellow" href="'+WEB_ROOT+'/do-poll/id/' + data.victimaId +'"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>';
-                            if (data.completePoll) {
+                           // if (data.completePoll) {
                                 content = content + '<a class="btn btn-xs green btn-chart" href="javascript:;" title="Ver grafica" id="' + data.victimaId + '"><i class="fa fa-bar-chart" aria-hidden="true"></i></a>';
                                 content = content + '<a class="btn btn-xs green-dark" href="'+WEB_ROOT+'/poll-result-pdf/id/' + data.victimaId +'" title="Ver reporte" target="_blank"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>';
-                            }
+                            //}
                             content = content + '</div>';
                             return content;
                         }
