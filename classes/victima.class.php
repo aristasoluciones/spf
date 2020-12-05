@@ -288,23 +288,20 @@ class Victima extends main
     }//orderUbicationReport
 
     function getResultPollByVictima($onlyPuntos =  false){
-        $sql = "SELECT sum(puntos) as puntos FROM pollVictima WHERE victimaId='".$this->victimaId."' and encuestaId < 17 group by victimaId ";
+        $sql = "SELECT  a.puntos, a.porcentInChart FROM pollVictima a
+                inner join encuesta b on a.encuestaId = b.encuestaId
+                WHERE a.victimaId='".$this->victimaId."' and b.allow_analize ='1' group by a.encuestaId";
         $this->Util()->DB()->setQuery($sql);
-        $puntos = $this->Util()->DB()->GetSingle();
+        $result = $this->Util()->DB()->GetResult();
 
-        if($onlyPuntos)
-            return $puntos;
+        if (count($result) <= 0)
+             return 0;
+        $porcentajes = array_column($result, 'puntos');
+        $porcentaje = array_sum($porcentajes) / count($result);
 
-        $sql = "SELECT resultadoEncuesta FROM pollVictima WHERE victimaId='".$this->victimaId."' and resultadoEncuesta = 'Severa' and encuestaId<17 ";
-        $this->Util()->DB()->setQuery($sql);
-        $isSevero  = $this->Util()->DB()->GetSingle();
-
-        if($isSevero)
-            return $isSevero;
-
-        if($puntos>=167)
+        if($porcentaje>40)
             return "Severa";
-        elseif($puntos>151.6&&$puntos<=166.99)
+        elseif($porcentaje>20&&$porcentaje<=40)
             return "Moderada";
         else
             return "Baja";

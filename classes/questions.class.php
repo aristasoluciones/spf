@@ -228,13 +228,13 @@ class Question extends Encuesta
     }
     public function generateResultPollAlternative($pollVictimaId){
         $frecuencias = ["Siempre"=>1,"Frecuentemente"=>.75,"Mas de dos veces"=>.50,"Por lo menos una vez"=>.25,"Nunca"=>0];
-        //$frecuencias = ["Siempre"=>1,"Frecuentemente"=>.75,"Por lo menos una vez"=>.50,"Nunca"=>.25];
         $sumMat = 0;
         $totalPreguntas =0;
 
         $sql = "select a.*,b.riesgo,b.orden from answerPollVictima a 
-                inner join pregunta b on a.preguntaId=b.preguntaId 
-                where a.pollVictimaId = '$pollVictimaId' ";
+                inner join pregunta b on a.preguntaId=b.preguntaId
+                inner join encuesta c on b.encuestaId=c.encuestaId 
+                where c.allow_analize = '1' and a.pollVictimaId = '$pollVictimaId' ";
         $this->Util()->DB()->setQuery($sql);
         $answers = $this->Util()->DB()->GetResult();
 
@@ -338,7 +338,8 @@ class Question extends Encuesta
         $victima->setVictimaId($this->victimaId);
         $infoVictima = $victima->Info();
 
-        $this->Util()->DB()->setQuery("select * from encuesta where tipo in('".$infoVictima['tipo']."')  order by position asc ");
+        $this->Util()->DB()->setQuery("select * from encuesta where tipo in('".$infoVictima['tipo']."') 
+                                              and allow_analize = '1' order by position asc ");
         $encuestas = $this->Util()->DB()->GetResult();
         foreach($encuestas as $key =>$value){
             $this->setEncuestaId($value["encuestaId"]);
