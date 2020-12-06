@@ -22,7 +22,7 @@ var TableDonePolls = function () {
             onDataLoad: function(grid) {
                 // execute some code on ajax data load
             },
-            loadingMessage: 'Loading...',
+            loadingMessage: 'Cargando...',
             dataTable: { // here you can define a typical datatable settings from http://datatables.net/usage/options
 
                 // Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout

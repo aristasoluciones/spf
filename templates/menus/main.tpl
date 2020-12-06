@@ -57,14 +57,14 @@
 					</a>
 				</li>
 			{/if}
-			{if $Usr.rolId eq 1}
+			{*if $Usr.rolId eq 1}
 				<li class="nav-item {if $page=='evidencia'}active open{/if}">
 					<a class="nav-link " href="{$WEB_ROOT}/evidencia">
 						<i class="fa fa-file-o"></i>
 						<span class="title">Evidencias</span>
 					</a>
 				</li>
-			{/if}
+			{/if*}
         </ul>
 	</li>
 	{/if}
