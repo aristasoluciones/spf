@@ -250,11 +250,9 @@ class Victima extends main
         $iDisplayLength =  $iDisplayLength < 0 ? $total : $iDisplayLength;
         $iDisplayStart = intval($_REQUEST['start']);
         $draw = intval($_REQUEST['draw']);
-        $end = $iDisplayStart + $iDisplayLength;
-        $end = $end > $total ? $total : $end;
         $data['recordsTotal'] =  $total;
 
-        $sqlLim = "LIMIT ".$iDisplayStart.", ".$end;
+        $sqlLim = "LIMIT ".$iDisplayStart.", ".$iDisplayLength;
 
         $sql  = 'select * from victima  where 1  ' . $add . $sqlLim;
         $this->Util()->DB()->setQuery($sql);

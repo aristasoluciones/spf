@@ -8,6 +8,7 @@ var TableDonePolls = function () {
     }
     var handleDemo1 = function () {
         var grid = new Datatable();
+        grid.setAjaxParam('type','enumerate');
         grid.init({
             src: $("#datatable_ajax"),
             onSuccess: function (grid, response) {
@@ -81,7 +82,6 @@ var TableDonePolls = function () {
                 "pageLength": 10, // default record count per page
                 "ajax": {
                     "url": WEB_ROOT + '/ajax/poll.php', // ajax source
-                    "data": {type: 'enumerate'}
                 },
                 "order": [
                     [1, "asc"]
