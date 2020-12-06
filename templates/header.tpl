@@ -31,13 +31,6 @@
                         <li><a href="javascript:;" onclick="LoadLocalLanguage()" title="Cambiar lenguaje predeterminada"><i class="fa fa-refresh"></i> Cambiar lenguaje</a></li>
                     </ul>
                 </li>
-                <!-- END USER LOGIN DROPDOWN -->
-				<li class="dropdown dropdown-quick-sidebar-toggler">
-                                <a href="javascript:;" class="dropdown-toggle">
-                                    <i class="icon-logout"></i>
-                                </a>
-                            </li>
-
             </ul>
 		</div>
          <!-- END TOP NAVIGATION MENU -->
