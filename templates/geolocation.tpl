@@ -1,25 +1,25 @@
 <!-- BEGIN PAGE HEADER-->
 	<div class="page-bar">
-		<div class="span12">           
+		<div class="span12">
 			<h3 class="page-title">
 				<!--Dependencia-->
 			</h3>
 		 <ul class="page-breadcrumb">
 			<li>
 				<i class="icon-home"></i>
-				<a href="index.html">Inicio</a> 
+				<a href="{$WEB_ROOT}">{$translates.menu.inicio.label}</a>
 				<i class="fa fa-circle"></i>
 			</li>
 			<li>
-				<a href="#">Catalogos</a>
+				<a href="#">{$translates.menu.encuestaaplicada.label}</a>
 				<i class="fa fa-circle"></i>
 			</li>
-			<li><a href="#">Geolocalización</a></li>
+			<li><a href="#">{$translates.menu.encuestaaplicada.child.geolocalizacion.label}</a></li>
 		</ul>
 		</div>
 	</div>
 	 <!-- BEGIN PAGE TITLE-->
-		<h1 class="page-title"><p style="red"> Geolocalización de insidencias en Chiapas</p>
+		<h1 class="page-title"><p style="red">{$translates.menu.encuestaaplicada.child.geolocalizacionTitle.label}</p>
 			<small></small>
 		</h1>
 	 <!-- END PAGE TITLE-->
@@ -31,10 +31,10 @@
 			<div class="portlet-title">
 				<div class="caption">
 				   <i class="icon-settings font-green"></i>
-				   <span class="caption-subject font-green sbold">Geolocalización</span>
-				 </div>  
+				   <span class="caption-subject font-green sbold">{$translates.menu.encuestaaplicada.child.geolocalizacion.label}</span>
+				 </div>
 				<div class="actions">
-				    <!-- <div class="btn-group btn-group-devided" data-toggle="buttons"> 
+				    <!-- <div class="btn-group btn-group-devided" data-toggle="buttons">
 					<a href="javascript:;" class="btn btn-circle sbold green" onClick="AddReg()">
 						Agregar <i class="fa fa-plus"></i>
 					</a>
@@ -67,7 +67,7 @@
 								<i class="icon-cloud-upload"></i> Exportar CSV</a>
 						</li>
 					 </ul>
-					</div>-->	
+					</div>-->
 				</div>
 			</div>
 			<div class="portlet-body" id="tblContent">
@@ -78,4 +78,4 @@
 			</div>
 		</div>
 	</div>
-	<!-- END PAGE CONTENT-->	
+	<!-- END PAGE CONTENT-->

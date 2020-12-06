@@ -89,6 +89,42 @@
       "homepage": {
         "label": "Chinamtak´in ya yak tailel te bi´til ya yich komel yu´un swenta ust´inel ta antsetike"
       }
+    },
+    "menu": {
+      "inicio": {
+        "label": "Slik´ebal"
+      },
+      "confifguracion": {
+        "label": "Bin t´il ya yich´ jpasel"
+      },
+      "catalogo": {
+        "label": "Sjunabil",
+        "child": {
+          "encuesta":{
+            "label": "Junetik"
+          }
+        }
+      },
+      "encuestaaplicada": {
+        "label": "Slajibal junetik",
+        "child": {
+          "nueva": {
+            "label": "Joch´ibal junetik"
+          },
+          "encuestarealizada": {
+            "label": "Pasbilix te junetike"
+          },
+          "geolocalizacion": {
+            "label": "Tsabil te slumale"
+          },
+          "geolocalizacionTitle": {
+            "label": "Tsabil te slumale ta chiapas"
+          },
+          "estadistica": {
+            "label": "Yak´snael stojol ya t´alul"
+          }
+        }
+      }
     }
   }
 ]

@@ -7,7 +7,7 @@
 		 <ul class="page-breadcrumb">
 			<li>
 				<i class="icon-home"></i>
-				<a href="index.html">Inicio</a>
+				<a href="index.html">{$translates.menu.inicio.label}</a>
 				<i class="fa fa-circle"></i>
 			</li>
 		</ul>

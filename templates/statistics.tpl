@@ -1,19 +1,20 @@
 <!-- BEGIN PAGE HEADER-->
 	<div class="page-bar">
-		<div class="span12">           
+		<div class="span12">
 			<h3 class="page-title">
 				<!--Dependencia-->
 			</h3>
 		 <ul class="page-breadcrumb">
 			<li>
 				<i class="icon-home"></i>
-				<a href="{$WEB_ROOT}">Inicio</a>
+				<a href="{$WEB_ROOT}">{$translates.menu.inicio.label}</a>
 				<i class="fa fa-circle"></i>
 			</li>
 			<li>
-				<a href="#">Encuestas</a>
+				<a href="#">{$translates.menu.encuestaaplicada.label}</a>
 				<i class="fa fa-circle"></i>
 			</li>
+			 <li><a href="#">{$translates.menu.encuestaaplicada.child.estadistica.label}</a></li>
 		 </ul>
 		</div>
 	</div>
@@ -30,8 +31,8 @@
 			<div class="portlet-title">
 				<div class="caption">
 				   <i class="icon-settings font-green"></i>
-				   <span class="caption-subject font-green sbold">Estadisticas </span>
-				 </div>  
+				   <span class="caption-subject font-green sbold">{$translates.menu.encuestaaplicada.child.estadistica.label}</span>
+				 </div>
 				<div class="actions">
 				</div>
 			</div>
@@ -42,4 +43,4 @@
 			</div>
 		</div>
 	</div>
-	<!-- END PAGE CONTENT-->	
+	<!-- END PAGE CONTENT-->

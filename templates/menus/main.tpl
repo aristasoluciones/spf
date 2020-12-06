@@ -9,7 +9,7 @@
     <li class="nav-item start {if $page == 'homepage'}active{/if}">
         <a href="{$WEB_ROOT}" class="nav-link nav-toggle">
         <i class="fa fa-home"></i>
-        <span class="title">Inicio {if $local_language > 0}({$local_language_name}) {/if}</span>
+        <span class="title">{$translates.menu.inicio.label}</span>
         {if $page == "homepage"}
 		 <span class="selected"></span>
         <span class="arrow open"></span>
@@ -96,7 +96,7 @@
 	<li class="nav-item {if $page =='report' || $page =='geolocation' || $page =='do-poll' || $page =='done-polls' || $page == 'statistics'}active open{/if}">
 		<a href="javascript:;" class="nav-link nav-toggle">
 			<i class="icon-list"></i>
-			<span class="title">Encuestas Aplicadas</span>
+			<span class="title">{$translates.menu.encuestaaplicada.label}</span>
 			{if $page =='report' || $page =='geolocation' || $page =='do-poll' || $page =='done-polls' || $page == 'statistics'}
 				<span class="selected"></span>
 				<span class="arrow open"></span>
@@ -109,7 +109,7 @@
 				<li class="nav-item {if $page=='do-poll'}active open{/if}">
 					<a class="nav-link " href="{$WEB_ROOT}/do-poll">
 						<i class="icon-list"></i>
-						<span class="title">Nueva encuesta</span>
+						<span class="title">{$translates.menu.encuestaaplicada.child.nueva.label}</span>
 					</a>
 				</li>
 			{/if}
@@ -117,21 +117,15 @@
 				<li class="nav-item {if $page=='done-polls'}active open{/if}">
 					<a class="nav-link " href="{$WEB_ROOT}/done-polls">
 						<i class="icon-list"></i>
-						<span class="title">Encuestas realizadas</span>
+						<span class="title">{$translates.menu.encuestaaplicada.child.encuestarealizada.label}</span>
 					</a>
 				</li>
 			{/if}
-			<!-- class="nav-item {if $page=='poll' || $page=='poll-analytics'}active open{/if}">
-				<a class="nav-link " href="{$WEB_ROOT}/poll">
-					<i class="icon-list"></i>
-					<span class="title">Estadistica</span>
-				</a>
-			</li-->
 			{if in_array(25,$privilegios) or $Usr.rolId eq 1}
 				<li class="nav-item {if $page =='geolocation'}active open{/if}" >
 					<a class="nav-link " href="{$WEB_ROOT}/geolocation">
 						<i class="icon-map"></i>
-						<span class="title">Geolocalizacion</span>
+						<span class="title">{$translates.menu.encuestaaplicada.child.geolocalizacion.label}</span>
 					</a>
 				</li>
 			{/if}
@@ -139,7 +133,7 @@
 				<li class="nav-item {if $page=='statistics'}active open{/if}" >
 					<a class="nav-link " href="{$WEB_ROOT}/statistics">
 						<i class="icon-bar-chart"></i>
-						<span class="title">Estadistica</span>
+						<span class="title">{$translates.menu.encuestaaplicada.child.estadistica.label}</span>
 					</a>
 				</li>
 			{/if}

@@ -7,15 +7,15 @@
 		 <ul class="page-breadcrumb">
 			<li>
 				<i class="icon-home"></i>
-				<a href="{$WEB_ROOT}">Inicio</a>
+				<a href="{$WEB_ROOT}">{$translates.menu.inicio.label}</a>
 				<i class="fa fa-circle"></i>
 			</li>
 			<li>
-				<a href="{$WEB_ROOT}/done-polls">Encuestas</a>
+				<a href="{$WEB_ROOT}/done-polls">{$translates.menu.encuestaaplicada.label}</a>
 				<i class="fa fa-circle"></i>
 			</li>
 			 <li>
-				 <a href="{$WEB_ROOT}/done-polls">Encuestas Realizadas</a>
+				 <a href="{$WEB_ROOT}/done-polls">{$translates.menu.encuestaaplicada.child.encuestarealizada.label}</a>
 				 <i class="fa fa-circle"></i>
 			 </li>
 		 </ul>
@@ -35,7 +35,7 @@
 				<div class="portlet-title">
 					<div class="caption">
 						<i class="icon-layers font-red"></i>
-						<span class="caption-subject font-red bold uppercase">Encuestas Realizadas</span>
+						<span class="caption-subject font-red bold uppercase">{$translates.menu.encuestaaplicada.child.encuestarealizada.label}</span>
 					</div>
 				</div>
 				<div class="portlet-body">

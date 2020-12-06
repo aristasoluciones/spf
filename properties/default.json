@@ -89,6 +89,42 @@
       "homepage": {
         "label": "Sistema de detención, prevención, atención y medición de riesgo feminicida"
       }
+    },
+    "menu": {
+      "inicio": {
+        "label": "Inicio"
+      },
+      "confifguracion": {
+        "label": "Configuraciones"
+      },
+      "catalogo": {
+        "label": "Catalogos",
+        "child": {
+          "encuesta":{
+            "label": "Encuestas"
+          }
+        }
+      },
+      "encuestaaplicada": {
+        "label": "Encuestas aplicadas",
+        "child": {
+          "nueva": {
+            "label": "Nueva encuesta"
+          },
+          "encuestarealizada": {
+            "label": "Encuestas realizada"
+          },
+          "geolocalizacion": {
+            "label": "Geolocalización"
+          },
+          "geolocalizacionTitle": {
+            "label": "Geolocalización de insidencias en chiapas"
+          },
+          "estadistica": {
+            "label": "Estadistica"
+          }
+        }
+      }
     }
   }
 ]
