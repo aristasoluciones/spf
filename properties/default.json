@@ -57,6 +57,9 @@
       },
       "endStep": {
         "label": "Ver resultado"
+      },
+      "Fecha incidente": {
+        "label": "Fecha incidente"
       }
     },
     "question_option": {

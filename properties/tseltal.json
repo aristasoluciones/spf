@@ -57,6 +57,9 @@
       },
       "endStep": {
         "label": "Yilel slajibal jun"
+      },
+      "fechaIncidente": {
+        "label": "Bin yorail ju"
       }
     },
     "question_option": {

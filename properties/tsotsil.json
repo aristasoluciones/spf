@@ -57,6 +57,9 @@
       },
       "endStep": {
         "label": "Ver resultado(tsotsil)"
+      },
+      "fechaIncidente": {
+        "label": "Fecha incidente(tsotsil)"
       }
     },
     "question_option": {
