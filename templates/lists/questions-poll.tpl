@@ -69,7 +69,7 @@
                 <div align="center" id="txtSuccMsgQuestion{$info.encuestaId}" class="alert alert-success" style="display:none"></div>
             </div>
             <div class="col-md-12">
-                <button type="submit" class="btn green btnPoll" >{if $post}Actualizar{else}Guardar{/if}</button>
+                <button type="submit" class="btn green btnPoll" >{if $post}{$translates.personal_data.saveButton.label}{else}{$translates.personal_data.updateButton.label}{/if}</button>
             </div>
         </div>
     </div>

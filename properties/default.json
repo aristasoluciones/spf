@@ -58,7 +58,7 @@
       "endStep": {
         "label": "Ver resultado"
       },
-      "Fecha incidente": {
+      "fechaIncidente": {
         "label": "Fecha incidente"
       }
     },
