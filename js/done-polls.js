@@ -6,6 +6,28 @@ var TableDonePolls = function () {
             autoclose: true
         });
     }
+    switch (getCookie('local_language')) {
+        case '2':
+            var columns =  [
+                    { "title": "Bi´il", "data": "nombre" },
+                    { "title": "Sjolsbil ja tat","data": "apaterno" },
+                    { "title": "Sjolsbil ja me", "data": "amaterno" },
+                    { "title": "Banti ja´chemat", "data": "municipio.nom_agem" },
+                    { "title": "Tsi´bayel", "data": "comentarioAdicional" },
+                    { "title": "", "data": null },
+                ];
+        break;
+        default:
+            var columns = [
+                { "title": "Nombre", "data": "nombre" },
+                { "title": "Apellido paterno","data": "apaterno" },
+                { "title": "Apellido materno", "data": "amaterno" },
+                { "title": "Municipio", "data": "municipio.nom_agem" },
+                { "title": "Comentarios", "data": "comentarioAdicional" },
+                { "title": "", "data": null },
+            ];
+        break
+    }
     var handleDemo1 = function () {
         var grid = new Datatable();
         grid.setAjaxParam('type','enumerate');
@@ -32,14 +54,7 @@ var TableDonePolls = function () {
 
                 // save datatable state(pagination, sort, etc) in cookie.
                 "bStateSave": true,
-                "columns": [
-                    { "title": "Nombre", "data": "nombre" },
-                    { "title": "Apellido paterno","data": "apaterno" },
-                    { "title": "Apellido materno", "data": "amaterno" },
-                    { "title": "Municipio", "data": "municipio.nom_agem" },
-                    { "title": "Comentarios", "data": "comentarioAdicional" },
-                    { "title": "", "data": null },
-                ],
+                "columns": columns,
                 "columnDefs": [
                     {
                         "targets": -1,
