@@ -5,7 +5,7 @@
         "label": "Snabeyel skotol a bi´il"
       },
       "nombre": {
-        "label": "Nombre(tseltal)"
+        "label": "Abi´il"
       },
       "firstLastName": {
         "label": "Apellido paterno(tseltal)"
@@ -17,34 +17,34 @@
         "label": "Edad(tseltal)"
       },
       "estadoCivil": {
-        "label": "Estado civil(tseltal)"
+        "label": "Nujpenatbal"
       },
       "nacionalidad": {
-        "label": "Nacionalidad(tseltal)"
+        "label": "Smukulum"
       },
       "gradoEstudio": {
-        "label": "Grado de estudio(tseltal)"
+        "label": "Saljibal nopjun"
       },
       "ocupacion": {
-        "label": "Ocupacion(tseltal)"
+        "label": "Banti x-atejat"
       },
       "lugarDeNacimiento": {
-        "label": "Municipio de nacimiento(tseltal)"
+        "label": "Ja lumal te banti jtojkemat"
       },
       "municipio": {
-        "label": "Municipio donde habita(tseltal)"
+        "label": "Banti ja´chemat"
       },
       "colonia": {
-        "label": "Colonia , ejido o localidad donde vive(tseltal)"
+        "label": "Ja lumal"
       },
       "timeRelacion": {
-        "label": "Tiempo de relación con su pareja(tseltal)"
+        "label": "Jayib jawil awiko sok ajoy"
       },
       "numHijo": {
-        "label": "Cuantos Hijos tiene(tseltal)"
+        "label": "Jayeb jtul te awalatake"
       },
       "latLng": {
-        "label": "Ubicar en el mapa el lugar aproximado de los hechos(tseltal)"
+        "label": "Ja lumal"
       },
       "fieldRequired": {
         "label": "Campos requeridos(tseltal)"
@@ -61,30 +61,30 @@
     },
     "question_option": {
       "siempre": {
-        "label": "Siempre(tseltal)"
+        "label": "Spisil ora"
       },
       "frecuentemente": {
-        "label": "Frecuentemente(tseltal)"
+        "label": "Ts´in ts´in ajk´"
       },
       "masdedosveces": {
-        "label": "Mas de dos veces(tseltal)"
+        "label": "Cheb k´aal"
       },
       "porlomenosunavez": {
-        "label": "Por lo menos una vez(tseltal)"
+        "label": "Ju káal"
       },
       "nunca": {
-        "label": "Nunca(tseltal)"
+        "label": "Ma´yuk"
       },
       "si": {
-        "label": "Si(tseltal)"
+        "label": "Jech"
       },
       "no": {
-        "label": "No(tseltal)"
+        "label": "Ma´yuk"
       }
     },
     "static_text": {
       "homepage": {
-        "label": "Sistema de detención, prevención, atención y medición de riesgo feminicida(tseltal)"
+        "label": "Chinamtak´in ya yak tailel te bi´til ya yich komel yu´un swenta ust´inel ta antsetike"
       }
     }
   }

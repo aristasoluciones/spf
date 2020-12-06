@@ -76,10 +76,10 @@
         "label": "Nunca(tsotsil)"
       },
       "si": {
-        "label": "Si(tsotsil)"
+        "label": "Hoy"
       },
       "no": {
-        "label": "No(tsotsil)"
+        "label": "Muyuk"
       }
     },
     "static_text": {
