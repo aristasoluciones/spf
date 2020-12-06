@@ -102,6 +102,7 @@ $name_file = $_SESSION['local_language'] > 0 ? $local_language[$_SESSION['local_
 $file  = DOC_ROOT . "/properties/".$name_file.".json";
 $string = file_get_contents($file);;
 $headers = json_decode($string, true);
+$smarty->assign('local_language_name', $local_language[$_SESSION['local_language']]);
 $smarty->assign('translates', $headers[0]);
 $smarty->assign('local_language',$_SESSION['local_language']);
 $smarty->assign('DOC_ROOT',DOC_ROOT);

@@ -9,7 +9,7 @@
     <li class="nav-item start {if $page == 'homepage'}active{/if}">
         <a href="{$WEB_ROOT}" class="nav-link nav-toggle">
         <i class="fa fa-home"></i>
-        <span class="title">Inicio</span>
+        <span class="title">Inicio {if $local_language > 0}({$local_language_name}) {/if}</span>
         {if $page == "homepage"}
 		 <span class="selected"></span>
         <span class="arrow open"></span>
