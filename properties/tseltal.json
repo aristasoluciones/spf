@@ -8,13 +8,13 @@
         "label": "Abi´il"
       },
       "firstLastName": {
-        "label": "Apellido paterno(tseltal)"
+        "label": "Sjol sbi´il ja me"
       },
       "secondLastName": {
-        "label": "Apellido materno(tseltal)"
+        "label": "Sjol sbi´il ja tat"
       },
       "edad": {
-        "label": "Edad(tseltal)"
+        "label": "Jawabilal"
       },
       "estadoCivil": {
         "label": "Nujpenatbal"
@@ -50,10 +50,10 @@
         "label": "Campos requeridos(tseltal)"
       },
       "saveButton": {
-        "label": "Guardar(tseltal)"
+        "label": "S´kejel(tseltal)"
       },
       "updateButton": {
-        "label": "Actualizar(tseltal)"
+        "label": "S´kejel(tseltal)"
       },
       "endStep": {
         "label": "Yilel slajibal jun"
