@@ -134,6 +134,15 @@ class Encuesta extends Main
 			$results = $this->Util()->DB()->GetResult();
 			$info['poll_translate'] = count($results) ? $results : [];
 		}
+
+		if ($_SESSION['local_language'] > 0) {
+			$sql = "select text from poll_translate where poll_id = '" . $info['idReg'] . "' and language_id=".$_SESSION['local_language'];
+			$this->Util()->DB()->setQuery($sql);
+			$row = $this->Util()->DB()->GetRow();
+			if($row) {
+				$info['translate_name'] = $row['text'];
+			}
+		}
 		return $info;
 	}//Info
 

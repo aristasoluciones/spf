@@ -6,7 +6,7 @@
     <div class="mt-element-list">
         <div class="mt-list-head list-default green-seagreen">
             <div class="list-head-title-container">
-                <h3 class="list-title uppercase sbold">{$info.nombre}</h3>
+                <h3 class="list-title uppercase sbold">{if $local_language > 0}{$info.nombre}{else}{$info.translate_name}{/if}</h3>
             </div>
         </div>
         <div class="mt-list-container list-default">
