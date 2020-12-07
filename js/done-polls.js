@@ -17,6 +17,16 @@ var TableDonePolls = function () {
                     { "title": "", "data": null },
                 ];
         break;
+        case '2':
+            var columns =  [
+                { "title": "Ja´vi", "data": "nombre" },
+                { "title": "Sjol sbi j´a tot","data": "apaterno" },
+                { "title": "Sjol sbi j´a me´e", "data": "amaterno" },
+                { "title": "Banti ja´chemat", "data": "municipio.nom_agem" },
+                { "title": "Tsi´bayel", "data": "comentarioAdicional" },
+                { "title": "", "data": null },
+            ];
+            break;
         default:
             var columns = [
                 { "title": "Nombre", "data": "nombre" },

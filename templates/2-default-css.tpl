@@ -35,10 +35,10 @@
 {elseif $miColor eq 5}
 	<link href="{$WEB_ROOT}/assets/css/themes/grey.css" rel="stylesheet" type="text/css" id="style_color"/>
 {else}
-	<link href="{$WEB_ROOT}/assets/layouts/layout/css/themes/light2.min.css" rel="stylesheet" type="text/css" id="style_color" />
+	<link href="{$WEB_ROOT}/assets/layouts/layout/css/themes/light2.min.css?{$time}" rel="stylesheet" type="text/css" id="style_color" />
 {/if}
 
-<link href="{$WEB_ROOT}/assets/layouts/layout/css/custom.css" rel="stylesheet" type="text/css" />
+<link href="{$WEB_ROOT}/assets/layouts/layout/css/custom.css?{$time}" rel="stylesheet" type="text/css" />
 <link rel="shortcut icon" href="favicon.ico" />
 {/if}
 

@@ -6,7 +6,7 @@
 <script src="{$WEB_ROOT}/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
 <script src="{$WEB_ROOT}/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
 
-<script src="http://maps.google.com/maps/api/js?key=AIzaSyDQbsmLCLv2N62EKY_Jj20MTp9D8aZFJg0" type="text/javascript"></script>
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyDlV1OwGl0PMMlouuEueutTtnHMXm7W884" type="text/javascript"></script>
 
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
