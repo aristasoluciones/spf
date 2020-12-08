@@ -2,7 +2,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <a href="javascript:;" class="close" data-dismiss="modal" aria-hidden="true"></a>
-            <h4 class="modal-title">Violentometro</h4>
+            <h4 class="modal-title">Indicador de riesgo feminicida</h4>
         </div>
         <div class="modal-body">
             <div id="modal-chart" style="min-height: 250px"></div>

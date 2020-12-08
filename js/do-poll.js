@@ -56,6 +56,7 @@ $(window).load(function() {
 
     $('#colonia').select2( { width: '100%', search: false,  minimumResultsForSearch: Infinity });
     Select2Cascade($('#municipio'), $('#colonia'), 'https://gaia.inegi.org.mx/wscatgeo',optionsChild, options)
+
 });
 $(function () {
     $('.nav-pills > li a[title]').tooltip()

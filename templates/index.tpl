@@ -17,14 +17,14 @@
 	<!-- BEGIN HEADER & CONTENT DIVIDER -->
      <div class="clearfix"> </div>
     <!-- END HEADER & CONTENT DIVIDER -->
-	
+
 	<!-- <div class="container"> --> <!-- agregar container para page boxed-->
 	<!-- BEGIN CONTAINER -->
 	<div class="page-container">
 		<div class="page-sidebar-wrapper">
 		  <!-- BEGIN SIDEBAR -->
 			{include file="{$DOC_ROOT}/templates/menus/main.tpl"}
-			
+
 		</div>
 		<!-- END SIDEBAR -->
 		<!-- BEGIN CONTENT -->
@@ -46,14 +46,14 @@
 	{include file="{$DOC_ROOT}/templates/footer.tpl"}
     <!-- </div> -->
 	{include file="{$DOC_ROOT}/templates/3-default-js.tpl"}
-    
+
 	<script type="text/javascript">
-		jQuery(document).ready(function() {    
-		   App.init(); // initlayout and core plugins		   
+		jQuery(document).ready(function() {
+		   App.init(); // initlayout and core plugins
 		});
 	</script>
-   
-   </div> 
-   <!-- END WRAPPER-->   
+
+   </div>
+   <!-- END WRAPPER-->
 </body>
 </html>
