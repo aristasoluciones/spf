@@ -120,7 +120,7 @@
                 <div class="row">
                     <input type="hidden" name="latLng" id="latLng" value="{$post.cordenada}">
                     <label for=""><span class="reqIcon">* </span> {$translates.personal_data.latLng.label}</label>
-                    <div class="col-md-12" id="map_canvas" style="height:500px; width: 100%">
+                    <div class="col-md-12" id="map" style="height:500px; width: 100%">
                     </div>
                 </div>
             </div>
