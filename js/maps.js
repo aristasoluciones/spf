@@ -19,9 +19,6 @@ var CustomerMaps =  function(){
             }
             var position =  new google.maps.LatLng(currentLaLn[0],  currentLaLn[1]);
             var marker = new google.maps.Marker({ position, map, draggable:true, title:"Arrastrar" });
-           /* map.addListener("click",function (e) {
-                moveBus(e.latLng, marker, map);
-            });*/
             function setLatLngInput(lat,lng){
                 if($("#latLng").length)
                     $("#latLng").val(lat + "," + lng);

@@ -27,54 +27,27 @@
 
 <!-- BEGIN PAGE CONTENT-->
 	<div class="row">
-		<div class="portlet light portlet-fit portlet-datatable bordered">
-			<div class="portlet-title">
-				<div class="caption">
-				   <i class="icon-settings font-green"></i>
-				   <span class="caption-subject font-green sbold">{$translates.menu.encuestaaplicada.child.geolocalizacion.label}</span>
-				 </div>
-				<div class="actions">
-				    <!-- <div class="btn-group btn-group-devided" data-toggle="buttons">
-					<a href="javascript:;" class="btn btn-circle sbold green" onClick="AddReg()">
-						Agregar <i class="fa fa-plus"></i>
-					</a>
-					</div> -->
-					<!--<div class="btn-group" >
-					 <a class="btn red btn-outline btn-circle" href="javascript:;" data-toggle="dropdown">
-                       <i class="fa fa-share"></i>
-                       <span class="hidden-xs">Acciones</span>
-                       <i class="fa fa-angle-down"></i>
-                     </a>
-					 <ul class="dropdown-menu pull-right" id="sample_3_tools" >
-						<li>
-							<a href="javascript:;" data-action="0" class="tool-action">
-							<i class="icon-printer"></i> Imprimir</a>
-                        </li>
-						<li>
-							<a href="javascript:;" data-action="1" class="tool-action">
-								<i class="icon-check"></i> Copiar</a>
-						</li>
-						<li>
-							<a href="javascript:;" data-action="2" class="tool-action">
-								<i class="icon-doc"></i> Exportar PDF</a>
-						</li>
-						<li>
-							<a href="javascript:;" data-action="3" class="tool-action">
-								<i class="icon-paper-clip"></i> Exportar Excel</a>
-						</li>
-						<li>
-							<a href="javascript:;" data-action="4" class="tool-action">
-								<i class="icon-cloud-upload"></i> Exportar CSV</a>
-						</li>
-					 </ul>
-					</div>-->
+		<div class="col-sm-12">
+			<div class="portlet light portlet-fit portlet-datatable bordered">
+				<div class="portlet-title">
+					<div class="caption">
+					   <i class="icon-settings font-green"></i>
+					   <span class="caption-subject font-green sbold">{$translates.menu.encuestaaplicada.child.geolocalizacion.label}</span>
+					 </div>
 				</div>
-			</div>
-			<div class="portlet-body" id="tblContent">
-			 <div id="contact-map">
-			 <div id="map_canvas" style="width:1500px; height:500px"></div>
-			 <!-- END-Google Map -->
-			</div>
+				<div class="portlet-body" id="tblContent">
+				 <div id="contact-map" style="position: relative">
+				 <div id="map_canvas" style="width:100%; height:600px"></div>
+				 <div style="position: absolute; top: 60px; left: 16px; width: 250px; height: 100px; background-color: white; padding: 16px">
+					 <ul class="list-unstyled">
+						 <li><i class="fa fa-circle" style="color:#808080"></i> Pendiente por finalizar</li>
+						 <li><i class="fa fa-circle" style="color:#ffff00"></i> Riesgo de violencia baja</li>
+						 <li><i class="fa fa-circle" style="color:#ffa500"></i> Riesgo de violencia moderada</li>
+						 <li><i class="fa fa-circle" style="color:#ff0000"></i> Riesgo de violencia severa</li>
+					 </ul>
+				 </div>
+				</div>
+				</div>
 			</div>
 		</div>
 	</div>

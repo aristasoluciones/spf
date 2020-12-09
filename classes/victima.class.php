@@ -278,8 +278,20 @@ class Victima extends main
         $result = $this->Util()->DB()->GetResult();
         foreach($result as $key => $value){
            $latLng =  explode(",",$value["cordenada"]);
+           $this->setVictimaId($value['victimaId']);
+           $resultPoll = $this->getResultPollByVictima();
+
+           switch ($resultPoll) {
+               case 'Baja': $colorInMap = '#ffff00'; break;
+               case 'Moderada': $colorInMap = '#ffa500'; break;
+               case 'Severa': $colorInMap = '#ff0000'; break;
+               default: $colorInMap = '#808080'; break;
+
+           }
            $result[$key]["lat"] = $latLng[0];
            $result[$key]["lng"] = $latLng[1];
+           $result[$key]["resultPoll"] = $resultPoll;
+           $result[$key]["colorInMap"] = $colorInMap;
         }
         return $result;
 
@@ -293,7 +305,7 @@ class Victima extends main
         $result = $this->Util()->DB()->GetResult();
 
         if (count($result) <= 0)
-             return 0;
+             return 'Pendiente';
         $porcentajes = array_column($result, 'puntos');
         $porcentaje = array_sum($porcentajes) / count($result);
 
