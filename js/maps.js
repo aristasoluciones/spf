@@ -26,14 +26,16 @@ var CustomerMaps =  function(){
                 if($("#latLng").length)
                     $("#latLng").val(lat + "," + lng);
 
+                position =  new google.maps.LatLng(lat,  lng);
+                marker.setPosition(position);
+
             }
             function moveBus(latLng,marker, map) {
                 marker.setPosition( latLng );
                 map.panTo(latLng);
                 setLatLngInput(latLng.lat(),latLng.lng());
             }
-            google.maps.event.addListener(marker,"drag",function (event) {
-                console.log(event);
+            google.maps.event.addListener(marker, "drag", function (event) {
                 setLatLngInput(event.latLng.lat(),event.latLng.lng());
             });
             map.addListener('center_changed', function() {

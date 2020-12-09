@@ -85,14 +85,13 @@ $(function () {
         function () {
           var form = $(this).parents("form:first");
           var frm =  new FormData(form[0]);
-          frm.append("tipoContexto",$("#tipoContexto").val());
+          frm.append("tipoContexto", $("#tipoContexto").val());
           $.ajax({
               type: "POST",
               url: AJAX_PATH,
               data: frm,
               processData:false,
               contentType:false,
-              dataType: 'json',
               beforeSend: function(){
               },
               success: function(response) {
