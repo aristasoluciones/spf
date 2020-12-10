@@ -105,6 +105,15 @@
           }
         }
       },
+      "documentation": {
+        "label": "Manuales",
+        "child": {
+          "userDoc":{
+            "label": "Manual de usuario",
+            "file": "manual_usuario.pdf"
+          }
+        }
+      },
       "encuestaaplicada": {
         "label": "Encuestas aplicadas",
         "child": {

@@ -105,6 +105,15 @@
           }
         }
       },
+      "documentation": {
+        "label": "Sjunal",
+        "child": {
+          "userDoc":{
+            "label": "Sjunal antsi-winiketik",
+            "file": "sjunal.pdf"
+          }
+        }
+      },
       "encuestaaplicada": {
         "label": "Slajibal junetik",
         "child": {

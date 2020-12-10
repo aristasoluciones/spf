@@ -47,6 +47,8 @@
         'done-polls',
         'statistics',
 
+		'documentation',
+
 
 
 	);

@@ -105,6 +105,15 @@
           }
         }
       },
+      "documentation": {
+        "label": "Svunal",
+        "child": {
+          "userDoc":{
+            "label": "Svunal antsi-winiketik",
+            "file": "svunal.pdf"
+          }
+        }
+      },
       "encuestaaplicada": {
         "label": "xslajeebal xjuneti´k",
         "child": {

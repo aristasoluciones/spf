@@ -140,6 +140,30 @@
 		</ul>
 	</li>
 	{/if}
+	{if in_array(43,$privilegios) || $Usr.rolId eq 1}
+		<li class="nav-item {if $page =='documentation'}active open{/if}">
+			<a href="javascript:;" class="nav-link nav-toggle">
+				<i class="fa fa-file-archive-o"></i>
+				<span class="title">{$translates.menu.documentation.label}</span>
+				{if $page =='documentation'}
+					<span class="selected"></span>
+					<span class="arrow open"></span>
+				{else}
+					<span class="arrow"></span>
+				{/if}
+			</a>
+			<ul class="sub-menu">
+				{if in_array(44,$privilegios) or $Usr.rolId eq 1}
+					<li class="nav-item {if $page=='documentation'}active open{/if}">
+						<a class="nav-link " href="{$WEB_ROOT}/documentation">
+							<i class="icon-list"></i>
+							<span class="title">{$translates.menu.documentation.child.userDoc.label}</span>
+						</a>
+					</li>
+				{/if}
+			</ul>
+		</li>
+	{/if}
 </ul>
 </div>
 <!-- END SIDEBAR MENU

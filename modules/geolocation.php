@@ -1,3 +1,3 @@
 <?php
-$user->AllowAccess(19);
-$user->AllowAccess(25);
+$user->AllowAccess(43);
+$user->AllowAccess(44);
