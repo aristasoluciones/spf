@@ -112,8 +112,8 @@
         "label": "Sjunal",
         "child": {
           "userDoc":{
-            "label": "Sjunal antsi-winiketik",
-            "nameBtn": "Svunal antsi-winiketik",
+            "label": "Ojlanel sjunal antsi-winiketik",
+            "nameBtn": "Ojlanel sjunal antsi-winiketik",
             "file": "sjunal.pdf"
           }
         }
