@@ -66,13 +66,16 @@
       "siempre": {
         "label": "Siempre(tsotsil)"
       },
+      "casisiempre": {
+        "label": "Casi siempre"
+      },
       "frecuentemente": {
         "label": "Frecuentemente(tsotsil)"
       },
-      "masdedosveces": {
+      "enocasiones": {
         "label": "Mas de dos veces(tsotsil)"
       },
-      "porlomenosunavez": {
+      "casinunca": {
         "label": "Por lo menos una vez(tsotsil)"
       },
       "nunca": {

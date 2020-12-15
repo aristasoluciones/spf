@@ -66,18 +66,22 @@
       "siempre": {
         "label": "Siempre"
       },
+      "casisiempre": {
+        "label": "Casi siempre"
+      },
       "frecuentemente": {
         "label": "Frecuentemente"
       },
-      "masdedosveces": {
-        "label": "Mas de dos veces"
+      "enocasiones": {
+        "label": "En ocasiones"
       },
-      "porlomenosunavez": {
-        "label": "Por lo menos una vez"
+      "casinunca": {
+        "label": "Casi nunca"
       },
       "nunca": {
         "label": "Nunca"
       },
+
       "si": {
         "label": "Si"
       },

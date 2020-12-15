@@ -227,7 +227,7 @@ class Question extends Encuesta
         return  $this->Util()->DB()->GetSingle();
     }
     public function generateResultPollAlternative($pollVictimaId){
-        $frecuencias = ["Siempre"=>1,"Frecuentemente"=>.75,"Mas de dos veces"=>.50,"Por lo menos una vez"=>.25,"Nunca"=>0];
+        $frecuencias = ["Siempre"=>1,"Casi siempre"=>.80,"Frecuentemente"=>.60,"En ocasiones"=>.40,"Casi nunca"=>.20,"Nunca"=>0];
         $sumMat = 0;
         $totalPreguntas =0;
 

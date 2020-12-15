@@ -66,13 +66,16 @@
       "siempre": {
         "label": "Spisil ora"
       },
+      "casisiempre": {
+        "label": "Casi siempre"
+      },
       "frecuentemente": {
         "label": "Ts´in ts´in ajk´"
       },
-      "masdedosveces": {
+      "enocasiones": {
         "label": "Cheb k´aal"
       },
-      "porlomenosunavez": {
+      "casinunca": {
         "label": "Ju káal"
       },
       "nunca": {

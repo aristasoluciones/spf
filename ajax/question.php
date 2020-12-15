@@ -59,12 +59,14 @@
 				$o3 = $r[2];
 				$o4 = $r[3];
 				$o5 = $r[4];
+                $o6 = $r[5];
 
 				$smarty->assign('o1',$o1);
 				$smarty->assign('o2',$o2);
 				$smarty->assign('o3',$o3);
 				$smarty->assign('o4',$o4);
 				$smarty->assign('o5',$o5);
+                $smarty->assign('o6',$o6);
 				$smarty->assign('de',$de);
 				$smarty->assign('a',$a);
 				echo 'ok[#]';
@@ -126,7 +128,7 @@
 				$idReg = $_POST['encuestaId'];
 
 				$rango = $_POST["de"]."_".$_POST["a"];
-				$opcional = $_POST["res_1"]."_".$_POST["res_2"]."_".$_POST["res_3"]."_".$_POST["res_4"];
+				$opcional = $_POST["res_1"]."_".$_POST["res_2"]."_".$_POST["res_3"]."_".$_POST["res_4"]."_".$_POST["res_5"]."_".$_POST["res_6"];
 
 
 				$encuesta->setEncuestaId($_POST["encuestaId"]);
