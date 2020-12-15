@@ -29,7 +29,7 @@
 				</div>
 				<div class="portlet-body" id="tblContent">
 					<a  href="{$WEB_ROOT}/download.php?file={$translates.menu.documentation.child.userDoc.file}"class="btn btn-success btn-lg" title="{$translates.menu.documentation.child.userDoc.label}">
-						{$translates.menu.documentation.child.userDoc.label}
+						{$translates.menu.documentation.child.userDoc.nameBtn}
 						<i class="fa fa-cloud-download fa-2x" style="vertical-align: middle"></i>
 					</a>
 				</div>

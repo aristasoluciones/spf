@@ -109,10 +109,12 @@
                         <td class="mayuscula"><b>Encuesta</b></td>
                         <td class="mayuscula">{$encu.nombre}</td>
                     </tr>
-                    <tr class="border-bottom">
-                        <td class="mayuscula"><b>Resultado encuesta</b></td>
-                        <td class="mayuscula">{$encu.resultado}</td>
-                    </tr>
+                    {if $encu.allow_analize}
+                        <tr class="border-bottom">
+                            <td class="mayuscula"><b>Resultado encuesta</b></td>
+                            <td class="mayuscula">{$encu.resultado}</td>
+                        </tr>
+                    {/if}
                 {else}
                     <tr>
                         <td colspan="2" class="mayuscula"><b>{$encu.nombre}</b></td>

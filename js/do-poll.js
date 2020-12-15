@@ -1,4 +1,9 @@
 $(window).load(function() {
+    console.log("tenemos " + window.navigator.onLine);
+    var url_base = navigator.onLine ? 'https://gaia.inegi.org.mx/wscatgeo'
+    : WEB_ROOT + '/ajax/wscatgeo.php';
+
+    var url1 = navigator.onLine ? url_base + '/mgem/07' : url_base + '?wscatgeo=mgem&mgem=07&agem=';
     var initMunicipio = $('#municipioLimited').length ? $('#municipioLimited').val() : '';
     var options = {
         placeholder: 'Seleccionar un elemento',
@@ -7,7 +12,7 @@ $(window).load(function() {
         minimumResultsForSearch: Infinity,
         ajax: {
             type: 'get',
-            url: 'https://gaia.inegi.org.mx/wscatgeo/mgem/07' + initMunicipio,
+            url: url1 + initMunicipio,
             dataType: 'json',
             processResults: function (data) {
                 var data = $.map(data.datos, function (obj) {
@@ -38,9 +43,10 @@ $(window).load(function() {
     var currentNacimiento = $('#currentLugarNacimiento');
     placeNacimiento.select2(options);
     if (currentNacimiento.val()) {
+        var current_url = navigator.onLine ?  url_base + '/mgem/07/' : url_base + '?wscatgeo=infom&agem=';
         $.ajax({
             type: 'GET',
-            url: 'https://gaia.inegi.org.mx/wscatgeo/mgem/07/' + currentNacimiento.val()
+            url: current_url + currentNacimiento.val(),
         }).then(function (data) {
             var datos = data.datos;
             var option = new Option(datos[0].nom_agem, datos[0].cve_agem, true, true);

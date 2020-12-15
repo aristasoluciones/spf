@@ -110,6 +110,7 @@
         "child": {
           "userDoc":{
             "label": "Sjunal antsi-winiketik",
+            "nameBtn": "Svunal antsi-winiketik",
             "file": "sjunal.pdf"
           }
         }

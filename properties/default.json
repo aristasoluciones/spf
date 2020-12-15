@@ -110,6 +110,7 @@
         "child": {
           "userDoc":{
             "label": "Manual de usuario",
+            "nameBtn": "Descargar manual",
             "file": "manual_usuario.pdf"
           }
         }

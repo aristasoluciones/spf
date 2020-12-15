@@ -1,6 +1,6 @@
 <?php
 
-class Municipio extends Main
+class Localidad extends Main
 {
     private $id;
     private $nombre;
@@ -18,18 +18,9 @@ class Municipio extends Main
             $this->nombre = $value;
         }
     }
-
-    public function Info()
-    {
-        $sql = 'SELECT * FROM delegaciones WHERE delegacion_id = "' . $this->id . '"';
-        $this->Util()->DB()->setQuery($sql);
-        $info = $this->Util()->DB()->GetRow();
-        return $info;
-    }
-
     public function EnumerateApi($mgem)
     {
-        $sql = "SELECT * FROM municipio where cve_agee = '" . $mgem . "' ";
+        $sql = "SELECT * FROM localidades where cve_agee = '" . $mgem . "' ";
         $this->Util()->DB()->setQuery($sql);
         $results = $this->Util()->DB()->GetResult();
         $data['datos'] = $results;
