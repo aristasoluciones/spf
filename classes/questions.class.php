@@ -397,7 +397,8 @@ class Question extends Encuesta
         /* Draw the chart */
         $Palette = array("0"=>array("R"=>224,"G"=>100,"B"=>46,"Alpha"=>100),
                  "1"=>array("R"=>224,"G"=>100,"B"=>46,"Alpha"=>100),
-                 "2"=>array("R"=>224,"G"=>100,"B"=>46,"Alpha"=>100));
+                 "2"=>array("R"=>224,"G"=>100,"B"=>46,"Alpha"=>100),
+                 "3"=>array("R"=>224,"G"=>100,"B"=>46,"Alpha"=>100));
         $myPicture->drawBarChart(array("DisplayValues"=>TRUE,"DisplayShadow"=>TRUE,"DisplayPos"=>LABEL_POS_INSIDE,"Rounded"=>TRUE,"Surrounding"=>30,"OverrideColors"=>$Palette));
         /* Render the picture (choose the best way) */
        // $myPicture->autoOutput("pictures/example.drawBarChart.poll.png");
