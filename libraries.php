@@ -58,6 +58,9 @@ $municipio = new Municipio;
 include_once(DOC_ROOT.'/classes/colonia.class.php');
 $colonia = new Colonia;
 
+include_once(DOC_ROOT.'/classes/localidad.class.php');
+$localidad = new Localidad();
+
 include_once(DOC_ROOT.'/classes/pedido.class.php');
 $pedido = new Pedido;
 

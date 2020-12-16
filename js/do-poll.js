@@ -1,9 +1,7 @@
 $(window).load(function() {
-    console.log("tenemos " + window.navigator.onLine);
-    var url_base = navigator.onLine ? 'https://gaia.inegi.org.mx/wscatgeo'
+    var url_base = !isOffline ? 'https://gaia.inegi.org.mx/wscatgeo'
     : WEB_ROOT + '/ajax/wscatgeo.php';
-
-    var url1 = navigator.onLine ? url_base + '/mgem/07' : url_base + '?wscatgeo=mgem&mgem=07&agem=';
+    var url1 = !isOffline ? url_base + '/mgem/07' : url_base + '?wscatgeo=mgem&mgem=07&agem=';
     var initMunicipio = $('#municipioLimited').length ? $('#municipioLimited').val() : '';
     var options = {
         placeholder: 'Seleccionar un elemento',
@@ -43,10 +41,11 @@ $(window).load(function() {
     var currentNacimiento = $('#currentLugarNacimiento');
     placeNacimiento.select2(options);
     if (currentNacimiento.val()) {
-        var current_url = navigator.onLine ?  url_base + '/mgem/07/' : url_base + '?wscatgeo=infom&agem=';
+        var current_url = !isOffline ?  url_base + '/mgem/07/' : url_base + '?wscatgeo=info_agem&agem=';
         $.ajax({
             type: 'GET',
             url: current_url + currentNacimiento.val(),
+            dataType: 'json',
         }).then(function (data) {
             var datos = data.datos;
             var option = new Option(datos[0].nom_agem, datos[0].cve_agem, true, true);
@@ -61,7 +60,7 @@ $(window).load(function() {
     }
 
     $('#colonia').select2( { width: '100%', search: false,  minimumResultsForSearch: Infinity });
-    Select2Cascade($('#municipio'), $('#colonia'), 'https://gaia.inegi.org.mx/wscatgeo',optionsChild, options)
+    Select2Cascade($('#municipio'), $('#colonia'), url_base, optionsChild, options)
 
 });
 $(function () {

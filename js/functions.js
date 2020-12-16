@@ -9,6 +9,7 @@ else
 var LOADER = "<img src='"+WEB_ROOT+"/images/loading.gif'><br>Cargando...";
 var LOADER2 = "<img src='"+WEB_ROOT+"/images/loader.gif'>";
 var LOADER3 = "<div align='center'><img src='"+WEB_ROOT+"/images/loading.gif'><br>Cargando...</div>";
+var isOffline =  true;
 
 var msgFail = "Ocurrio un error al cargar los datos.";
 var msgError = "Something went wrong...";

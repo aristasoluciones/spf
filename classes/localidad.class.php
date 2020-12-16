@@ -18,9 +18,17 @@ class Localidad extends Main
             $this->nombre = $value;
         }
     }
-    public function EnumerateApi($mgem)
+    public function infoLoc($cveloc, $agem) {
+        $sql = 'SELECT * FROM localidad WHERE cve_loc = "' . $cveloc . '" and cve_agem = "' . $agem . '"';
+        $this->Util()->DB()->setQuery($sql);
+        $info = $this->Util()->DB()->GetRow();
+        $data['datos'][] = $info;
+        return $data;
+
+    }
+    public function EnumerateApi($mgem, $agem)
     {
-        $sql = "SELECT * FROM localidades where cve_agee = '" . $mgem . "' ";
+        $sql = "SELECT * FROM localidad where cve_agee = '" . $mgem . "' and cve_agem = '" . $agem . "' ";
         $this->Util()->DB()->setQuery($sql);
         $results = $this->Util()->DB()->GetResult();
         $data['datos'] = $results;

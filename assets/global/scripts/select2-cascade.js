@@ -20,7 +20,10 @@ var Select2Cascade = ( function(window, $) {
             var sufixUrl = child.prop('name');
             var value = $(this).val();
             switch (sufixUrl) {
-                case 'colonia':  var sufix = '/localidades/07/' + value;
+                case 'colonia':
+                    var sufix = !isOffline ? '/localidades/07/' : '?wscatgeo=localidad&mgem=07&agem=';
+                    sufix = sufix + value;
+                break;
             }
 
             $.getJSON(url + sufix, function(items) {
@@ -43,9 +46,11 @@ var Select2Cascade = ( function(window, $) {
                     .select2(options);
 
                 if (currentChildElement.length && currentChildElement.val()) {
+                    var url_loc = !isOffline ?  url + '/localidades/07' + currentParentElement.val() + '' + currentChildElement.val(): url + '?wscatgeo=info_loc&agem='+ currentParentElement.val() +'&loc=' + currentChildElement.val()
                     $.ajax({
                         type: 'GET',
-                        url: 'https://gaia.inegi.org.mx/wscatgeo/localidades/07' + currentParentElement.val() + '' + currentChildElement.val()
+                        url: url_loc,
+                        dataType: 'json',
                     }).then(function (data) {
                         var datos = data.datos;
                         var option = new Option(datos[0].nom_loc, datos[0].cve_loc, true, true);
@@ -64,9 +69,11 @@ var Select2Cascade = ( function(window, $) {
             });
         });
         if (currentParentElement.length && currentParentElement.val()) {
+            var url_agem = !isOffline ?  url + '/mgem/07/' : url + '?wscatgeo=info_agem&agem='
             $.ajax({
                 type: 'GET',
-                url: 'https://gaia.inegi.org.mx/wscatgeo/mgem/07/' + currentParentElement.val()
+                url: url_agem + currentParentElement.val(), // 'https://gaia.inegi.org.mx/wscatgeo/mgem/07/' + currentParentElement.val()
+                dataType: 'json',
             }).then(function (data) {
                 var datos = data.datos;
                 var option = new Option(datos[0].nom_agem, datos[0].cve_agem, true, true);

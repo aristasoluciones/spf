@@ -21,10 +21,18 @@ class Municipio extends Main
 
     public function Info()
     {
-        $sql = 'SELECT * FROM delegaciones WHERE delegacion_id = "' . $this->id . '"';
+        $sql = 'SELECT * FROM municipio WHERE delegacion_id = "' . $this->id . '"';
         $this->Util()->DB()->setQuery($sql);
         $info = $this->Util()->DB()->GetRow();
         return $info;
+    }
+    public function infoAgem($agem) {
+        $sql = 'SELECT * FROM municipio WHERE cve_agem = "' . $agem . '"';
+        $this->Util()->DB()->setQuery($sql);
+        $info = $this->Util()->DB()->GetRow();
+        $data['datos'][0] = $info;
+        return $data;
+
     }
 
     public function EnumerateApi($mgem)
