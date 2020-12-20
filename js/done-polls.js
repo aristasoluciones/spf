@@ -172,7 +172,7 @@ var TableDonePolls = function () {
             });
         });
         $('#datatable_ajax thead tr:eq(1) td').each(function (index) {
-            $('input', this).on('keyup, change', function () {
+            $('input, select', this).on('keyup, change', function () {
                grid.submitFilter();
             });
         });
@@ -213,6 +213,39 @@ $(function() {
             });
         }
     );
+    var url_base = !isOffline ? 'https://gaia.inegi.org.mx/wscatgeo'
+        : WEB_ROOT + '/ajax/wscatgeo.php';
+    var url1 = !isOffline ? url_base + '/mgem/07' : url_base + '?wscatgeo=mgem&mgem=07&agem=';
+    var options = {
+        placeholder: 'Seleccionar un elemento',
+        search: false,
+        width: '100%',
+        minimumResultsForSearch: Infinity,
+        ajax: {
+            type: 'get',
+            url: url1,
+            dataType: 'json',
+            processResults: function (data) {
+                var data = $.map(data.datos, function (obj) {
+                    return {id: obj.cve_agem, text: obj.nom_agem};
+                })
+                data.sort(function (a, b) {
+                    if (a.text > b.text) {
+                        return 1;
+                    }
+                    if (a.text < b.text) {
+                        return -1;
+                    }
+                    return 0;
+                })
+                return {
+                    results:data
+                }
+            }
+        },
+    }
+    var municipio = $('#municipio');
+    municipio.select2(options);
 });
 
 function drawChart(value) {

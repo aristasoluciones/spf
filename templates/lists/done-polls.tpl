@@ -16,7 +16,7 @@
             <td><input type="text" class="form-control form-filter input-sm" name="nombre" id="nombre"> </td>
             <td><input type="text" class="form-control form-filter input-sm" name="apaterno" id="apaterno"> </td>
             <td><input type="text" class="form-control form-filter input-sm" name="amaterno" id="amaterno"></td>
-            <td><input type="text" class="form-control form-filter input-sm" name="municipio" id="municipio"> </td>
+            <td><select type="text" class="form-control form-filter input-sm" name="municipio" id="municipio"></select> </td>
             <td></td>
             <td>
                 <button class="btn btn-sm red btn-outline filter-cancel">

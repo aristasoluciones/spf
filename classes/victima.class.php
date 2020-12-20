@@ -250,6 +250,9 @@ class Victima extends main
         if(!empty($_POST['amaterno']))
             $add .=' and amaterno like "%'.$_POST['amaterno'].'%" ';
 
+        if(!empty($_POST['municipio']))
+            $add .=' and municipio_id ="'.$_POST['municipio'].'"';
+
         $sql  = 'select count(*) from victima  where 1  ' . $add;
         $this->Util()->DB()->setQuery($sql);
         $total = $this->Util()->DB()->GetSingle();
