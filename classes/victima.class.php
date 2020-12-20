@@ -242,6 +242,14 @@ class Victima extends main
         if($_SESSION['Usr']['rolId'] != '1')
             $add =  ' and municipio_id = "'.$_SESSION['Usr']['municipio_id'].'" ';
 
+        if(!empty($_POST['nombre']))
+            $add .=' and nombre like "%'.$_POST['nombre'].'%"';
+
+        if(!empty($_POST['apaterno']))
+            $add .=' and apaterno like "%'.$_POST['apaterno'].'%"';
+        if(!empty($_POST['amaterno']))
+            $add .=' and amaterno like "%'.$_POST['amaterno'].'%" ';
+
         $sql  = 'select count(*) from victima  where 1  ' . $add;
         $this->Util()->DB()->setQuery($sql);
         $total = $this->Util()->DB()->GetSingle();

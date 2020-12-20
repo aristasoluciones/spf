@@ -48,6 +48,7 @@
         'statistics',
 
 		'documentation',
+		'multimedia',
 
 
 

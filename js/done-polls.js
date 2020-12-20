@@ -17,7 +17,7 @@ var TableDonePolls = function () {
                     { "title": "", "data": null },
                 ];
         break;
-        case '2':
+        case '1':
             var columns =  [
                 { "title": "Ja´vi", "data": "nombre" },
                 { "title": "Sjol sbi j´a tot","data": "apaterno" },
@@ -146,7 +146,8 @@ var TableDonePolls = function () {
                 });
             }
         });
-        $(document).on("click","#btnComentario",function () {
+
+        grid.getTableWrapper().on("click","#btnComentario",function () {
             $.ajax({
                 type: "POST",
                 url: WEB_ROOT+"/ajax/do-poll.php",
@@ -170,7 +171,11 @@ var TableDonePolls = function () {
                 }
             });
         });
-
+        $('#datatable_ajax thead tr:eq(1) td').each(function (index) {
+            $('input', this).on('keyup, change', function () {
+               grid.submitFilter();
+            });
+        });
         //grid.setAjaxParam("customActionType", "group_action");
         //grid.getDataTable().ajax.reload();
         //grid.clearAjaxParams();
@@ -185,7 +190,6 @@ var TableDonePolls = function () {
 
 $(function() {
     TableDonePolls.init();
-
     $(document).on(
         "click",
         '.btn-chart',

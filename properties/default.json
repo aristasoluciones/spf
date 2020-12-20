@@ -116,6 +116,9 @@
             "label": "Manual de usuario",
             "nameBtn": "Descargar manual",
             "file": "manual_usuario.pdf"
+          },
+          "videoTutorial":{
+            "label": "Video tutoriales"
           }
         }
       },
@@ -126,7 +129,7 @@
             "label": "Nueva encuesta"
           },
           "encuestarealizada": {
-            "label": "Encuestas realizada"
+            "label": "Encuestas realizadas"
           },
           "geolocalizacion": {
             "label": "Geolocalización"

@@ -141,11 +141,11 @@
 	</li>
 	{/if}
 	{if in_array(43,$privilegios) || $Usr.rolId eq 1}
-		<li class="nav-item {if $page =='documentation'}active open{/if}">
+		<li class="nav-item {if  $page =='documentation' || $page =='multimedia'}active open{/if}">
 			<a href="javascript:;" class="nav-link nav-toggle">
 				<i class="fa fa-file-archive-o"></i>
 				<span class="title">{$translates.menu.documentation.label}</span>
-				{if $page =='documentation'}
+				{if $page =='documentation' || $page =='multimedia'}
 					<span class="selected"></span>
 					<span class="arrow open"></span>
 				{else}
@@ -158,6 +158,12 @@
 						<a class="nav-link " href="{$WEB_ROOT}/documentation">
 							<i class="icon-list"></i>
 							<span class="title">{$translates.menu.documentation.child.userDoc.label}</span>
+						</a>
+					</li>
+					<li class="nav-item {if $page=='documentation'}active open{/if}">
+						<a class="nav-link " href="{$WEB_ROOT}/multimedia">
+							<i class="icon-list"></i>
+							<span class="title">{$translates.menu.documentation.child.videoTutorial.label}</span>
 						</a>
 					</li>
 				{/if}
