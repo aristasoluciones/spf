@@ -147,7 +147,7 @@ var TableDonePolls = function () {
             }
         });
 
-        grid.getTableWrapper().on("click","#btnComentario",function () {
+        $(document).on("click","#btnComentario",function () {
             $.ajax({
                 type: "POST",
                 url: WEB_ROOT+"/ajax/do-poll.php",
