@@ -51,7 +51,7 @@
 				</div>
 				<div class="portlet-body" id="tblContent">
 					<video loop muted controls style="width: 100%">
-						<source src="{$WEB_ROOT}/videos/introduccion.mp4" />
+						<source src="{$WEB_ROOT}/videos/configuracion.mp4" />
 					</video>
 				</div>
 			</div>
@@ -66,7 +66,7 @@
 				</div>
 				<div class="portlet-body" id="tblContent">
 					<video loop muted controls style="width: 100%">
-						<source src="{$WEB_ROOT}/videos/introduccion.mp4" />
+						<source src="{$WEB_ROOT}/videos/catalogo.mp4" />
 					</video>
 				</div>
 			</div>
@@ -83,7 +83,7 @@
 			</div>
 			<div class="portlet-body" id="tblContent">
 				<video loop muted controls style="width: 100%">
-					<source src="{$WEB_ROOT}/videos/introduccion.mp4" />
+					<source src="{$WEB_ROOT}/videos/encuesta.mp4" />
 				</video>
 			</div>
 		</div>
