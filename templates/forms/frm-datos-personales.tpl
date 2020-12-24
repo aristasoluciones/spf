@@ -45,13 +45,23 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label><span class="reqIcon"> * </span> {$translates.personal_data.estadoCivil.label}</label>
-                            <input name="estadoCivil" id="estadoCivil" class="form-control" value="{$post.estadoCivil}">
+                            <select class="form-control" name="estadoCivil" id="estadoCivil">
+                                <option>Seleccionar...</option>
+                                <option value="Soltero(a)" {if $post.estadoCivil|lower eq 'soltero(a)'}selected{/if}>Soltero(a)</option>
+                                <option value="Casado(a)" {if $post.estadoCivil|lower eq 'casado(a)'}selected{/if}>Casado(a)</option>
+                                <option value="Union libre" {if $post.estadoCivil|lower eq 'union libre'}selected{/if}>Union libre</option>
+                                <option value="Divorciado(a)" {if $post.estadoCivil|lower eq 'divorciado(a)'}selected{/if}>Divorciado(a)</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label><span class="reqIcon"> * </span> {$translates.personal_data.nacionalidad.label}</label>
-                            <input class="form-control" name="nacionalidad" id="nacionalidad" value="{$post.nacionalidad}">
+                            <select class="form-control" name="nacionalidad" id="nacionalidad">
+                                <option>Seleccionar...</option>
+                                <option value="Mexicana" {if $post.nacionalidad|lower eq 'mexicana'}selected{/if}>Mexicana</option>
+                                <option value="Extranjera" {if $post.nacionalidad|lower eq 'extranjera'}selected{/if}>Extranjera</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -59,7 +69,20 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label><span class="reqIcon"> * </span> {$translates.personal_data.gradoEstudio.label}</label>
-                            <input class="form-control spinner" name="gradoEstudio" id="gradoEstudio" value="{$post.gradoEstudio}">
+                            <select class="form-control" name="gradoEstudio" id="gradoEstudio">
+                                <option>Seleccionar..</option>
+                                <option value="sin estudios" {if $post.gradoEstudio|lower eq 'sin estudios'}selected{/if}>Sin estudios</option>
+                                <option value="primaria trunca" {if $post.gradoEstudio|lower eq 'primaria trunca'}selected{/if}>Primaria trunca</option>
+                                <option value="primaria" {if $post.gradoEstudio|lower eq 'primaria'}selected{/if}>Primaria</option>
+                                <option value="secundaria trunca" {if $post.gradoEstudio|lower eq 'secundaria trunca'}selected{/if}>Secundaria trunca</option>
+                                <option value="secundaria" {if $post.gradoEstudio|lower eq 'secundaria'}selected{/if}>Secundaria</option>
+                                <option value="preparotoria trunca" {if $post.gradoEstudio|lower eq 'preparatoria trunca'}selected{/if}>Preparatoria trunca</option>
+                                <option value="preparatoria" {if $post.gradoEstudio|lower eq 'preparatoria'}selected{/if}>Peparatoria</option>
+                                <option value="carrera tecnica trunca" {if $post.gradoEstudio|lower eq 'carrera tecnica trunca'}selected{/if}>Carrera tecnica trunca</option>
+                                <option value="carrera tecnica" {if $post.gradoEstudio|lower eq 'carrera tecnica'}selected{/if}>Carrera tecnica</option>
+                                <option value="licenciatura trunca" {if $post.gradoEstudio|lower eq 'licenciatura trunca'}selected{/if}>Licenciatura trunca</option>
+                                <option value="licenciatura" {if $post.gradoEstudio|lower eq 'licenciatura'}selected{/if}>Licenciatura</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-4">
