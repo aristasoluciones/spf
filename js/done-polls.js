@@ -218,6 +218,7 @@ $(function() {
     var url1 = !isOffline ? url_base + '/mgem/07' : url_base + '?wscatgeo=mgem&mgem=07&agem=';
     var options = {
         placeholder: 'Seleccionar un elemento',
+        allowClear: true,
         search: false,
         width: '100%',
         minimumResultsForSearch: Infinity,

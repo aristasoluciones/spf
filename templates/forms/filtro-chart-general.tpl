@@ -13,6 +13,13 @@
         </div>
         <div class="col-md-3">
             <div class="form-group">
+                <label for="">Municipio</label>
+                <select name="municipio_id" id="municipio_id" class="form-control">
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
                 <label for="">Año</label>
                 <select name="year" id="year" class="form-control">
                     {for $init=2000 to $year}

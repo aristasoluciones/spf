@@ -532,6 +532,9 @@ class Encuesta extends Main
                 if($_POST["contexto"]!="")
                     $filtro .=" and tipo = '".$_POST["contexto"]."' ";
 
+				if($_POST['municipio_id'])
+					$filtro .=" and municipio_id = '".$_POST["municipio_id"]."' ";
+
                 $sql  =" select  victimaId,tipo,month(fechaIncidente) as mes from victima a  where 1 $filtro ";
                 $this->Util()->DB()->setQuery($sql);
                 $result =  $this->Util()->DB()->GetResult();
@@ -612,7 +615,7 @@ class Encuesta extends Main
 				}
 				$new_array = [];
 				foreach($dataBase as $key => $data) {
-					$data['value'] = ($data['value'] / $total);
+					$data['value'] = number_format($data['value'] / $total, 2);
 					$new_array[] = $data;
 				}
 				echo json_encode($new_array);
@@ -626,6 +629,9 @@ class Encuesta extends Main
 
                 if($_POST["contexto"]!="")
                     $filtro .=" and tipo = '".$_POST["contexto"]."' ";
+
+				if($_POST['municipio_id'])
+					$filtro .=" and municipio_id = '".$_POST["municipio_id"]."' ";
 
                 $sql  =" select  victimaId,tipo from victima a  where 1 $filtro ";
                 $this->Util()->DB()->setQuery($sql);
