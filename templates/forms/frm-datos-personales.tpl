@@ -51,6 +51,7 @@
                                 <option value="Casado(a)" {if $post.estadoCivil|lower eq 'casado(a)'}selected{/if}>Casado(a)</option>
                                 <option value="Union libre" {if $post.estadoCivil|lower eq 'union libre'}selected{/if}>Union libre</option>
                                 <option value="Divorciado(a)" {if $post.estadoCivil|lower eq 'divorciado(a)'}selected{/if}>Divorciado(a)</option>
+                                <option value="Viudo(a)" {if $post.estadoCivil|lower eq 'viudo(a)'}selected{/if}>Viudo(a)</option>
                             </select>
                         </div>
                     </div>
