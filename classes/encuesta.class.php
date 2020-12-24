@@ -558,6 +558,65 @@ class Encuesta extends Main
                     $arrayNew[] = $item;
                 }
                 return json_encode($arrayNew);
+
+			case 'violencia':
+
+				$filtro = "";
+				$filtro2 ="";
+				if((int)$this->anio)
+					$filtro .=" and year(fechaIncidente)= '".(int)$this->anio."' ";
+
+				if((int)$this->mes)
+					$filtro .=" and month(fechaIncidente) = '".(int)$this->mes."' ";
+
+				if($_POST["contexto"]!="") {
+					$filtro .= " and tipo = '" . $_POST["contexto"] . "' ";
+					$filtro2 .= " and tipo = '" . $_POST["contexto"] . "' ";
+				}
+
+				if($_POST['municipio_id'])
+					$filtro .=" and municipio_id = '".$_POST["municipio_id"]."' ";
+
+
+				$sql  =" select  victimaId,tipo from victima  where 1 $filtro ";
+				$this->Util()->DB()->setQuery($sql);
+				$result =  $this->Util()->DB()->GetResult();
+
+				$sql  =" select  encuestaId, nombre, tipo from encuesta  where allow_analize = '1' $filtro2 ";
+				$this->Util()->DB()->setQuery($sql);
+				$polls =  $this->Util()->DB()->GetResult();
+				$dataBase = [];
+				foreach($polls as $itemPoll) {
+					$cad2['clave'] = $itemPoll['nombre'] .' '. $itemPoll['tipo'];
+					$cad2['value'] =  0;
+					$dataBase[$itemPoll['encuestaId']] = $cad2;
+				}
+				$total = 0;
+				foreach($result as $var) {
+					$sql = "select count(*) from pollVictima where victimaId = '".$var["victimaId"]."' and status ='Pendiente' ";
+					$this->Util()->DB()->setQuery($sql);
+					$pendiente=  $this->Util()->DB()->GetSingle();
+					if($pendiente)
+						continue;
+
+					$sql = "select  a.* from pollVictima a 
+							inner join encuesta b on a.encuestaId = b.encuestaId  
+							where a.victimaId = '".$var["victimaId"]."' and a.status ='Finalizado'
+							and b.allow_analize = '1' and b.tipo = '".$var['tipo']."' ";
+					$this->Util()->DB()->setQuery($sql);
+					$finalizados=  $this->Util()->DB()->GetResult();
+					foreach ($finalizados as $finalizado) {
+						$dataBase[$finalizado['encuestaId']]['value'] += $finalizado['puntos'];
+					}
+					$total++;
+				}
+				$new_array = [];
+				foreach($dataBase as $key => $data) {
+					$data['value'] = ($data['value'] / $total);
+					$new_array[] = $data;
+				}
+				echo json_encode($new_array);
+			break;
             default:
                 if((int)$this->anio)
                     $filtro .=" and year(fechaIncidente)= '".(int)$this->anio."' ";

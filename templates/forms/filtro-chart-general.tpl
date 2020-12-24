@@ -7,6 +7,7 @@
                 <select name="detail" id="detail" class="form-control">
                     <option value="">General</option>
                     <option value="month">Meses</option>
+                    <option value="violencia">Por violencia</option>
                 </select>
             </div>
         </div>
