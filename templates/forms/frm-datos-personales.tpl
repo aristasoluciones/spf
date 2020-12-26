@@ -52,6 +52,7 @@
                                 <option value="Union libre" {if $post.estadoCivil|lower eq 'union libre'}selected{/if}>Union libre</option>
                                 <option value="Divorciado(a)" {if $post.estadoCivil|lower eq 'divorciado(a)'}selected{/if}>Divorciado(a)</option>
                                 <option value="Viudo(a)" {if $post.estadoCivil|lower eq 'viudo(a)'}selected{/if}>Viudo(a)</option>
+                                <option value="Otro" {if $post.estadoCivil|lower eq 'otro'}selected{/if}>Otro</option>
                             </select>
                         </div>
                     </div>
@@ -83,6 +84,8 @@
                                 <option value="carrera tecnica" {if $post.gradoEstudio|lower eq 'carrera tecnica'}selected{/if}>Carrera tecnica</option>
                                 <option value="licenciatura trunca" {if $post.gradoEstudio|lower eq 'licenciatura trunca'}selected{/if}>Licenciatura trunca</option>
                                 <option value="licenciatura" {if $post.gradoEstudio|lower eq 'licenciatura'}selected{/if}>Licenciatura</option>
+                                <option value="maestria" {if $post.gradoEstudio|lower eq 'maestria'}selected{/if}>Maestria</option>
+                                <option value="doctorado" {if $post.gradoEstudio|lower eq 'doctorado'}selected{/if}>Doctorado</option>
                             </select>
                         </div>
                     </div>
