@@ -75,7 +75,7 @@ var TableDonePolls = function () {
                                 content = content + '<a class="btn btn-xs green btn-chart" href="javascript:;" title="Ver grafica" id="' + data.victimaId + '"><i class="fa fa-bar-chart" aria-hidden="true"></i></a>';
                                 content = content + '<a class="btn btn-xs green-dark" href="'+WEB_ROOT+'/poll-result-pdf/id/' + data.victimaId +'" title="Ver reporte" target="_blank"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>';
                             }
-                            content = content + '<a class="btn btn-xs red" href="javascript:;"' +'title="Eliminar" target="_blank"><i class="fa fa-minus-square" aria-hidden="true"></i></a>';
+                            content = content + '<a class="btn btn-xs red btn-delete" href="javascript:;"' +'title="Eliminar" id="'+ data.victimaId +'"><i class="fa fa-minus-square" aria-hidden="true"></i></a>';
                             content = content + '</div>';
                             return content;
                         }
@@ -170,6 +170,33 @@ var TableDonePolls = function () {
                 error:function(){
                     alert(msgError);
                 }
+            });
+        });
+        $(document).on("click",".btn-delete",function () {
+            var id =  this.id;
+            bootbox.confirm('¿ estas seguro de eliminar este registro?', function (result) {
+                if (!result)
+                    return
+
+                $.ajax({
+                    type: "POST",
+                    url: WEB_ROOT+"/ajax/do-poll.php",
+                    data:{ type: 'deleteVictima', id: id},
+                    beforeSend:function(){
+                    },
+                    success: function(response) {
+                        var splitResp = response.split("[#]");
+                        if(splitResp[0] === "ok") {
+                            bootbox.alert('Registro eliminado');
+                            grid.getDataTable().ajax.reload();
+                        } else {
+                            bootbox.alert('Error al eliminar');
+                        }
+                    },
+                    error:function(){
+                        alert(msgError);
+                    }
+                });
             });
         });
         $('#datatable_ajax thead tr:eq(1) td').each(function (index) {

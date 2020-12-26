@@ -58,4 +58,14 @@ switch($_POST["type"]){
         echo "ok[#]";
         $smarty->display(DOC_ROOT.'/templates/boxes/messages.tpl');
     break;
+    case 'deleteVictima':
+        $victima->setVictimaId($_POST["id"]);
+        if ($victima->deleteVictima()) {
+            echo "ok[#]";
+            $smarty->display(DOC_ROOT.'/templates/boxes/messages.tpl');
+        } else {
+            echo "fail[#]";
+            $smarty->display(DOC_ROOT.'/templates/boxes/messages.tpl');
+        }
+    break;
 }

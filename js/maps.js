@@ -35,12 +35,6 @@ var CustomerMaps =  function(){
             google.maps.event.addListener(marker, "drag", function (event) {
                 setLatLngInput(event.latLng.lat(),event.latLng.lng());
             });
-            map.addListener('center_changed', function() {
-                window.setTimeout(function() {
-                    map.panTo(marker.getPosition());
-                }, 3000);
-            });
-
         }
     };
 }();

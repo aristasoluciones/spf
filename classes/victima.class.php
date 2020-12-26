@@ -328,4 +328,20 @@ class Victima extends main
             return "Baja";
 
     }
+    function deleteVictima () {
+        if ($this->victimaId == "")
+            return false;
+
+        $sql = "delete from pollVictima where victimaId = '".$this->victimaId."' ";
+        $this->Util()->DB()->setQuery($sql);
+        $dels =  $this->Util()->DB()->DeleteData();
+
+        $sql = "delete from victima where victimaId = '".$this->victimaId."' ";
+        $this->Util()->DB()->setQuery($sql);
+        $this->Util()->DB()->DeleteData();
+
+        $this->Util()->setError("Registro eliminado", "success");
+        $this->Util()->PrintErrors();
+        return true;
+    }
 }
