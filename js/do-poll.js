@@ -99,12 +99,16 @@ $(function () {
               processData:false,
               contentType:false,
               beforeSend: function(){
+                  $("#btnSaveDataVictima").hide();
+                  $('#loader').html(LOADER)
               },
               success: function(response) {
                   var splitResp = response.split("[#]");
+                  $('#loader').html('')
                   if(splitResp[0] == "ok"){
                       location.href = WEB_ROOT+"/do-poll/id/"+splitResp[1];
                   }else{
+                      $("#btnSaveDataVictima").show();
                       $("#txtErrMsg").show();
                       $("#txtErrMsg").html(splitResp[1]);
                   }
