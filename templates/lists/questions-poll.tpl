@@ -33,10 +33,10 @@
                         </div>
                         <div class="list-item-content">
                             <h3 class="uppercase">
-                                <a href="javascript:;">{$item.pregunta}</a>
+                                <a href="javascript:;" class="bold">{$item.pregunta}</a>
                             </h3>
                             <p>
-                            <div class="form-group form-md-radios has-success">
+                            <div class="form-group form-md-radios">
                                 <div class="col-md-12">
                                     <div class="md-radio-inline">
                                         {foreach from=$item.opciones item=item2 key=key}

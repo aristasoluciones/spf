@@ -118,6 +118,7 @@ function drawChartGeneral() {
                 }
                 else
                     series.columns.template.tooltipText = "{categoryX}: [bold]{valueY}[/]";
+
                 series.columns.template.fillOpacity = .8;
                 series.columns.template.width = am4core.percent(10);
 

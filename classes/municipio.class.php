@@ -35,9 +35,12 @@ class Municipio extends Main
 
     }
 
-    public function EnumerateApi($mgem)
-    {
-        $sql = "SELECT * FROM municipio where cve_agee = '" . $mgem . "' ";
+    public function EnumerateApi($mgem) {
+        $ftr = "";
+        if($_GET['term']) {
+            $ftr .= " and nom_agem like '%".$_GET['term']."%'";
+        }
+        $sql = "SELECT * FROM municipio where cve_agee = '" . $mgem . "'  $ftr";
         $this->Util()->DB()->setQuery($sql);
         $results = $this->Util()->DB()->GetResult();
         $data['datos'] = $results;

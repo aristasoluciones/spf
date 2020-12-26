@@ -5,8 +5,9 @@ $(window).load(function() {
     var initMunicipio = $('#municipioLimited').length ? $('#municipioLimited').val() : '';
     var options = {
         placeholder: 'Seleccionar un elemento',
-        search: false,
+        search: true,
         width: '100%',
+        minimumInputLength: 1,
         minimumResultsForSearch: Infinity,
         ajax: {
             type: 'get',

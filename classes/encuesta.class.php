@@ -581,20 +581,25 @@ class Encuesta extends Main
 					$filtro .=" and municipio_id = '".$_POST["municipio_id"]."' ";
 
 
-				$sql  =" select  victimaId,tipo from victima  where 1 $filtro ";
+				$sql  =" select  victimaId,tipo,municipio_id from victima  where 1 $filtro ";
 				$this->Util()->DB()->setQuery($sql);
 				$result =  $this->Util()->DB()->GetResult();
 
-				$sql  =" select  encuestaId, nombre, tipo from encuesta  where allow_analize = '1' $filtro2 ";
+				$sql  =" select  encuestaId, nombre, tipo,encuestaId from encuesta  where allow_analize = '1' $filtro2 ";
 				$this->Util()->DB()->setQuery($sql);
 				$polls =  $this->Util()->DB()->GetResult();
 				$dataBase = [];
 				foreach($polls as $itemPoll) {
 					$cad2['clave'] = $itemPoll['nombre'] .' '. $itemPoll['tipo'];
+					$cad2['namepoll'] = str_replace(" ", "", $itemPoll['nombre'] .''. $itemPoll['tipo']);
+					$cad2['encuestaId'] =  $itemPoll['encuestaId'];
 					$cad2['value'] =  0;
 					$dataBase[$itemPoll['encuestaId']] = $cad2;
 				}
 				$total = 0;
+
+				$exist_municipios = [];
+				$group_municipios = [];
 				foreach($result as $var) {
 					$sql = "select count(*) from pollVictima where victimaId = '".$var["victimaId"]."' and status ='Pendiente' ";
 					$this->Util()->DB()->setQuery($sql);
@@ -602,7 +607,7 @@ class Encuesta extends Main
 					if($pendiente)
 						continue;
 
-					$sql = "select  a.* from pollVictima a 
+					$sql = "select  a.*, concat_ws('', b.nombre, b.tipo) as namepoll from pollVictima a 
 							inner join encuesta b on a.encuestaId = b.encuestaId  
 							where a.victimaId = '".$var["victimaId"]."' and a.status ='Finalizado'
 							and b.allow_analize = '1' and b.tipo = '".$var['tipo']."' ";
@@ -610,15 +615,39 @@ class Encuesta extends Main
 					$finalizados=  $this->Util()->DB()->GetResult();
 					foreach ($finalizados as $finalizado) {
 						$dataBase[$finalizado['encuestaId']]['value'] += $finalizado['puntos'];
+
+
+						if(!$_POST['municipio_id']) {
+							if (!in_array($var['municipio_id'], $exist_municipios)) {
+								array_push($exist_municipios, $var['municipio_id']);
+								$group_municipios[$var['municipio_id']]['clave'] =$var['municipio_id'];
+								$group_municipios[$var['municipio_id']]['total'] = 0;
+							}
+							$group_municipios[$var['municipio_id']][$finalizado['namepoll']] += $finalizado['puntos'];
+							$group_municipios[$var['municipio_id']]['total']++;
+						}
 					}
+
 					$total++;
 				}
 				$new_array = [];
-				foreach($dataBase as $key => $data) {
-					$data['value'] = number_format($data['value'] / $total, 2);
-					$new_array[] = $data;
+				if ($_POST['municipio_id']) {
+					foreach($dataBase as $key => $data) {
+						$data['value'] = number_format($data['value'] / $total, 2);
+						$new_array[] = $data;
+					}
+				} else {
+					foreach($group_municipios as $key => $data) {
+						foreach($data as $kd => $vdata)
+						{
+							if($kd != 'clave' && $kd!= 'total')
+								$data[$kd] = $vdata / $data['total']
+;						}
+						$new_array[] = $data;
+					}
 				}
-				echo json_encode($new_array);
+
+				return json_encode($new_array);
 			break;
             default:
                 if((int)$this->anio)
@@ -638,7 +667,7 @@ class Encuesta extends Main
                 $result =  $this->Util()->DB()->GetResult();
                 $tipos = [];
                 $arrayTipos = [];
-                foreach($result as $var){
+                foreach($result as $var) {
                     $sql = "select count(*) from pollVictima where victimaId = '".$var["victimaId"]."' and status ='Pendiente' ";
                     $this->Util()->DB()->setQuery($sql);
                     $pendiente=  $this->Util()->DB()->GetSingle();
@@ -653,6 +682,8 @@ class Encuesta extends Main
                         $arrayTipos[$var["tipo"]]["value"]++;
                     }
                 }
+
+
                 $arrayNew = [];
                 foreach ($arrayTipos as $item) {
                     $arrayNew[] = $item;
