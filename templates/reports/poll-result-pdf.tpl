@@ -79,7 +79,7 @@
         <table width="100%">
             <tr class="border-bottom">
                 <td width="10%" class="mayuscula"><b>Nombre completo</b></td>
-                <td width="35%" class="mayuscula">{$info.nombre} {$info.apaterno} {$amaterno}</td>
+                <td width="35%" class="mayuscula">{$info.nombre} {$info.apaterno} {$info.amaterno}</td>
                 <td width="10%" class="mayuscula"><b>Edad</b></td>
                 <td class="mayuscula">{$info.edad}</td>
             </tr>
