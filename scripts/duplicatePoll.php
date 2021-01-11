@@ -1,5 +1,7 @@
 <?php
 echo  $_SERVER["DOCUMENT_ROOT"] ."\n";
+echo "bye";
+exit;
 ini_set('memory_limit','3G');
 if(!$_SERVER["DOCUMENT_ROOT"])
 {
