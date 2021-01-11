@@ -5,7 +5,7 @@ if(!$_SERVER["DOCUMENT_ROOT"])
 {
     $_SERVER["DOCUMENT_ROOT"] = realpath(dirname(__FILE__).'/..');
 }
-if($_SERVER['DOCUMENT_ROOT'] == "/1/home/sites/13a/8/87dc279ca1/public_html/") {
+if($_SERVER['DOCUMENT_ROOT'] == "/home/sites/13a/8/87dc279ca1/public_html/") {
     $docRoot = $_SERVER['DOCUMENT_ROOT']."/spf";
 } else {
     $docRoot = $_SERVER['DOCUMENT_ROOT'];
