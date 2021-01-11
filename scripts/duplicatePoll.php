@@ -17,7 +17,7 @@ include_once(DOC_ROOT.'/libraries.php');
 $sql = "select * from victima where apaterno = 'Provisional'  and victimaId <=712";
 $db->setQuery($sql);
 $filas =  $db->GetResult();
-
+$count = 0;
 foreach ($filas as $key => $var) {
  $sql = "insert into victima(
             nombre, 
@@ -105,5 +105,8 @@ foreach ($filas as $key => $var) {
              $db->InsertData();
          }
      }
+     $count++;
      echo "registro con id ". $var['victimaId']. " duplicado \n";
 }
+
+echo $count. "registros agregados \n";
