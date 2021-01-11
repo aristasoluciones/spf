@@ -14,7 +14,7 @@ include_once(DOC_ROOT.'/init.php');
 include_once(DOC_ROOT.'/config.php');
 include_once(DOC_ROOT.'/libraries.php');
 
-$sql = "select * from victima where apaterno = 'Provisional'  and victimaId <=137";
+$sql = "select * from victima where apaterno = 'Provisional'  and victimaId <=712";
 $db->setQuery($sql);
 $filas =  $db->GetResult();
 
