@@ -112,9 +112,11 @@ function drawChartGeneral() {
                 series.dataFields.valueY = "value";
                 series.dataFields.categoryX = "clave";
                 series.name = "Porcentaje";
+                series.columns.template.showTooltipOn = "always";
                 if (convertPercent) {
                     series.calculatePercent = true;
                     series.columns.template.tooltipText = "{categoryX}: [bold]{valueY.percent}%[/]";
+
                 }
                 else
                     series.columns.template.tooltipText = "{categoryX}: [bold]{valueY}[/]";
