@@ -8,8 +8,9 @@ $(function () {
         var options = {
             placeholder: 'Seleccionar un elemento',
             allowClear: true,
-            search: false,
+            search: true,
             width: '100%',
+            minimumInputLength: 1,
             minimumResultsForSearch: Infinity,
             ajax: {
                 type: 'get',
