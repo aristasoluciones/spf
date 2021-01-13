@@ -87,7 +87,7 @@ function drawChartGeneral() {
                 categoryAxis.renderer.grid.template.location = 0;
                 categoryAxis.renderer.labels.template.rotation = 270;
                 categoryAxis.renderer.labels.template.horizontalCenter = "middle";
-                categoryAxis.renderer.minGridDistance = 10;
+                categoryAxis.renderer.minGridDistance = 5;
 
                 categoryAxis.renderer.labels.template.adapter.add("dy", function(dy, target) {
                     if (target.dataItem && target.dataItem.index & 2 == 2) {
@@ -98,13 +98,18 @@ function drawChartGeneral() {
 
 
                 var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-                if (convertPercent)
-                    valueAxis.renderer.labels.template.adapter.add("text", (text, label)=>{ return label.dataItem.value + "%"; })
-                valueAxis.title.text = titleY;
+                if (convertPercent) {
+                    valueAxis.renderer.labels.template.adapter.add("text", (text, label) => {
+                        return label.dataItem.value + "%";
+                    })
+                    valueAxis.title.text = titleY;
+                    valueAxis.strictMinMax = true;
+                }
                 if(min !== -1)
                  valueAxis.min = min;
                 if(max !== -1)
                     valueAxis.max = max;
+
                 var label = categoryAxis.renderer.labels.template;
                 label.wrap = true;
                 label.maxWidth = 120;
@@ -116,9 +121,8 @@ function drawChartGeneral() {
                 series.columns.template.showTooltipOn = "always";
                 series.columns.template.tooltipY = 0;
                 if (convertPercent) {
-                    series.calculatePercent = true;
-                    series.columns.template.tooltipText = "{categoryX}: [bold]{valueY.percent}%[/]";
 
+                   series.columns.template.tooltipText = "{categoryX}: [bold]{valueY}%[/]";
                 }
                 else
                     series.columns.template.tooltipText = "{categoryX}: [bold]{valueY}[/]";
