@@ -637,7 +637,7 @@ class Encuesta extends Main
 						$linealBase +=$data2['value'] / $total;
 					}
 					foreach($dataBase as $key => $data) {
-						$valor =  number_format($data['value'] / $total, 2) * 100 / $linealBase;
+						$valor =  number_format($data['value'] / $total, 2) * 100 / number_format($linealBase, 2);
 						$data['value'] = number_format($valor, 2);
 						$new_array[] = $data;
 					}
