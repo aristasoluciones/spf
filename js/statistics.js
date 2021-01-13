@@ -121,7 +121,6 @@ function drawChartGeneral() {
                 series.columns.template.showTooltipOn = "always";
                 series.columns.template.tooltipY = 0;
                 if (convertPercent) {
-
                    series.columns.template.tooltipText = "{categoryX}: [bold]{valueY}%[/]";
                 }
                 else

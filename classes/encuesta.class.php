@@ -622,6 +622,7 @@ class Encuesta extends Main
 								array_push($exist_municipios, $var['municipio_id']);
 								$group_municipios[$var['municipio_id']]['clave'] =$var['municipio_id'];
 								$group_municipios[$var['municipio_id']]['total'] = 0;
+								$group_municipios[$var['municipio_id']]['value'] = $finalizado['puntos'];
 							}
 							$group_municipios[$var['municipio_id']][$finalizado['namepoll']] += $finalizado['puntos'];
 							$group_municipios[$var['municipio_id']]['total']++;
@@ -642,12 +643,21 @@ class Encuesta extends Main
 						$new_array[] = $data;
 					}
 				} else {
-					foreach($group_municipios as $key => $data) {
+					/*foreach($group_municipios as $key => $data) {
 						foreach($data as $kd => $vdata)
 						{
-							if($kd != 'clave' && $kd!= 'total')
-								$data[$kd] = $vdata / $data['total']
+							if($kd != 'clave' && $kd!= 'value')
+								$data[$kd] = $vdata / $data['value']
 ;						}
+						$new_array[] = $data;
+					}*/
+					$linealBase = 0;
+					foreach($dataBase as $key2 => $data2) {
+						$linealBase +=$data2['value'] / $total;
+					}
+					foreach($dataBase as $key => $data) {
+						$valor =  number_format($data['value'] / $total, 2) * 100 / number_format($linealBase, 2);
+						$data['value'] = number_format($valor, 2);
 						$new_array[] = $data;
 					}
 				}
