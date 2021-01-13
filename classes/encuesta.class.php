@@ -632,9 +632,12 @@ class Encuesta extends Main
 				}
 				$new_array = [];
 				if ($_POST['municipio_id']) {
-					$linealBase =  array_column($dataBase,  'value');
+					$linealBase = 0;
+					foreach($dataBase as $key2 => $data2) {
+						$linealBase +=$data2['value'] / $total;
+					}
 					foreach($dataBase as $key => $data) {
-						$valor =  number_format($data['value'] / $total, 2) * 100 / array_sum($linealBase);
+						$valor =  number_format($data['value'] / $total, 2) * 100 / $linealBase;
 						$data['value'] = number_format($valor, 2);
 						$new_array[] = $data;
 					}
