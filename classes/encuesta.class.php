@@ -616,7 +616,6 @@ class Encuesta extends Main
 					foreach ($finalizados as $finalizado) {
 						$dataBase[$finalizado['encuestaId']]['value'] += $finalizado['puntos'];
 
-
 						if(!$_POST['municipio_id']) {
 							if (!in_array($var['municipio_id'], $exist_municipios)) {
 								array_push($exist_municipios, $var['municipio_id']);
@@ -626,6 +625,7 @@ class Encuesta extends Main
 							}
 							$group_municipios[$var['municipio_id']][$finalizado['namepoll']] += $finalizado['puntos'];
 							$group_municipios[$var['municipio_id']]['total']++;
+							$group_municipios[$var['municipio_id']]['value'] += $finalizado['puntos'];
 						}
 					}
 
@@ -633,13 +633,13 @@ class Encuesta extends Main
 				}
 				$new_array = [];
 				if ($_POST['municipio_id']) {
-					$linealBase = 0;
+					/*$linealBase = 0;
 					foreach($dataBase as $key2 => $data2) {
 						$linealBase +=$data2['value'] / $total;
-					}
+					}*/
 					foreach($dataBase as $key => $data) {
-						$valor =  number_format($data['value'] / $total, 2) * 100 / number_format($linealBase, 2);
-						$data['value'] = number_format($valor, 2);
+						$valor =  number_format($data['value'] / $total, 2);
+						$data['value'] = $valor;
 						$new_array[] = $data;
 					}
 				} else {
@@ -651,13 +651,9 @@ class Encuesta extends Main
 ;						}
 						$new_array[] = $data;
 					}*/
-					$linealBase = 0;
-					foreach($dataBase as $key2 => $data2) {
-						$linealBase +=$data2['value'] / $total;
-					}
 					foreach($dataBase as $key => $data) {
-						$valor =  number_format($data['value'] / $total, 2) * 100 / number_format($linealBase, 2);
-						$data['value'] = number_format($valor, 2);
+						$valor =  number_format($data['value'] / $total, 2);
+						$data['value'] = $valor;
 						$new_array[] = $data;
 					}
 				}
